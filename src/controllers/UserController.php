@@ -2,6 +2,8 @@
 
 public function get(){
     //gets user
+
+    return
 }
 
 public function post(){
