@@ -3,6 +3,9 @@
 require_once('models/User.php');
 require_once('helpers/DataHelper.php');
 
+require_once('validators/EmailValidator.php');
+require_once('validators/NewUserValidator.php');
+
 class UserController {
     
     /**
@@ -38,6 +41,12 @@ class UserController {
      */
     public static function post($data){
 
+        $isValid = NewUserValidator::validate($data);
+
+        if(is_array($isValid)){
+            return $isValid;
+        }
+
         $user = new User();
 
         foreach(array_keys($data) as $value){
@@ -45,6 +54,7 @@ class UserController {
         }
 
         $user->post();
+
     }
     
     /**
@@ -81,9 +91,11 @@ class UserController {
 
         $email = DataHelper::convertInput($email);
 
-        session_start([
-            'cookie_lifetime' => 14400,
-        ]);
+        $isValid = EmailValidator::validate($email);
+
+        if(is_array($isValid)){
+            return $isValid;
+        }
 
         $secretId = strtoupper(substr(uniqid(), -6));
 
@@ -107,11 +119,12 @@ class UserController {
      *
      */
     public static function emailVerification($code){
-        session_start();
         if($code == $_SESSION['emailverification']['secret']){
             $_SESSION['emailverification']['verified'] = true;
             header("Location: /registreren");
             die();
+        } else{
+            return ["code" => "De opgegeven verificatie code is onjuist."];
         }
     }
 }

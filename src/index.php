@@ -1,7 +1,11 @@
 <?php
 
-require_once('config.php');
+    require_once('config.php');
 
+    session_start([
+        'cookie_lifetime' => 14400,
+    ]);
+    
 ?>
 
 <!doctype html>
@@ -32,7 +36,7 @@ require_once('config.php');
                         <?php
                         require('views/shared/breadcrumbs.php');
                         ?>
-                        <?php require 'routes.php'; ?>
+                        <?php require('routes.php'); ?>
                     </div>
                 </div>
             </div>

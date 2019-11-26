@@ -1,14 +1,15 @@
 <?php 
 
-session_start();
 if(empty($_SESSION['emailverification'])){
     header("Location: /emailregistreren");
 }
 
 require_once('controllers/UserController.php');
 
+$errors = [];
+
 if(isset($_POST['submit'])){
-    UserController::emailVerification($_POST["code"]);
+    $errors = UserController::emailVerification($_POST["code"]);
 }
 
 ?>
@@ -22,7 +23,8 @@ if(isset($_POST['submit'])){
         <form method="POST">
 
             <div class="form-group">
-                <input type="text" name="code" class="form-control" placeholder="123456">
+                <input type="text" value="<?php echo $_POST['code'] ?? "" ?>" name="code" class="form-control <?php echo isset($errors['code']) ? 'is-invalid' : ''; ?>" placeholder="123456" required>
+                <div class="invalid-feedback"><?php echo $errors['code'] ?? '' ; ?></div>
             </div>
 
             <button type="submit" name="submit" class="btn btn-primary">Verstuur</button>

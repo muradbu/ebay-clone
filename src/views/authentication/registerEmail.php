@@ -2,8 +2,10 @@
 
 require_once('controllers/UserController.php');
 
+$errors = [];
+
 if(isset($_POST['submit'])){
-    UserController::sendEmailVerification($_POST["email"]);
+    $errors = UserController::sendEmailVerification($_POST["email"]);
 }
 
 ?>
@@ -14,10 +16,11 @@ if(isset($_POST['submit'])){
         <h5 class="card-title">Registreren</h5>
         <h6 class="card-subtitle mb-2 text-muted">Vul uw email in om een bevestigingsmail te ontvangen</h6>
 
-        <form method="POST">
+        <form method="POST" >
 
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="voorbeeld@email.com">
+                <input type="email" value="<?php echo $_POST['email'] ?? "" ?>" name="email" class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : ''; ?>" placeholder="voorbeeld@email.com" required>
+                <div class="invalid-feedback"><?php echo $errors['email'] ?? '' ; ?></div>
             </div>
 
             <button type="submit" name="submit" class="btn btn-primary">Verstuur</button>

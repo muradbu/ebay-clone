@@ -1,6 +1,8 @@
 <?php
 
-$BUYER = 0;
-$SELLER = 1;
+class CheckOptionName{
+    const BUYER = 0;
+    const SELLER = 1;
+}
 
 ?>

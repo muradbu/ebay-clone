@@ -1,7 +1,9 @@
 <?php
 
-$NEUTRAL = null;
-$NEGATIVE = 0;
-$POSITIVE = 1;
+class CheckOptionName{
+    const NEUTRAL = null;
+    const NEGATIVE = 0;
+    const POSITIVE = 1;
+}
 
 ?>
