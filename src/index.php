@@ -1,5 +1,7 @@
 <?php
+
 require_once('config.php');
+
 ?>
 
 <!doctype html>
@@ -12,10 +14,13 @@ require_once('config.php');
     <title>Eenmaal Andermaal</title>
     <link rel="stylesheet" href="<?php echo Config::ROOT_FOLDER . "/css/bootstrap.css" ?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.js" ?>" type="text/javascript"></script>
+
 </head>
 
 <body>
-    <header>
+    <header class="mb-5">
         <?php require('views/shared/header.php'); ?>
     </header>
 
@@ -39,9 +44,6 @@ require_once('config.php');
             <?php require('views/shared/footer.php'); ?>
         </div>
     </footer>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.js" ?>" type="text/javascript"></script>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
-
 </body>
 
 </html>

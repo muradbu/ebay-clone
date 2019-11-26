@@ -10,7 +10,7 @@ class Config{
     
     const DATABASE_DATABASE = "";
     
-    const ROOT_FOLDER = "iproject/src";
+    const ROOT_FOLDER = "src";
 }
 
 ?>

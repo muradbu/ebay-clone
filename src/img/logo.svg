@@ -1,4 +1,4 @@
-<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="640" height="480" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <symbol id="svg_7" viewBox="0 0 24 24" height="24" width="24" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -11,7 +11,6 @@
         </symbol>
     </defs>
     <g>
-        <title>Layer 1</title>
         <circle id="svg_3" r="184.954041" cy="245.333333" cx="331" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#88b04b" fill="#88b04b"/>
         <use fill="#ffffff" x="54.592356" y="31.029678" transform="matrix(9.408556395962478,0,0,9.267563598929314,-282.5929031308042,-173.34978732471063) " xlink:href="#svg_7" id="svg_8"/>
         <g id="svg_9"/>
