@@ -1,20 +1,16 @@
 <?php
 
-//Config settings
+class Config{
 
-//Voorbeeld rest like url: 
-//localhost:8080/{controller}
-//localhost:8080/{controller}/{id}
-//localhost:8080/{controller}/{id}
-//user: localhost:8080/users/1
-//object of user localhost:8080/users/1/object/3145
+    const DATABASE_HOSTNAME = "";
 
-$DATABASE_HOSTNAME = "";
-
-$DATABASE_USERNAME = "";
-
-$DATABASE_PASSWORD = "";
-
-$DATABASE_DATABASE = "";
+    const DATABASE_USERNAME = "";
+    
+    const DATABASE_PASSWORD = "";
+    
+    const DATABASE_DATABASE = "";
+    
+    const ROOT_FOLDER = "iproject/src";
+}
 
 ?>

@@ -1,0 +1,19 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="svg_7" viewBox="0 0 24 24" height="24" width="24" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <path d="m0,0l24,0l0,24l-24,0l0,-24z" id="svg_6"/>
+            </defs>
+            <clipPath id="svg_5">
+                <use xlink:href="#svg_6"/>
+            </clipPath>
+            <path clip-path="url(#svg_5)" d="m1,21l12,0l0,2l-12,0l0,-2zm4.245,-12.93l2.83,-2.827l14.14,14.142l-2.828,2.828l-14.142,-14.143zm7.072,-7.07l5.657,5.656l-2.83,2.83l-5.654,-5.66l2.827,-2.826zm-8.492,8.485l5.657,5.657l-2.828,2.828l-5.657,-5.657l2.828,-2.828z"/>
+        </symbol>
+    </defs>
+    <g>
+        <title>Layer 1</title>
+        <circle id="svg_3" r="184.954041" cy="245.333333" cx="331" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#88b04b" fill="#88b04b"/>
+        <use fill="#ffffff" x="54.592356" y="31.029678" transform="matrix(9.408556395962478,0,0,9.267563598929314,-282.5929031308042,-173.34978732471063) " xlink:href="#svg_7" id="svg_8"/>
+        <g id="svg_9"/>
+    </g>
+</svg>

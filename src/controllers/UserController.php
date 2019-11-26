@@ -1,25 +1,120 @@
 <?php
 
-public function get(){
-    //gets user
+require_once('models/User.php');
+require_once('helpers/DataHelper.php');
 
-    return
+class UserController {
+    
+    /**
+     *
+     * Get a specific user by id
+     *
+     * @param int $id The id for the user to be retrieved
+     * 
+     * @return User Returns the relevant user from the database
+     *
+     */
+    public static function get($id){
+       
+    }
+
+    /**
+     *
+     * Get all users
+     * 
+     * @return array Returns a array with all the users in the database
+     *
+     */
+    public static function query(){
+
+    }
+    
+    /**
+     *
+     * Create a new user
+     *
+     * @param array $data The data to create a new user.
+     *
+     */
+    public static function post($data){
+
+        $user = new User();
+
+        foreach(array_keys($data) as $value){
+            $user->$value = $data[$value];
+        }
+
+        $user->post();
+    }
+    
+    /**
+     *
+     * Edit a specific user
+     *
+     * @param int $id Id of the user to edit
+     * @param array $data The data to edit the relevant user
+     *
+     */
+    public static function put($id, $data){
+
+    }
+    
+    /**
+     *
+     * Delete a specific user
+     *
+     * @param int $id Id of the user to delete
+     *
+     */
+    public static function delete($id){
+        
+    }
+
+    /**
+     *
+     * Send a email with a secretId, set sercretId in session
+     *
+     * @param string $email The email to send the verfication mail to
+     *
+     */
+    public static function sendEmailVerification($email){
+
+        $email = DataHelper::convertInput($email);
+
+        session_start([
+            'cookie_lifetime' => 14400,
+        ]);
+
+        $secretId = strtoupper(substr(uniqid(), -6));
+
+        $_SESSION['emailverification']['email'] = $email;
+        $_SESSION['emailverification']['secret'] = $secretId;
+
+        $message = "Uw verificatie code is: $secretId";
+
+        //todo: create a nice email template.
+        mail($email,"Verificatie code", $message);
+
+        header("Location: /emailbevestigen");
+        die();
+    }
+
+    /**
+     *
+     * Check entered secretId with secretId in session
+     *
+     * @param int $code The code to check with the secretId in the session
+     *
+     */
+    public static function emailVerification($code){
+        session_start();
+        if($code == $_SESSION['emailverification']['secret']){
+            $_SESSION['emailverification']['verified'] = true;
+            header("Location: /registreren");
+            die();
+        }
+    }
 }
 
-public function post(){
-    //post new user
-}
-
-public function put(){
-    //put user
-}
-
-public function delete(){
-    //delete user
-}
-
-public function login(){
-    //login user
-}
 
 ?>
