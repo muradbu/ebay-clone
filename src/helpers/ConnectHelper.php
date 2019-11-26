@@ -15,20 +15,18 @@ class ConnectHelper {
      *
      */
     public static function execute($sql){
-
         $sql = DataHelper::convertInput($sql);
-        $sql = mysql_real_escape_string($sql);
 
-        $connection = new mysqli(Config::DATABASE_HOSTNAME, Config::DATABASE_USERNAME, Config::DATABASE_PASSWORD, Config::DATABASE_DATABASE);
-        if($connection->connect_error){
+        try{
+            $connection = new PDO ("sqlsrv:server=".Config::DATABASE_HOSTNAME.";Database=".Config::DATABASE_DATABASE."",Config::DATABASE_USERNAME,Config::DATABASE_PASSWORD);
+        } catch (PDOException $e) {
             die("Connectie met database mislukt.");
         }
-        
-        $result = $conn->query($sql);
-        
-        $connection.close();
 
-        return $result;
+        $result = $connection->prepare($sql);
+        $result = $connection->query($sql);
+        
+        return $result->fetch();
     }
 
 }
