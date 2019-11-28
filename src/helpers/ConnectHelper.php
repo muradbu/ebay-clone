@@ -14,6 +14,7 @@ class ConnectHelper {
      *
      */
     public static function execute($sql){
+
         $sql = DataHelper::convertInput($sql);
 
         try{
@@ -22,10 +23,11 @@ class ConnectHelper {
             die("Connectie met database mislukt.");
         }
 
-        $result = $connection->prepare($sql);
-        $result = $connection->query($sql);
+        $query = $connection->prepare($sql);
         
-        return $result->fetch();
+        $query->execute();
+        
+        return $query->fetchAll();
     }
 
 }

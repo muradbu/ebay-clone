@@ -29,7 +29,7 @@ class UserController {
      *
      */
     public static function query(){
-
+        return User::query();
     }
     
     /**

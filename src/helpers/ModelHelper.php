@@ -20,7 +20,7 @@ abstract class ModelHelper
         $table = get_called_class();
         $primaryKey= static::getPrimaryKey();
         
-        $sql = "select * from $table where $primaryKey = $value";
+        $sql = "select * from [$table] where $primaryKey = $value";
 
         return ConnectHelper::execute($sql);
     }
@@ -36,7 +36,7 @@ abstract class ModelHelper
     public static function query()
     {
         $table = get_called_class();
-        $sql = "select * from $table";
+        $sql = "select * from [$table]";
 
         return ConnectHelper::execute($sql);
     }
@@ -56,7 +56,7 @@ abstract class ModelHelper
         $columns = implode(',', array_keys(get_object_vars($this)));
         $values  = implode(',', get_object_vars($this));
 
-        $sql = "insert into $table ($columns) values $values";
+        $sql = "insert into [$table] ($columns) values $values";
 
 
         return ConnectHelper::execute($sql);
@@ -77,7 +77,7 @@ abstract class ModelHelper
         $values  = implode(',', get_object_vars($this));
         $primaryKey= static::getPrimaryKey();
 
-        $sql = "update $table set $values where $primaryKey = ". $this->{$this->primary};
+        $sql = "update [$table] set $values where $primaryKey = ". $this->{$this->primary};
 
         return ConnectHelper::execute($sql);
 
@@ -96,7 +96,7 @@ abstract class ModelHelper
         $table = get_called_class();
         $primaryKey= static::getPrimaryKey();
 
-        $sql = "delete from $table where $primaryKey = $id";
+        $sql = "delete from [$table] where $primaryKey = $id";
 
         return ConnectHelper::execute($sql);
 
