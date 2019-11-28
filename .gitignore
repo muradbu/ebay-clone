@@ -2,3 +2,5 @@
 .idea
 .htaccess
 /.htaccess
+config.php
+/config.php

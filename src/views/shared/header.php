@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-secondary mb-3">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary mb-3">
   <div class="container">
       <a class="navbar-brand" href="/">
         <img src="<?php echo Config::ROOT_FOLDER . "/img/logo.svg" ?>" alt="EenmaalAndermaal" height="43">

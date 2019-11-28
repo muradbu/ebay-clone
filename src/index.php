@@ -1,6 +1,6 @@
 <?php
 
-    require_once('config.php');
+    require('config.php');
 
     session_start([
         'cookie_lifetime' => 14400,
@@ -29,21 +29,19 @@
     </header>
 
     <main role="main">
-        <div class="py-4 bg-light">
+        <div class="py-4 bg-light" style="min-height: calc(100vh - 120px)">
             <div class="container-fluid">
+                <div class="row">
+                    <?php require('views/shared/breadcrumbs.php'); ?>
+                </div>
                 <div class="row justify-content-center">
-                    <div class="col-md-12">
-                        <?php
-                        require('views/shared/breadcrumbs.php');
-                        ?>
-                        <?php require('routes.php'); ?>
-                    </div>
+                    <?php require('routes.php'); ?>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="py-3 bg-secondary">
+    <footer class="py-3 bg-primary">
         <div class="container-fluid">
             <?php require('views/shared/footer.php'); ?>
         </div>

@@ -1,6 +1,5 @@
 <?php
 
-require_once('config.php');
 require_once('helpers/DataHelper.php');
 
 class ConnectHelper {
