@@ -11,3 +11,11 @@
   overflow: hidden;
 }
 
+/* Categories page css */
+.alphanumeric{
+  display: inline-block;
+  border: solid 1px #ededed;
+  padding: 5px;
+  background-color: #ededed;
+}
+

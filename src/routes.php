@@ -12,6 +12,9 @@ switch ($request_uri) {
     case '/inloggen':
         require 'views/authentication/login.php';
         break;
+    case '/rubrieken':
+        require 'views/category/overview.php';
+        break;
     case '/registreren':
         require 'views/authentication/register.php';
         break;

@@ -14,7 +14,6 @@ class ConnectHelper {
      *
      */
     public static function execute($sql){
-
         $sql = DataHelper::convertInput($sql);
 
         try{
