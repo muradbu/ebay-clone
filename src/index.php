@@ -5,7 +5,7 @@
     session_start([
         'cookie_lifetime' => 14400,
     ]);
-    
+
 ?>
 
 <!doctype html>

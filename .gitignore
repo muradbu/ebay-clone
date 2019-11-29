@@ -1,6 +1,4 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
 .idea
-.htaccess
-/.htaccess
-config.php
-/config.php
+src/Config.php
+.DS_Store

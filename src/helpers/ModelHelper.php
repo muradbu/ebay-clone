@@ -11,7 +11,7 @@ abstract class ModelHelper
      * Get is a static function. You can call the function this way: Model::get($id);
      *
      * @param int $id The id of the object to retrieve from the database
-     * 
+     *
      * @return object Returns the relevant object
      *
      */
@@ -19,7 +19,7 @@ abstract class ModelHelper
     {
         $table = get_called_class();
         $primaryKey= static::getPrimaryKey();
-        
+
         $sql = "select * from [$table] where $primaryKey = $value";
 
         return ConnectHelper::execute($sql);
@@ -29,7 +29,7 @@ abstract class ModelHelper
      *
      * Generates the sql statement to retrieve all objects of the relevant table in the database
      * Query is a static function. You can call the function this way: Model::query();
-     * 
+     *
      * @return array Returns all the objects of the relevant table
      *
      */
@@ -47,7 +47,7 @@ abstract class ModelHelper
      * Post is not a static function because it needs a filled model. You can call the fuction this way: $model->post();
      *
      * @return string Returns a message if the sql statement went well
-     * 
+     *
      */
     public function post()
     {
@@ -69,7 +69,7 @@ abstract class ModelHelper
      * Put is not a static function because it needs a filled model. You can call the fuction this way: $model->put();
      *
      * @return string Returns a message if the sql statement went well
-     * 
+     *
      */
     public function put()
     {
@@ -89,7 +89,7 @@ abstract class ModelHelper
      * Delete is a static function. You can call the function this way: Model::delete($id);
      *
      * @return string Returns a message if the sql statement went well
-     * 
+     *
      */
     public static function delete($id)
     {
@@ -108,9 +108,9 @@ abstract class ModelHelper
      * Execute is a static function. You can call the function this way: Model::execute($sql);
      *
      * @param string $sql the sql to be executed
-     * 
+     *
      * @return string Returns data or a message retrieved from the database
-     * 
+     *
      */
     public static function execute($sql){
         return ConnectHelper::execute($sql);
@@ -119,9 +119,9 @@ abstract class ModelHelper
     /**
      *
      * Get the primary key from the called class
-     * 
+     *
      * @return string Returns the column name of the primary key from the relevant table
-     * 
+     *
      */
     protected abstract static function getPrimaryKey();
 }
