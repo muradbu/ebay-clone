@@ -1,2 +1,62 @@
-@import "bootstrap.css";
-@import "default.css";
+@import 'bootstrap.css';
+.highlight-icon {
+  font-size: 100px !important;
+  margin: 10px !important;
+}
+
+.usp {
+  text-align: center;
+}
+
+.product-images {
+  max-height: 150px !important;
+  overflow: hidden;
+}
+
+.container {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.masonry-column {
+  padding: 0 1px;
+}
+
+.masonry-grid > div .thumbnail {
+  margin: 5px 1px;
+}
+.show > .dropdown-menu {
+  max-height: 900px;
+  visibility: visible;
+}
+
+.dropdown-menu {
+  display: block;
+  max-height: 0;
+  visibility: hidden;
+  transition: all 0.35s ease-in-out;
+  overflow: hidden;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+}
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 3;
+  }
+}
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 3;
+  }
+}

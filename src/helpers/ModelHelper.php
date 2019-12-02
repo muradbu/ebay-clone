@@ -15,12 +15,14 @@ abstract class ModelHelper
      * @return object Returns the relevant object
      *
      */
-    public static function get($value)
+    public static function get($value, $column = "")
     {
         $table = get_called_class();
-        $primaryKey= static::getPrimaryKey();
 
-        $sql = "select * from [$table] where $primaryKey = $value";
+        if($column == "")
+            $column = static::getPrimaryKey();
+        
+        $sql = "select * from [$table] where $column = $value";
 
         return ConnectHelper::execute($sql);
     }
@@ -33,10 +35,11 @@ abstract class ModelHelper
      * @return array Returns all the objects of the relevant table
      *
      */
-    public static function query()
+    public static function query($top = '9223372036854775807',$extend = "")
     {
         $table = get_called_class();
-        $sql = "select * from [$table]";
+
+        $sql = "select top($top) * from [$table] $extend";
 
         return ConnectHelper::execute($sql);
     }

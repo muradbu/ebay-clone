@@ -7,7 +7,7 @@ $request_uri = preg_replace("/\?.{0,}/","",$request_uri);
 
 switch ($request_uri) {
     case '/':
-        require 'views/home.php';
+        require 'views/home/home.php';
         break;
     case '/inloggen':
         require 'views/authentication/login.php';

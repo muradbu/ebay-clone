@@ -1,7 +1,7 @@
 <?php 
 
 if(!$_SESSION['emailverification']['verified']){
-    header("Location: /emailregistreren");
+  header("Location: /emailregistreren");
 }
 
 require_once('controllers/UserController.php');
@@ -92,7 +92,7 @@ if(isset($_POST['submit'])){
                                     <?php  
                                         if(!empty($questions)){
                                             foreach ($questions as $key=>$value) {
-                                                echo "<option name='questionId' value=".$value['questionId'].">".$value['question']."</option>";
+                                                echo "<option name='questionId' value=".$value['QuestionId'].">".$value['Question']."</option>";
                                             }
                                         }
                                     ?>

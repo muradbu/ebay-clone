@@ -25,18 +25,7 @@ class QuestionController {
      *
      */
     public static function query(){
-        //Question::query();
-        //test values for front
-        return array(
-            0 => array(
-                "questionId"=>"1",
-                "question"=>"Wat is je eerste huisdier?"
-            ),
-            1 => array(
-                "questionId"=>"2",
-                "question"=>"Wat vind je van IProject?"
-            )
-        );
+        return Question::query();
     }
     
     /**

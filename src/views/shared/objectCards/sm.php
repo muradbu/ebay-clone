@@ -2,13 +2,13 @@
 
 //todo: math the time left. create a javascript function for timer
 
-class Lg
+class Sm
 {
     public static function generate($product, $file)
     {
         return "
             <div class='card'>
-                <img src='iproject/src/img/twitter.png' class='card-img-top' alt='#' width='350px' height='469px' />
+                <img src='iproject/src/img/twitter.png' class='card-img-top' alt='#' width='350px' height='150px' />
                 <div class='card-body'>
                     <h5 class='card-title'>" . $product['title'] . "</h5>
                     <div class='row text-center'>
