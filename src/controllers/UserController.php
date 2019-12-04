@@ -7,31 +7,31 @@ require_once('validators/EmailValidator.php');
 require_once('validators/NewUserValidator.php');
 
 class UserController {
-    
+
     /**
      *
      * Get a specific user by id
      *
      * @param int $id The id for the user to be retrieved
-     * 
+     *
      * @return User Returns the relevant user from the database
      *
      */
     public static function get($id){
-       
+
     }
 
     /**
      *
      * Get all users
-     * 
+     *
      * @return array Returns a array with all the users in the database
      *
      */
     public static function query(){
         return User::query();
     }
-    
+
     /**
      *
      * Create a new user
@@ -56,7 +56,7 @@ class UserController {
         $user->post();
 
     }
-    
+
     /**
      *
      * Edit a specific user
@@ -68,7 +68,7 @@ class UserController {
     public static function put($id, $data){
 
     }
-    
+
     /**
      *
      * Delete a specific user
@@ -77,7 +77,7 @@ class UserController {
      *
      */
     public static function delete($id){
-        
+
     }
 
     /**
@@ -126,6 +126,34 @@ class UserController {
         } else{
             return ["code" => "De opgegeven verificatie code is onjuist."];
         }
+    }
+
+    /**
+     *
+     * Check entered secretId with secretId in session
+     *
+     * @param int $username The username of the user who wants to login
+     * @param int $password The password of the user who wants to login
+     * @return array If login is successful
+     */
+    public static function login($username, $password) {
+        // $password = encypt($password);
+        $user = User::execute("SELECT * FROM [User] WHERE Username = $username AND Password = $password")[0];
+        if (!empty($user)) {
+            $_SESSION['authenticated'] = $user;
+            header("Location: /");
+        }
+        return ["username" => "De opgegeven gebruiker is onjuist."];
+    }
+
+    /**
+     *
+     * Remove authenticated from session
+     *
+     */
+    public static function logout() {
+        $_SESSION['authenticated'] = null;
+        header("Location: /");
     }
 }
 

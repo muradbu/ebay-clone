@@ -1,19 +1,18 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary mb-3">
   <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src="<?php echo Config::ROOT_FOLDER . "/img/logo.svg" ?>" alt="EenmaalAndermaal" height="43">
-        EenmaalAndermaal
-      </a>
+    <a class="navbar-brand" href="/">
+      <img src="<?php echo Config::ROOT_FOLDER . "/img/logo.svg" ?>" alt="EenmaalAndermaal" height="43">
+      EenmaalAndermaal
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <?php
-        //TODO - insert loggedIn state
-        if (true) {
-          echo "<li class='nav-item active'><a class='nav-link' href='/inloggen'>Inloggen</a></li>";
-        } else if (false) {
+        if (!isset($_SESSION["authenticated"])) {
+          echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"/inloggen\">Inloggen</a></li>";
+        } else if (true) {
           ?>
           <li class="nav-item dropdown">
             <a class=" active nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
