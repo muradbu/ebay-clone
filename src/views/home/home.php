@@ -1,6 +1,6 @@
 <?php
 
-require_once("views/shared/objectCards/md.php");
+require_once("views/shared/objectCards/lg.php");
 
 ?>
 
@@ -8,16 +8,16 @@ require_once("views/shared/objectCards/md.php");
     <?php require_once("views/home/uniqueSellingPoints.php") ?>
 </div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center py-4">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 py-3">
-        <?php echo Md::generate(["title" => "test", "price" => "12134", "duration" => "00:10:20", "productId" => 1], ["filename" => "test"]); ?>
+        <?php echo Lg::generate(["title" => "test", "price" => "12134", "duration" => "00:10:20", "productId" => 23], ["filename" => "test"]); ?>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 py-3">
-        <?php echo Md::generate(["title" => "JAhoorrrr", "price" => "99999", "duration" => "00:10:20", "productId" => 1], ["filename" => "test"]); ?>
+        <?php echo Lg::generate(["title" => "JAhoorrrr", "price" => "99999", "duration" => "00:10:20", "productId" => 13], ["filename" => "test"]); ?>
     </div>
 </div>
 
-<div class="row justify-content-center text-white">
+<div class="row justify-content-center text-white py-4">
     <?php require_once("views/home/highlights.php") ?>
 </div>
 

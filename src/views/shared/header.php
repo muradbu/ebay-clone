@@ -11,9 +11,9 @@
       <ul class="navbar-nav ml-auto">
         <?php
         //TODO - insert loggedIn state
-        if (false) {
-          echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"/inloggen\">Inloggen</a></li>";
-        } else if (true) {
+        if (true) {
+          echo "<li class='nav-item active'><a class='nav-link' href='/inloggen'>Inloggen</a></li>";
+        } else if (false) {
           ?>
           <li class="nav-item dropdown">
             <a class=" active nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
