@@ -1,6 +1,9 @@
 <?php
 require_once('models/Category.php');
- class CategoryController{
+
+class CategoryController
+{
+
     /**
      *
      * Get a specific category by id
@@ -10,9 +13,8 @@ require_once('models/Category.php');
      * @return Category Returns the relevant category from the database
      *
      */
-    public static function get($id){
-       
-    }
+    public static function get($id)
+    { }
 
     /**
      *
@@ -21,10 +23,9 @@ require_once('models/Category.php');
      * @return array Returns a array with all the categories in the database
      *
      */
-    public static function query(){
+    public static function query()
+    { }
 
-    }
-    
     /**
      *
      * Create a new category
@@ -32,10 +33,9 @@ require_once('models/Category.php');
      * @param array $data The data to create a new category.
      *
      */
-    public static function post($data){
+    public static function post($data)
+    { }
 
-    }
-    
     /**
      *
      * Edit a specific category
@@ -44,10 +44,9 @@ require_once('models/Category.php');
      * @param array $data The data to edit the relevant category
      *
      */
-    public static function put($id, $data){
+    public static function put($id, $data)
+    { }
 
-    }
-    
     /**
      *
      * Delete a specific category
@@ -55,23 +54,28 @@ require_once('models/Category.php');
      * @param int $id Id of the category to delete
      *
      */
-    public static function delete($id){
+    public static function delete($id)
+    { }
 
+    public static function rootCategories()
+    { 
+        return Category::execute("SELECT TOP 6 * FROM Category WHERE SubCategory = -1;");
     }
 
     /**
      * Get the main categories and his sub categories
      */
-    public static function getCategoryAlphabetically(){
+    public static function getCategoryAlphabetically()
+    {
         $categories = Category::execute("SELECT * FROM Category WHERE Category.SubCategory = -1  ORDER BY Category.CategoryName;");
-        
+
         $data = [];
 
-        foreach($categories as $category){
-                $category["SubCategories"] = Category::execute("SELECT * FROM Category WHERE Category.SubCategory =  ".$category["CategoryId"]." ORDER BY Category.CategoryName;");
-            if(ctype_alnum($category["CategoryName"][0])){
+        foreach ($categories as $category) {
+            $category["SubCategories"] = Category::execute("SELECT * FROM Category WHERE Category.SubCategory =  " . $category["CategoryId"] . " ORDER BY Category.CategoryName;");
+            if (ctype_alnum($category["CategoryName"][0])) {
                 $data[$category["CategoryName"][0]][] = $category;
-            }else{
+            } else {
                 $data["#"][] = $category;
             }
         }
@@ -79,4 +83,3 @@ require_once('models/Category.php');
         return $data;
     }
 }
-?>

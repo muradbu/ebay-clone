@@ -1,20 +1,25 @@
 <?php
-require_once('helpers/ModelHelper.php');
 
+require_once('helpers/ModelHelper.php');
 
 class Category extends ModelHelper
 {
-    public $catgoryId;
-    public $categoryName;
-    public $getSubcategorie;
+    public $CategoryId;
+    public $CategoryName;
+    public $SubCategory;
+    public $IndexNumber;
 
     protected static $primaryKey = 'CategoryId';
 
-    protected static function getPrimaryKey(){
+    /**
+     *
+     * Get the primary key of the current class
+     * 
+     * @return string Returns the primary key of the current class
+     * 
+     */
+    protected static function getPrimaryKey()
+    {
         return static::$primaryKey;
     }
-
-
 }
-
-?>

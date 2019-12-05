@@ -42,15 +42,17 @@ session_start([
         </div>
     </main>
 
-    <footer class="py-3 bg-primary">
-        <div class="container-fluid">
+    <footer class="footer mt-auto py-3">
+        <div class="container">
             <?php require('views/shared/footer.php'); ?>
         </div>
     </footer>
 
+
     <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.min.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/timer.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/keepDropdownOpen.js" ?>" type="text/javascript"></script>
 </body>
 
 </html>

@@ -9,6 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="/inloggen">Inloggen</a></li>
+        <li class="nav-item position-static">
         <?php
         if (!isset($_SESSION["authenticated"])) {
           echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"/inloggen\">Inloggen</a></li>";
@@ -33,6 +35,9 @@
           <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Bekijk alle rubrieken
           </a>
+          <?php
+          require("header/category.php");
+          ?>
         </li>
       </ul>
     </div>
