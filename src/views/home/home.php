@@ -38,3 +38,26 @@ require_once("views/shared/objectCards/lg.php");
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col">
+        <div class="card text-center pt-4 pb-5">
+            <h1>Registreer</h1>
+            <p>
+                Registreer uw email en maak snel een account aan op eenmaal andermaal.
+            </p>
+            <div class="row">
+                <div class="col-12 col-md-4 offset-0 offset-md-4">
+                    <form method="post" action="/emailregistreren" class="row">
+                        <div class="col">
+                            <input type="email" name="email" class="form-control" placeholder="Emailadres">
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" name="submit" class="btn-secondary btn">Registreer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
