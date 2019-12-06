@@ -4,15 +4,15 @@
 
 class Lg
 {
-  public static function generate($product, $file)
-  {
-    return "
-            <div class='card product-card-lg'>
-            <img src='src/img/twitter.png' class='card-img-top product-image img-responsive' height='469px'/>
+    public static function generate($product, $file)
+    {
+        return "
+            <div class='card'>
+            <div style='background-image: url(\" " . $file['filename'] . "\");' class='card-img-top'></div>
             <div class='card-body'>
-              <h5 class='card-title'>" . $product['title'] . "</h5>
+              <h3 class='text-center'>" . $product['title'] . "</h3>
               <div class='row text-center'>
-                <div class='col-sm-6 col-md-6 col-lg-6'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
                   <p>€ " . $product['price'] . "</p>
                 </div>
                 <div class='col-sm-6 col-md-6 col-lg-6 timer'>
@@ -25,5 +25,5 @@ class Lg
               </div>
         </div>
         ";
-  }
+    }
 }

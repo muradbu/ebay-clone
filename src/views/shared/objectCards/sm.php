@@ -7,8 +7,8 @@ class Sm
     public static function generate($product, $file)
     {
         return "
-            <div class='card product-card-sm'>
-                <img src='src/img/twitter.png' class='card-img-top product-image img-responsive' alt='#' height='150px'/>
+            <div class='card'>
+                <div style='background-image: url(\" " . $file['filename'] . "\");' class='card-img-top'></div>
                 <div class='card-body'>
                     <h5 class='card-title'>" . $product['title'] . "</h5>
                     <div class='row text-center'>

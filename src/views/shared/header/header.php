@@ -9,11 +9,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="/inloggen">Inloggen</a></li>
         <li class="nav-item position-static">
           <?php
           if (!isset($_SESSION["authenticated"])) {
-            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"/inloggen\">Inloggen</a></li>";
+            echo "<li class=\"nav-item\"><a class=\"nav-link text-white\" href=\"/inloggen\">Inloggen</a></li>";
           } else if (true) {
             ?>
         <li class="nav-item dropdown">

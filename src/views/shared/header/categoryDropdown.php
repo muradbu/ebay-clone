@@ -11,11 +11,11 @@ $rootCategories = CategoryController::getRootCategories();
             <div class="list-group" id="list-tab" role="tablist">
                 <?php
                 foreach ($rootCategories as $key => $value) {
-                    ?>
-                    <button type="button" class="btn btn-link list-group-item-action" id="list-<?php echo trim(preg_replace('/\s+/', '', $key)); ?>" data-toggle="list" href="#<?php echo trim(preg_replace('/\s+/', '', $key)); ?>" role="tab" aria-controls="<?php echo trim(preg_replace('/\s+/', '', $key)); ?>">
-                        <?php echo $key; ?>
+                    echo "
+                    <button type='button' class='btn btn-link list-group-item-action' id='list-" . trim(preg_replace('/\s+/', '', $key)) . "' data-toggle='list' href='#" . trim(preg_replace('/\s+/', '', $key)) . "' role='tab' aria-controls='" . trim(preg_replace('/\s+/', '', $key)) . "'>
+                        $key
                     </button>
-                <?php
+                ";
                 }
                 ?>
                 <button type="button" class="btn btn-link list-group-item-action">

@@ -4,40 +4,38 @@ require_once('controllers/UserController.php');
 
 $errors = [];
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $errors = UserController::login($_POST["username"], $_POST["password"]);
 }
 
 ?>
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-8">
-            <div class="card">
-                <div class="card-body">
-                    <div class="w-100 text-center">
-                        <img width="100" src="<?php echo Config::ROOT_FOLDER ?>/img/logo.svg">
-                        <h5 class="card-title">Inloggen</h5>
-                    </div>
-                    <form method="POST" >
-                        <div class="form-group">
-                            <label for="username">Gebruikersnaam</label>
-                            <input id="username" value="<?php echo $_POST['username'] ?? "" ?>" name="username" class="form-control <?php echo isset($errors['username']) ? 'is-invalid' : ''; ?>" required>
-                            <div class="invalid-feedback"><?php echo $errors['username'] ?? '' ; ?></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Wachtwoord</label>
-                            <input type="password" class="form-control" id="password" name="password">
-                        </div>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card text-center">
+            <div class="card-body">
 
-                        <button type="submit" name="submit" class="btn btn-primary">Verstuur</button>
-                    </form>
-                    <div class="mt-3">
-                        <a href="registreren">Nieuw? Registreer hier</a>
+                <img width="100" src="<?php echo Config::ROOT_FOLDER ?>/img/logo.svg">
+                <h5 class="card-title">Inloggen</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Vul de gegevens in om in te loggen.</h6>
+
+                <form method="POST">
+
+                    <div class="form-group">
+                        <input type="text" value="<?php echo $_POST['username'] ?? "" ?>" name="code" class="form-control" placeholder="pietjansen" required>
+                        <div class="invalid-feedback"><?php echo $errors['username'] ?? ''; ?></div>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <input type="password" value="<?php echo $_POST['password'] ?? "" ?>" name="code" class="form-control" placeholder="*********" required>
+                        <div class="invalid-feedback"><?php echo $errors['password'] ?? ''; ?></div>
+                    </div>
+
+                    <button type="submit" name="submit" class="btn btn-primary text-white">Verstuur</button>
+                    <div class="mt-3">
+                        <a href="emailregistreren">Nog geen accout registreer hier</a>
+                    </div>
+                </form>
             </div>
         </div>
-
     </div>
 </div>

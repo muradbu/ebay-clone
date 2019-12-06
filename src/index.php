@@ -1,6 +1,7 @@
 <?php
 
 require('config.php');
+require('helpers/RedirectHelper.php');
 
 session_start([
     'cookie_lifetime' => 14400,
@@ -27,7 +28,7 @@ session_start([
     </header>
 
     <main role="main">
-        <div class="py-4 bg-light" style="min-height: calc(100vh - 120px)">
+        <div class="pt-4 pb-5 bg-light" style="min-height: calc(100vh - 120px)">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-lg-12">
@@ -43,14 +44,11 @@ session_start([
         </div>
     </main>
 
-    <footer class="footer mt-auto py-3">
-        <div class="container">
-            <?php require('views/shared/footer.php'); ?>
-        </div>
+    <footer class="footer py-3 bg-primary">
+        <?php require('views/shared/footer.php'); ?>
     </footer>
 
     <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/popper.min.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.min.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/timer.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/keepDropdownOpen.js" ?>" type="text/javascript"></script>

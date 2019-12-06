@@ -3,7 +3,7 @@
 //URL guide: /test/:id/debug/:id
 
 $request_uri = preg_replace("/\d/", ":id", $_SERVER['REQUEST_URI']);
-$request_uri = preg_replace("/\?.{0,}/","",$request_uri);
+$request_uri = preg_replace("/\?.{0,}/", "", $request_uri);
 
 switch ($request_uri) {
     case '/':
@@ -14,9 +14,7 @@ switch ($request_uri) {
         break;
     case '/uitloggen':
         require_once 'controllers/UserController.php';
-
         UserController::logout();
-
         break;
     case '/rubrieken':
         require 'views/category/overview.php';
