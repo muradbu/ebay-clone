@@ -1,4 +1,4 @@
-$('ul.dropdown-menu').on('click', function(event) {
+$('ul.dropdown-menu').on('click', function (event) {
     var events = $._data(document, 'events') || {};
     events = events.click || [];
     for (var i = 0; i < events.length; i++) {
@@ -11,7 +11,7 @@ $('ul.dropdown-menu').on('click', function(event) {
 
             // Check if any of the clicked element parents matches the 
             // delegated event selector (Emulating propagation)
-            $(event.target).parents(events[i].selector).each(function() {
+            $(event.target).parents(events[i].selector).each(function () {
                 events[i].handler.call(this, event);
             });
         }

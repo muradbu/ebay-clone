@@ -20,7 +20,7 @@ class CategoryController
      *
      * Get all categories
      * 
-     * @return array Returns a array with all the categories in the database
+     * @return array Returns an array with all the categories in the database
      *
      */
     public static function query()
@@ -57,9 +57,22 @@ class CategoryController
     public static function delete($id)
     { }
 
-    public static function rootCategories()
-    { 
-        return Category::execute("SELECT TOP 6 * FROM Category WHERE SubCategory = -1;");
+    /**
+     *
+     * Get top 6 categories paired with subcategories. Function will be deleted and transformed into get populair
+     * 
+     * @return array Returns an array with 6 categories and their subcategories
+     *
+     */
+    public static function getRootCategories()
+    {
+        $data = [];
+        $rootCategories = Category::execute("SELECT TOP 6 * FROM Category WHERE SubCategory = -1;");
+        foreach ($rootCategories as $rootCategory) {
+            $data[$rootCategory['CategoryName']]['SubCategories'] = Category::execute("SELECT TOP 10 * FROM Category WHERE Category.SubCategory =  " . $rootCategory["CategoryId"] . " ORDER BY Category.CategoryName");
+        }
+
+        return $data;
     }
 
     /**
@@ -67,7 +80,7 @@ class CategoryController
      */
     public static function getCategoryAlphabetically()
     {
-        $categories = Category::execute("SELECT * FROM Category WHERE Category.SubCategory = -1  ORDER BY Category.CategoryName;");
+        $categories = Category::execute("SELECT * FROM Category WHERE Category.SubCategory = -1  ORDER BY Category.CategoryName");
 
         $data = [];
 
