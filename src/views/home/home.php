@@ -10,10 +10,10 @@ require_once("views/shared/objectCards/lg.php");
 
 <div class="row justify-content-center py-4">
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 py-3">
-        <?php echo Lg::generate(["title" => "test", "price" => "12134", "duration" => "00:10:20", "productId" => 23], ["filename" => "test"]); ?>
+        <?php echo Lg::generate(["title" => "test", "price" => "12134", "duration" => "00:01:20", "productId" => 23], ["filename" => "test"]); ?>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 py-3">
-        <?php echo Lg::generate(["title" => "JAhoorrrr", "price" => "99999", "duration" => "00:10:20", "productId" => 13], ["filename" => "test"]); ?>
+        <?php echo Lg::generate(["title" => "JAhoorrrr", "price" => "99999", "duration" => "00:01:20", "productId" => 13], ["filename" => "test"]); ?>
     </div>
 </div>
 

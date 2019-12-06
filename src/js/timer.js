@@ -33,11 +33,9 @@ setInterval(function() {
       }
 
       parts_of_time[2] = (parseInt(parts_of_time[2]) - 1).toString()
-
       if (
-        parseInt(parts_of_time[2]) < 10 &&
-        parts_of_time[1] === '00' &&
-        parts_of_time[0] === '00'
+        parseInt(parts_of_time[1]) < 1 &&
+        parseInt(parts_of_time[0]) == 0 
       ) {
         $(this).css('color', 'red')
       }
