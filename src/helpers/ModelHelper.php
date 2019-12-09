@@ -15,16 +15,16 @@ abstract class ModelHelper
      * @return object Returns the relevant object
      *
      */
-    public static function get($value, $column = "")
+    public static function get($value, $column = "",$top = '9223372036854775807')
     {
         $table = get_called_class();
 
         if($column == "")
             $column = static::getPrimaryKey();
         
-        $sql = "select * from [$table] where $column = $value";
+        $sql = "select top($top) * from [$table] where $column = $value";
 
-        return ConnectHelper::execute($sql);
+        return ConnectHelper::execute($sql)[0];
     }
 
     /**
