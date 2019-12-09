@@ -121,7 +121,7 @@ class UserController
     {
         if ($code == $_SESSION['emailverification']['secret']) {
             $_SESSION['emailverification']['verified'] = true;
-            redirect("registeren");
+            redirect("registreren");
         } else {
             return ["code" => "De opgegeven verificatie code is onjuist."];
         }

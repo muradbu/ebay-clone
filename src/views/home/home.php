@@ -30,7 +30,7 @@ require_once("views/shared/objectCards/lg.php");
     </div>
 </div>
 
-<div class="row mt-5 pt-5">
+<div class="row mt-5">
     <div class="col-md-12 col-lg-12 col-sm-12">
         <h2>Nieuwste veilingen</h2>
         <div class="row">

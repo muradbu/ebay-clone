@@ -26,7 +26,6 @@ if (isset($_POST['submit'])) {
                 <h6 class="card-subtitle mb-2 text-muted">Vul uw persoonlijke gegevens in om de registratie te voltooien.</h6>
 
                 <form method="POST">
-
                     <div class="form-group">
                         <div class="container text-left">
                             <div class="row">
@@ -84,7 +83,7 @@ if (isset($_POST['submit'])) {
                                     <label for="phonenumber">Telefoonnummer*</label>
                                     <input type="number" value="<?php echo $_POST['phonenumber'] ?? "" ?>" name="phonenumber" class="form-control <?php echo isset($errors['phonenumber']) ? 'is-invalid' : ''; ?>" required>
                                     <div class="invalid-feedback"><?php echo $errors['phonenumber'] ?? ''; ?></div>
-                                    <small id="phonenumberHelp" class="form-text text-muted">Meer telefoonnummers toevoegen? Ga naar gebruikersintellingen.</small>
+                                    <small id="phonenumberHelp" class="form-text text-muted">Meer telefoonnummers toevoegen? Ga naar de gebruikersintellingen.</small>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="questionid">Veiligheidsvraag*</label>
@@ -103,12 +102,16 @@ if (isset($_POST['submit'])) {
                                     <label for="safetyanswer">Antwoord*</label>
                                     <input type="text" value="<?php echo $_POST['safetyanswer'] ?? "" ?>" name="safetyanswer" class="form-control <?php echo isset($errors['safetyanswer']) ? 'is-invalid' : ''; ?>" required>
                                     <div class="invalid-feedback"><?php echo $errors['safetyanswer'] ?? ''; ?></div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary text-white">Verstuur</button>
+                    <div class="row justify-content-center">
+                        <div class="col-9 mt-2">
+                            <p>Door op registreren te klikken maak je een account aan en ga je akkoord met de <a href="#">algemene voorwaarden</a> en het <a href="#">privacystatement</a>.</p>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
