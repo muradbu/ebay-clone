@@ -3,6 +3,7 @@ require_once("views/shared/objectCards/sm.php");
 require_once("views/shared/objectCards/md.php");
 require_once('controllers/ProductController.php');
 $products = ProductController::getNewest(5);
+
 ?>
 <div class="col-md-4 col-12 mt-3">
     <div class="row">

@@ -8,7 +8,7 @@ class Lg
     {
         return "
             <div class='card'>
-            <div style='background-image: url(\" " . $file['FileName'] . "\");' class='card-img-top'></div>
+            <div style='background-image: url(\" pics/" . $file['FileName'] . "\");' class='card-img-top'></div>
             <div class='card-body'>
             <form type='POST' action=''>
                 <h5 class='card-title'>" . $product['title'] . "</h5>
