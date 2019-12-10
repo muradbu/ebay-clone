@@ -29,9 +29,10 @@ class NewUserValidator{
         if (!preg_match("/^[\w\d\s]{3,50}$/", $data['cityname'])){
             $errors['cityname'] = "De opgegeven woonplaats is onjuist.";
         } 
-        if (!preg_match("/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/", $data['dateofbirth'])){
+        list($dd, $mm, $yyyy) =  explode('-', $data['dateofbirth']);
+        if (!checkdate($mm, $dd, $yyyy)) {
             $errors['dateofbirth'] = "De opgegeven geboortedatum is onjuist.";
-        } 
+        }
         if (!preg_match("/^[\w\s]{3,150}$/", $data['country'])){
             $errors['country'] = "Het opgegeven land is onjuist.";
         } 
