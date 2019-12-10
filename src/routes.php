@@ -28,6 +28,21 @@ switch ($request_uri) {
     case '/emailbevestigen':
         require 'views/authentication/emailVerification.php';
         break;
+
+        //ajax calls
+    case '/api/getPopular':
+        require_once 'controllers/ProductController.php';
+        echo ProductController::getPopularWithoutIds(1, $_GET['ajaxId']);
+        break;
+    case '/api/getTop':
+        require_once 'controllers/ProductController.php';
+        echo ProductController::getTopWithoutIds(1, $_GET['ajaxId']);
+        break;
+    case '/api/getNewest':
+        require_once 'controllers/ProductController.php';
+        echo ProductController::getNewestWithoutIds(1, $_GET['ajaxId']);
+        break;
+            
     default:
         require '../views/404.php';
         break;

@@ -14,9 +14,18 @@ setInterval(function() {
       parts_of_time[1] === '00' &&
       parts_of_time[2] === '00'
     ) {
-      $('#' + id).addClass('disabled')
+      data['exsistingIds'] = existingIDs();
+      if ($(this).parents('.popular').length) {                                  
+        getPopularProdsWithoutIds(data['exsistingIds'], id);      
+      }
+      if ($(this).parents('.new').length) {
+        getNewestProdsWithoutIds(data['exsistingIds'], id);
+      }
+      if ($(this).parents('.top').length) {
+        getTopProdsWithoutIds(data['exsistingIds'], id);
+      }
+         
 
-      //TODO: Ajax request for new product
     } else {
       if (
         parts_of_time[2] === '00' &&
@@ -37,7 +46,7 @@ setInterval(function() {
         parseInt(parts_of_time[1]) < 1 &&
         parseInt(parts_of_time[0]) == 0 
       ) {
-        $(this).css('color', 'red')
+        $('#'+ id +'dur').css('color', 'red')
       }
 
       for (let i in parts_of_time) {
@@ -51,4 +60,4 @@ setInterval(function() {
       .children('p')
       .html(parts_of_time.join(':'))
   })
-}, 1000)
+}, 1000);

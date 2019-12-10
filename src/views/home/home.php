@@ -7,7 +7,7 @@ require_once('controllers/FileController.php');
     <?php require_once("views/home/uniqueSellingPoints.php") ?>
 </div>
 
-<div class="row justify-content-center py-2">
+<div class="row justify-content-center py-2 top">
     <?php require_once("views/home/topProducts.php") ?>
 </div>
 
@@ -15,7 +15,7 @@ require_once('controllers/FileController.php');
     <?php require_once("views/home/highlights.php") ?>
 </div>
 
-<div class="col-12">
+<div class="col-12 popular">
     <h2>Populaire veilingen</h2>
     <div class="row">
         <?php require("views/home/popularProducts.php") ?>
@@ -31,7 +31,7 @@ require_once('controllers/FileController.php');
     </div>
 </div>
 
-<div class="row py-4">
+<div class="row py-4 new">
     <div class="col-12">
         <h2>Nieuwe veilingen</h2>
         <div class="row">
