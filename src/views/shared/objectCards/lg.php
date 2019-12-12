@@ -8,7 +8,7 @@ class Lg
     {
         return "
             <div class='card'>           
-            <div id= ". $product['productId']. "img" ." style='background-image: url(\" pics/" . $file['FileName'] . "\");' class='card-img-top'></div>
+            <div id= ". $product['productId']. "img" ." style='background-image: url(\"".Config::LIVE_URL."pics/" . $file['FileName'] . "\");' class='card-img-top'></div>
             <div class='card-body'>
             <form type='POST' action=''>
                 <h5 id='product ". $product['productId']. "' class='card-title'>" . $product['title'] . "</h5>
