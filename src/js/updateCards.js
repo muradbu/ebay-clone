@@ -9,9 +9,9 @@ if ($('.bidding').length > 0) {
             let attr = $(this).attr('data-id');
             if (typeof attr !== typeof undefined && attr !== false && attr !== '') {
                 if ($(this).hasClass('.track')) {
-                    bid_ids += attr;
+                    bid_ids.push(attr);
                 }
-                price_ids += attr;
+                price_ids.push(attr);
             }
         });
 
