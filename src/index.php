@@ -60,7 +60,7 @@ if(strpos($_SERVER['REQUEST_URI'], "api"))
     <script src="<?php echo Config::ROOT_FOLDER . "/js/store.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/timer.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/keepDropdownOpen.js" ?>" type="text/javascript"></script>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/getPrice.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/updateCards.js" ?>" type="text/javascript"></script>
 </body>
 
 </html>

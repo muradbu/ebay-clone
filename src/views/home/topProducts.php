@@ -12,7 +12,9 @@ foreach ($TopProducts as $key => $product) {
             "title" => $product["Title"],
             "price" => number_format($product['Price'], 2),
             "duration" => ProductHelper::getDurationTimer($product),
-            "productId" => $product["ProductId"]
+            "productId" => $product["ProductId"],
+            "track" => ($product["Tracked"] !== null),
+            "winning" => ($product["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
         ],
         FileController::get($product["ProductId"], "ProductId", 1)
     );

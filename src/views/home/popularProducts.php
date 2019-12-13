@@ -14,7 +14,9 @@ $products = ProductController::getPopular(5);
           "title" => $products[0]["Title"],
           "price" => number_format($products[0]['Price'], 2),
           "duration" => ProductHelper::getDurationTimer($products[0]),
-          "productId" => $products[0]["ProductId"]
+          "productId" => $products[0]["ProductId"],
+          "track" => ($products[0]["Tracked"] !== null),
+          "winning" => ($products[0]["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
         ],
         FileController::get($products[0]["ProductId"], "ProductId", 1)
       ));
@@ -30,7 +32,9 @@ $products = ProductController::getPopular(5);
           "title" => $products[1]["Title"],
           "price" => number_format($products[1]['Price'], 2),
           "duration" => ProductHelper::getDurationTimer($products[0]),
-          "productId" => $products[1]["ProductId"]
+          "productId" => $products[1]["ProductId"],
+            "track" => ($products[1]["Tracked"] !== null),
+            "winning" => ($products[1]["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
         ],
         FileController::get($products[1]["ProductId"], "ProductId", 1)
 
@@ -49,7 +53,9 @@ $products = ProductController::getPopular(5);
       "title" => $products[2]["Title"],
       "price" => number_format($products[2]['Price'], 2),
       "duration" => ProductHelper::getDurationTimer($products[0]),
-      "productId" => $products[2]["ProductId"]
+      "productId" => $products[2]["ProductId"],
+        "track" => ($products[2]["Tracked"] !== null),
+        "winning" => ($products[2]["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
     ],
     FileController::get($products[2]["ProductId"], "ProductId", 1)
 
@@ -67,7 +73,9 @@ $products = ProductController::getPopular(5);
           "title" => $products[3]["Title"],
           "price" => number_format($products[3]['Price'], 2),
           "duration" => ProductHelper::getDurationTimer($products[0]),
-          "productId" => $products[3]["ProductId"]
+          "productId" => $products[3]["ProductId"],
+            "track" => ($products[3]["Tracked"] !== null),
+            "winning" => ($products[3]["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
         ],
         FileController::get($products[3]["ProductId"], "ProductId", 1)
 
@@ -84,7 +92,9 @@ $products = ProductController::getPopular(5);
           "title" => $products[4]["Title"],
           "price" => number_format($products[4]['Price'], 2),
           "duration" => ProductHelper::getDurationTimer($products[0]),
-          "productId" => $products[4]["ProductId"]
+          "productId" => $products[4]["ProductId"],
+            "track" => ($products[4]["Tracked"] !== null),
+            "winning" => ($products[4]["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
         ],
         FileController::get($products[4]["ProductId"], "ProductId", 1)
 

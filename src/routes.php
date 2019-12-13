@@ -3,7 +3,6 @@
 //URL guide: /test/:id/debug/:id
 
 $request_uri = preg_replace("/\d/", ":id", $_SERVER['REQUEST_URI']);
-$request_uri = preg_replace("/\?.{0,}/", "", $request_uri);
 
 switch ($request_uri) {
     case '/':
@@ -44,7 +43,11 @@ switch ($request_uri) {
         break;
     case '/api/product':
         require_once 'controllers/ProductController.php';
-        echo Product::get($_GET['id'])['Price'];
+        echo ProductController::getPrices($_GET['ids']);
+        break;
+    case '/api/product/track':
+        require_once 'controllers/ProductController.php';
+        echo ProductController::getTracked($_GET['ids']);
         break;
 
     default:

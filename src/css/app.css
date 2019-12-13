@@ -53,6 +53,15 @@
   }
 }
 
+.tracked {
+  border-color: var(--danger);
+  border-width: 2px;
+}
+
+.winning {
+  border-color: var(--success);
+}
+
 @media (min-width: 1200px) {
   .card-columns {
     column-count: 2;

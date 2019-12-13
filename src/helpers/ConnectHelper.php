@@ -19,6 +19,7 @@ class ConnectHelper {
         try{
             $connection = new PDO ("sqlsrv:server=".Config::DATABASE_HOSTNAME.";Database=".Config::DATABASE_DATABASE."",Config::DATABASE_USERNAME,Config::DATABASE_PASSWORD);
         } catch (PDOException $e) {
+            return [];
             die("Connectie met database mislukt.");
         }
 
