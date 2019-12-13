@@ -42,7 +42,11 @@ switch ($request_uri) {
         require_once 'controllers/ProductController.php';
         echo ProductController::getNewestWithoutIds(1, $_GET['ajaxId']);
         break;
-            
+    case '/api/product':
+        require_once 'controllers/ProductController.php';
+        echo Product::get($_GET['id'])['Price'];
+        break;
+
     default:
         require '../views/404.php';
         break;
