@@ -8,7 +8,7 @@ if ($('.bidding').length > 0) {
         $('.bidding').each(function () {
             let attr = $(this).attr('data-id');
             if (typeof attr !== typeof undefined && attr !== false && attr !== '') {
-                if ($(this).hasClass('.track')) {
+                if ($(this).hasClass('tracked')) {
                     bid_ids.push(attr);
                 }
                 price_ids.push(attr);
