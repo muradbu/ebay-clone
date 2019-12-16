@@ -12,17 +12,17 @@ abstract class ModelHelper
      *
      * @param int $id The id of the object to retrieve from the database
      *
-     * @return object Returns the relevant object
+     * @return array Returns the relevant object
      *
      */
-    public static function get($value, $column = "", $top = '9223372036854775807')
+    public static function get($value, $column = "", $top = '9223372036854775807', $extend = "")
     {
         $table = get_called_class();
 
         if ($column == "")
             $column = static::getPrimaryKey();
 
-        $sql = "select top($top) * from [$table] where $column = $value";
+        $sql = "select top($top) * from [$table] where $column = $value $extend";
 
         return ConnectHelper::execute($sql)[0];
     }
@@ -74,11 +74,16 @@ abstract class ModelHelper
      */
     public function put()
     {
-        $columns = implode(',', array_keys(get_object_vars($this)));
-        $values  = implode(',', get_object_vars($this));
+        $table = get_called_class();
+
+        $values = array_map(function ($value, $key) {
+            return "$key = '$value'";
+        }, get_object_vars($this), array_keys(get_object_vars($this)));
+
+        $values  = implode(",", $values);
         $primaryKey = static::getPrimaryKey();
 
-        $sql = "update [$table] set $values where $primaryKey = " . $this->{$this->primary};
+        $sql = "update [$table] set $values where $primaryKey = " . $this->{static::getPrimaryKey()};
 
         return ConnectHelper::execute($sql);
     }
@@ -108,7 +113,7 @@ abstract class ModelHelper
      *
      * @param string $sql the sql to be executed
      *
-     * @return string Returns data or a message retrieved from the database
+     * @return array Returns data or a message retrieved from the database
      *
      */
     public static function execute($sql)

@@ -1,6 +1,10 @@
 <?php
 
 require_once('controllers/FileController.php');
+require_once('controllers/BiddingController.php');
+
+if (isset($_POST['submit']))
+    BiddingController::quickBid($_POST['productId'], $_POST['submit']);
 
 ?>
 <div class="row text-center">

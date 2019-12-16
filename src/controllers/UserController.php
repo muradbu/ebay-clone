@@ -1,7 +1,6 @@
 <?php
 
 require_once('models/User.php');
-require_once('helpers/DataHelper.php');
 
 require_once('validators/EmailValidator.php');
 require_once('validators/NewUserValidator.php');
@@ -44,9 +43,8 @@ class UserController
     {
         $isValid = NewUserValidator::validate($data);
 
-        if (is_array($isValid)) {
+        if (is_array($isValid))
             return $isValid;
-        }
 
         $user = new User();
 
@@ -94,9 +92,6 @@ class UserController
      */
     public static function sendEmailVerification($email)
     {
-
-        $email = DataHelper::convertInput($email);
-
         $isValid = EmailValidator::validate($email);
 
         if (is_array($isValid)) {
@@ -148,7 +143,7 @@ class UserController
 
         if (!empty($user)) {
             $_SESSION['authenticated'] = $user[0];
-            redirect("");
+            redirect("/");
         }
 
         return ["error" => "De inlognaam en wachtwoord combinatie is onjuist."];
@@ -162,6 +157,6 @@ class UserController
     public static function logout()
     {
         $_SESSION['authenticated'] = null;
-        redirect("");
+        redirect("/");
     }
 }

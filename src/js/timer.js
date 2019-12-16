@@ -1,12 +1,11 @@
 setInterval(function() {
   $('.timer').each(function() {
     let timer = $(this)
-      .children('p')
+      .children()
       .text()
     let id = $(this)
-      .children('p')
+      .children()
       .attr('class')
-
     let parts_of_time = timer.split(':')
 
     if (
@@ -14,18 +13,20 @@ setInterval(function() {
       parts_of_time[1] === '00' &&
       parts_of_time[2] === '00'
     ) {
-      data['exsistingIds'] = existingIDs();
-      if ($(this).parents('.popular').length) {                                  
-        getPopularProdsWithoutIds(data['exsistingIds'], id);      
+      if ($('#biddings')) {
+        location.reload()
+      }
+
+      data['exsistingIds'] = existingIDs()
+      if ($(this).parents('.popular').length) {
+        getPopularProdsWithoutIds(data['exsistingIds'], id)
       }
       if ($(this).parents('.new').length) {
-        getNewestProdsWithoutIds(data['exsistingIds'], id);
+        getNewestProdsWithoutIds(data['exsistingIds'], id)
       }
       if ($(this).parents('.top').length) {
-        getTopProdsWithoutIds(data['exsistingIds'], id);
+        getTopProdsWithoutIds(data['exsistingIds'], id)
       }
-         
-
     } else {
       if (
         parts_of_time[2] === '00' &&
@@ -42,11 +43,8 @@ setInterval(function() {
       }
 
       parts_of_time[2] = (parseInt(parts_of_time[2]) - 1).toString()
-      if (
-        parseInt(parts_of_time[1]) < 1 &&
-        parseInt(parts_of_time[0]) == 0 
-      ) {
-        $('#'+ id +'dur').css('color', 'red')
+      if (parseInt(parts_of_time[1]) < 1 && parseInt(parts_of_time[0]) == 0) {
+        $('#' + id + 'dur').css('color', 'red')
       }
 
       for (let i in parts_of_time) {
@@ -56,8 +54,9 @@ setInterval(function() {
             : '0' + parts_of_time[i]
       }
     }
+
     $(this)
-      .children('p')
+      .children()
       .html(parts_of_time.join(':'))
   })
-}, 1000);
+}, 1000)

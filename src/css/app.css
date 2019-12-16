@@ -1,3 +1,33 @@
+
+/* Begin Detail page */
+.detail-card-text{
+  margin-bottom: 6px;
+}
+
+.detail-card-text p{
+  margin:0px !important;
+  padding:0px !important;
+}
+
+.bg-light-grey{
+  background-color:#E6E6E6 !important;
+}
+
+.bg-grey{
+  background-color:#C4C4C4 !important;
+}
+
+table.table.no-border td{
+  border-top: solid 0px #ffffff;
+}
+
+table.table.no-border th{
+  border-top: solid 0px #ffffff;
+  font-size:18px;
+}
+
+/* End Detail page */
+
 .highlight-icon {
   font-size: 100px !important;
   margin: 10px !important;
@@ -6,6 +36,12 @@
 #navbarDropdownMega {
   width: 50%;
   margin-left: 50%;
+}
+
+.cut-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .card .card-img-top {

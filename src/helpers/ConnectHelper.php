@@ -1,8 +1,7 @@
 <?php
 
-require_once('helpers/DataHelper.php');
-
-class ConnectHelper {
+class ConnectHelper
+{
 
     /**
      *
@@ -13,11 +12,10 @@ class ConnectHelper {
      * @return object Return the retrieved data from the database
      *
      */
-    public static function execute($sql){
-        $sql = DataHelper::convertInput($sql);
-
-        try{
-            $connection = new PDO ("sqlsrv:server=".Config::DATABASE_HOSTNAME.";Database=".Config::DATABASE_DATABASE."",Config::DATABASE_USERNAME,Config::DATABASE_PASSWORD);
+    public static function execute($sql)
+    {
+        try {
+            $connection = new PDO("sqlsrv:server=" . Config::DATABASE_HOSTNAME . ";Database=" . Config::DATABASE_DATABASE . "", Config::DATABASE_USERNAME, Config::DATABASE_PASSWORD);
         } catch (PDOException $e) {
             return [];
             die("Connectie met database mislukt.");
@@ -27,9 +25,6 @@ class ConnectHelper {
 
         $query->execute();
 
-        return $query->fetchAll();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
-
 }
-
-?>

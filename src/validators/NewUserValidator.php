@@ -2,6 +2,15 @@
 
 class NewUserValidator
 {
+    /**
+     *
+     * Validate a user
+     *
+     * @param arrat $data The data to validate.
+     *
+     * @return array Return the error message or true
+     * 
+     */
     public static function validate($data)
     {
 
@@ -31,7 +40,7 @@ class NewUserValidator
         if (!preg_match("/^[\w\d\s]{3,50}$/", $data['cityname'])) {
             $errors['cityname'] = "De opgegeven woonplaats is onjuist.";
         }
-        list($yyyy, $mm, $dd) =  explode('-', $data['dateofbirth']);
+        list($dd, $mm, $yyyy) =  explode('-', $data['dateofbirth']);
         if (!checkdate($mm, $dd, $yyyy)) {
             $errors['dateofbirth'] = "De opgegeven geboortedatum is onjuist.";
         }

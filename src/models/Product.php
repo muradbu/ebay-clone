@@ -4,25 +4,22 @@ require_once('helpers/ModelHelper.php');
 
 class Product extends ModelHelper
 {
-    public $productid;
-    public $title;
-    public $description;
-    public $startingprice;
-    public $paymentmethod;
-    public $paymentinstruction;
-    public $cityname;
-    public $country;
-    public $duration;
-    public $durationstartdate;
-    public $durationstarttime;
-    public $shippingcosts;
-    public $shippinginstructions;
-    public $seller;
-    public $buyer;
-    public $durationenddate;
-    public $durationendtime;
-    public $auctionclosed;
-    public $price;
+    public $ProductId;
+    public $Title;
+    public $Description;
+    public $StartingPrice;
+    public $PaymentMethod;
+    public $PaymentInstruction;
+    public $CityName;
+    public $Country;
+    public $Duration;
+    public $DurationStartDate;
+    public $DurationStartTime;
+    public $ShippingCosts;
+    public $ShippingInstructions;
+    public $Seller;
+    public $Buyer;
+    public $Price;
 
     protected static $primaryKey = 'ProductId';
 

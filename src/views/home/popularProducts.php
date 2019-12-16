@@ -5,6 +5,7 @@ require_once('controllers/ProductController.php');
 require_once('helpers/ProductHelper.php');
 $products = ProductController::getPopular(5);
 ?>
+
 <div class="col-md-4 col-12 mt-3">
   <div class="row">
     <div class="col-12">

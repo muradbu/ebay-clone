@@ -20,6 +20,4 @@ class File extends ModelHelper
     protected static function getPrimaryKey(){
         return static::$primaryKey;
     }
-
-
 }

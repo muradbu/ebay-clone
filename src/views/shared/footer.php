@@ -8,7 +8,7 @@
                         <li>Nederland - Doetinchem</li>
                         <li>0821-2359383</li>
                         <li><a href="mailto:support@eenmaalandermaal.nl" class="text-white">support@eenmaalandermaal.nl</a></li>
-                        <li>© Copyright - EenmaalAndermaal 2019</li>
+                        <li>© Copyright - EenmaalAndermaal <?php echo date("Y"); ?></li>
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-12">
