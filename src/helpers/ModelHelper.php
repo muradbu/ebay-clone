@@ -15,13 +15,13 @@ abstract class ModelHelper
      * @return object Returns the relevant object
      *
      */
-    public static function get($value, $column = "",$top = '9223372036854775807')
+    public static function get($value, $column = "", $top = '9223372036854775807')
     {
         $table = get_called_class();
 
-        if($column == "")
+        if ($column == "")
             $column = static::getPrimaryKey();
-        
+
         $sql = "select top($top) * from [$table] where $column = $value";
 
         return ConnectHelper::execute($sql)[0];
@@ -35,7 +35,7 @@ abstract class ModelHelper
      * @return array Returns all the objects of the relevant table
      *
      */
-    public static function query($top = '9223372036854775807',$extend = "")
+    public static function query($top = '9223372036854775807', $extend = "")
     {
         $table = get_called_class();
 
@@ -57,13 +57,11 @@ abstract class ModelHelper
         $table = get_called_class();
 
         $columns = implode(',', array_keys(get_object_vars($this)));
-        $values  = implode(',', get_object_vars($this));
+        $values  = implode("','", get_object_vars($this));
 
-        $sql = "insert into [$table] ($columns) values $values";
-
+        $sql = "insert into [$table] ($columns) values ('$values')";
 
         return ConnectHelper::execute($sql);
-
     }
 
     /**
@@ -78,12 +76,11 @@ abstract class ModelHelper
     {
         $columns = implode(',', array_keys(get_object_vars($this)));
         $values  = implode(',', get_object_vars($this));
-        $primaryKey= static::getPrimaryKey();
+        $primaryKey = static::getPrimaryKey();
 
-        $sql = "update [$table] set $values where $primaryKey = ". $this->{$this->primary};
+        $sql = "update [$table] set $values where $primaryKey = " . $this->{$this->primary};
 
         return ConnectHelper::execute($sql);
-
     }
 
     /**
@@ -97,12 +94,11 @@ abstract class ModelHelper
     public static function delete($id)
     {
         $table = get_called_class();
-        $primaryKey= static::getPrimaryKey();
+        $primaryKey = static::getPrimaryKey();
 
         $sql = "delete from [$table] where $primaryKey = $id";
 
         return ConnectHelper::execute($sql);
-
     }
 
     /**
@@ -115,7 +111,8 @@ abstract class ModelHelper
      * @return string Returns data or a message retrieved from the database
      *
      */
-    public static function execute($sql){
+    public static function execute($sql)
+    {
         return ConnectHelper::execute($sql);
     }
 
@@ -128,5 +125,3 @@ abstract class ModelHelper
      */
     protected abstract static function getPrimaryKey();
 }
-
-?>

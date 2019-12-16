@@ -1,6 +1,7 @@
 <?php
 
-class Config{
+class Config
+{
 
     const DATABASE_HOSTNAME = "mssql.iproject.icasites.nl";
 
@@ -10,7 +11,7 @@ class Config{
 
     const DATABASE_DATABASE = "iproject1";
 
-    const ROOT_FOLDER = "";
+    const ROOT_FOLDER = "iproject/src";
 
     const LIVE_URL = "http://iproject1.icasites.nl/";
 }

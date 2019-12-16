@@ -50,7 +50,7 @@ switch ($request_uri) {
         echo ProductController::getTracked($_GET['ids']);
         break;
 
-    default:
-        require '../views/404.php';
+     default:
+        require 'views/404.php';
         break;
 }

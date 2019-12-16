@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="address2">Adres 2</label>
-                                    <input type="text" value="<?php echo $_POST['address2'] ?? "" ?>" name="address2" class="form-control <?php echo isset($errors['address2']) ? 'is-invalid' : ''; ?>" required>
+                                    <input type="text" value="<?php echo $_POST['address2'] ?? "" ?>" name="address2" class="form-control <?php echo isset($errors['address2']) ? 'is-invalid' : ''; ?>">
                                     <div class="invalid-feedback"><?php echo $errors['address2'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">

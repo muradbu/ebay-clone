@@ -11,7 +11,6 @@ $errors = [];
 if (isset($_POST['submit'])) {
     $errors = UserController::emailVerification($_POST["code"]);
 }
-
 ?>
 
 <div class="row justify-content-center">

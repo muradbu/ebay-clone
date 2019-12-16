@@ -22,11 +22,11 @@ if (isset($_POST['submit'])) {
                 <form method="POST">
 
                     <div class="form-group">
-                        <input type="text" value="<?php echo $_POST['username'] ?? "" ?>" name="code" class="form-control" placeholder="pietjansen" required>
+                        <input type="text" value="<?php echo $_POST['username'] ?? "" ?>" name="username" class="form-control" placeholder="pietjansen" required>
                         <div class="invalid-feedback"><?php echo $errors['username'] ?? ''; ?></div>
                     </div>
                     <div class="form-group">
-                        <input type="password" value="<?php echo $_POST['password'] ?? "" ?>" name="code" class="form-control" placeholder="*********" required>
+                        <input type="password" value="<?php echo $_POST['password'] ?? "" ?>" name="password" class="form-control" placeholder="*********" required>
                         <div class="invalid-feedback"><?php echo $errors['password'] ?? ''; ?></div>
                     </div>
 

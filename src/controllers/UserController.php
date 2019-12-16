@@ -42,7 +42,6 @@ class UserController
      */
     public static function post($data)
     {
-
         $isValid = NewUserValidator::validate($data);
 
         if (is_array($isValid)) {
@@ -52,10 +51,17 @@ class UserController
         $user = new User();
 
         foreach (array_keys($data) as $value) {
-            $user->$value = $data[$value];
+            if (property_exists('User', $value))
+                $user->$value = $data[$value];
         }
 
         $user->post();
+
+        require_once('controllers/UserPhoneController.php');
+        if (!UserPhoneController::post(["username" => $data['username'], "phonenumber" => $data['phonenumber']]))
+            return ["error" => "Registratie mislukt. Probeer opnieuw."];
+
+        UserController::login($user->username, $user->password);
     }
 
     /**
@@ -138,12 +144,14 @@ class UserController
     public static function login($username, $password)
     {
         // $password = encypt($password);
-        $user = User::execute("SELECT * FROM [User] WHERE Username = $username AND Password = $password")[0];
+        $user = User::execute("SELECT * FROM [User] WHERE Username = '$username' AND Password = '$password'");
+
         if (!empty($user)) {
-            $_SESSION['authenticated'] = $user;
+            $_SESSION['authenticated'] = $user[0];
             redirect("");
         }
-        return ["username" => "De opgegeven gebruiker is onjuist."];
+
+        return ["error" => "De inlognaam en wachtwoord combinatie is onjuist."];
     }
 
     /**
