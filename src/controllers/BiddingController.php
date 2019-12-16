@@ -1,11 +1,9 @@
 <?php
-
 require_once('models/Bidding.php');
 
 class BiddingController
 {
-    /**
-     *
+    /*
      * Get a specific bidding by id
      *
      * @param int $id The id for the bidding to be retrieved
@@ -83,5 +81,26 @@ class BiddingController
             return $errors;
 
         redirect("/veiling/$productId");
+    }
+
+    /**
+     *
+     * Get the products the given user has bid on
+     *
+     * @param string $username The username to get the biddings.
+     * 
+     * @return array Return the biddings of the user
+     *
+     */
+    public static function getLosingFromPerson($username)
+    {
+        return Bidding::execute("
+        select *, (
+            select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username' 
+        ) as BidAmount from Product p
+        where (select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username') is not null
+        and Buyer != '$username'
+        order by DurationEndDate, DurationEndTime desc
+        ");
     }
 }

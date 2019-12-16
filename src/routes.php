@@ -1,5 +1,5 @@
 <?php
-
+require_once("helpers/PageHelper.php");
 //URL guide: /test/:id/debug/:id
 
 $request_uri = preg_replace("/[0-9]{1,}/", ":id", $_SERVER['REQUEST_URI']);

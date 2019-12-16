@@ -168,7 +168,7 @@ class ProductController
         "));
     }
 
- /**
+    /**
      *
      * Get the tracked productId and Buyer
      *
@@ -187,7 +187,8 @@ class ProductController
 
         return json_encode($products);
     }
- /**
+
+    /**
      *
      * Get the price from ProductId
      *

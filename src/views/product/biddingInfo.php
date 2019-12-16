@@ -1,6 +1,6 @@
 <?php
-require("helpers/BiddingHelper.php");
-require("helpers/ProductHelper.php");
+require_once("helpers/BiddingHelper.php");
+require_once("helpers/ProductHelper.php");
 require_once('controllers/BiddingController.php');
 
 $biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['ProductId'] . " ORDER BY BidAmount DESC");
@@ -76,7 +76,7 @@ if (isset($_POST['ProductId'])) {
         </table>
     </div>
     <form method="post" style="all:none;">
-    <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
+      <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
       <div class="row py-3">
         <div class="col-lg-8">
           <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" min="<?php echo $product['Price']; ?>" step="0.5" value="<?php echo $product['Price']; ?>" />
@@ -85,21 +85,21 @@ if (isset($_POST['ProductId'])) {
           <?php
             if (isset($_SESSION['authenticated'])) {
               ?>
-          <button class='btn btn-primary text-white w-100 mt-2' type="submit">Bied</button>
+            <button class='btn btn-primary text-white w-100 mt-2' type="submit">Bied</button>
           <?php
             } else {
               ?>
-                <a class='btn btn-primary text-white w-100 mt-2' href="/inloggen">Inloggen</a>
-              <?php
+            <a class='btn btn-primary text-white w-100 mt-2' href="/inloggen">Inloggen</a>
+          <?php
             }
-          ?>
+            ?>
         </div>
       </div>
     </form>
 
     <div class="row">
       <div class="col-lg-4 mt-2">
-        <button class="btn btn-primary text-white w-100" value="<?php echo $minimalAmount;?>" onclick="setBiddingAmount($(this))">
+        <button class="btn btn-primary text-white w-100" value="<?php echo $minimalAmount; ?>" onclick="setBiddingAmount($(this))">
           Bied € <?php echo $minimalAmount; ?>
         </button>
       </div>
@@ -109,7 +109,7 @@ if (isset($_POST['ProductId'])) {
         </button>
       </div>
       <div class="col-lg-4 mt-2">
-        <button class="btn btn-primary text-white w-100"  value="<?php echo $minimalAmount * 3; ?>" onclick="setBiddingAmount($(this))">
+        <button class="btn btn-primary text-white w-100" value="<?php echo $minimalAmount * 3; ?>" onclick="setBiddingAmount($(this))">
           Bied € <?php echo $minimalAmount * 3; ?>
         </button>
       </div>

@@ -14,7 +14,9 @@
           if (!isset($_SESSION["authenticated"])) {
             echo "<li class=\"nav-item\"><a class=\"nav-link text-white\" href=\"/inloggen\">Inloggen</a></li>";
           } else if (true) {
+            require_once("views/shared/header/productDropdown.php");
             ?>
+
         <li class="nav-item dropdown">
           <a class=" active nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Mijn account
@@ -23,7 +25,7 @@
             <!-- TODO - Goede linkjes invoegen -->
             <a class="dropdown-item" href="/account">Mijn gegevens</a>
             <a class="dropdown-item" href="/veilignen">Mijn veilingen</a>
-            <a class="dropdown-item" href="/biedingen">Mijn biedingen</a>
+            <a class="dropdown-item" href="/gebruiker/biedingen">Mijn biedingen</a>
             <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
           </div>
         </li>
