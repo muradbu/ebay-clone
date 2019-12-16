@@ -1,4 +1,4 @@
-if ($('#current-biddings')) {
+if ($('#current-biddings').length) {
   setInterval(() => {
     const id = $('#current-biddings').attr('class')
     if ($('#current-biddings')) {

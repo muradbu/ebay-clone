@@ -181,7 +181,8 @@ class ProductController
     {
         $products = Product::execute("SELECT ProductId, Buyer From Product where ProductId in ($ids)");
         $products = array_map(function ($product) {
-            return [$product['ProductId'] => ($product['Buyer'] === $_SESSION['authenticated']['Username'])];
+            $product['Buyer'] = ($product['Buyer'] === $_SESSION['authenticated']['Username']);
+            return $product;
         }, $products);
 
         return json_encode($products);
@@ -198,9 +199,6 @@ class ProductController
     public static function getPrices($ids)
     {
         $products = Product::execute("SELECT ProductId, Price From Product where ProductId in ($ids)");
-        $products = array_map(function ($product) {
-            return [$product['ProductId'] => $product['Price']];
-        }, $products);
 
         return json_encode($products);
     }

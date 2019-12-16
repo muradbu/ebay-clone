@@ -16,18 +16,19 @@ if ($('.bidding').length > 0) {
         });
 
         if (price_ids.length > 0) {
-            $.getJSON('/api/product?attribute="Price"&ids="' + price_ids.join(',') +'"', (data) => {
-                for (let id in data) {
-                    $(`.tracked[data-id=${id}] .update-price`).html('€ ' + parseInt(data).toFixed(2));
+            $.getJSON('/api/product?attribute="Price"&ids=' + price_ids.join(','), (data) => {
+                for (let i in data) {
+                    $(`.tracked[data-id=${data[i].ProductId}] .update-price`).html('€ ' + parseInt(data[i].Price).toFixed(2));
                 }
             })
         }
         if (bid_ids.length > 0) {
-            $.getJSON('/api/product/track?ids="' + bid_ids.join(',') +'"', (data) => {
+            $.getJSON('/api/product/track?ids=' + bid_ids.join(','), (data) => {
                 $(`.tracked.winning`).removeClass('winning');
-                for (let id in data) {
-                    if (data[id]) {
-                        $(`.tracked[data-id=${id}]`).addClass('winning')
+                data = data.flat();
+                for (let i in data) {
+                    if (data[i].Buyer) {
+                        $(`.tracked[data-id=${data[i].ProductId}]`).addClass('winning')
                     }
                 }
             })
