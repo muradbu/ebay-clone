@@ -1,6 +1,5 @@
 <?php
 require_once('models/Product.php');
-
 class BiddingHelper
 {
   /**

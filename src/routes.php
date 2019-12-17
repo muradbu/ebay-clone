@@ -28,6 +28,9 @@ switch ($request_uri) {
     case '/emailbevestigen':
         require 'views/authentication/emailVerification.php';
         break;
+    case '/gebruiker/biedingen/:id':
+        require isAuthenticated('views/account/mybids.php');
+        break;
     case '/veiling/:id':
         require 'views/product/auctionDetails.php';
         break;

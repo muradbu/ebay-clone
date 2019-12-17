@@ -25,7 +25,7 @@
             <!-- TODO - Goede linkjes invoegen -->
             <a class="dropdown-item" href="/account">Mijn gegevens</a>
             <a class="dropdown-item" href="/veilignen">Mijn veilingen</a>
-            <a class="dropdown-item" href="/gebruiker/biedingen">Mijn biedingen</a>
+            <a class="dropdown-item" href="/gebruiker/biedingen/0">Mijn biedingen</a>
             <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
           </div>
         </li>

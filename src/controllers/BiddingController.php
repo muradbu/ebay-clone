@@ -1,6 +1,6 @@
 <?php
 require_once('models/Bidding.php');
-
+require_once('helpers/biddingHelper.php');
 class BiddingController
 {
     /*
@@ -92,6 +92,26 @@ class BiddingController
      * @return array Return the biddings of the user
      *
      */
+    public static function getFromPerson($username)
+    {
+        return Bidding::execute("
+        select *, (
+            select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username' 
+        ) as BidAmount from Product p
+        where (select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username') is not null
+        order by DurationEndDate, DurationEndTime desc
+        ");
+    }
+
+    /**
+     *
+     * Get the losing biddings from person
+     *
+     * @param string $username The username to get the biddings.
+     * 
+     * @return array Return the biddings of the user
+     *
+     */
     public static function getLosingFromPerson($username)
     {
         return Bidding::execute("
@@ -103,4 +123,26 @@ class BiddingController
         order by DurationEndDate, DurationEndTime desc
         ");
     }
+
+    /**
+     *
+     * Get the winning biddings from person
+     *
+     * @param string $username The username to get the biddings.
+     * 
+     * @return array Return the biddings of the user
+     *
+     */
+    public function getWinningFromPerson($username){
+        return Bidding::execute("
+        select *, (
+            select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username' 
+        ) as BidAmount from Product p
+        where Buyer = '$username'
+        order by DurationEndDate, DurationEndTime desc
+        ");
+    }
+
+
+
 }

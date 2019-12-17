@@ -1,5 +1,5 @@
 <?php
 
-function isAuthencated($url){
+function isAuthenticated($url){
     return isset($_SESSION['authenticated']) ? $url : redirect("/inloggen");
 }

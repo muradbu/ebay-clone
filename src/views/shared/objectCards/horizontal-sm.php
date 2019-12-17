@@ -8,13 +8,14 @@ class HorizontalSm
     public static function generate($product, $file)
     {
         return "
-        <div class='card h-100'>
+        <div class='card h-100 bidding " . (!$product['track'] ?: 'tracked ') . (!$product['winning'] ?: 'winning ') . "' data-id='" . $product['productId'] . "''>
             <div class='row no-gutters'>
                 <div class='col-md-4'>
                     <div id= " . $product['productId'] . "img" . " style='min-height: auto; background-image: url(\"" . Config::LIVE_URL . "pics/" . $file['FileName'] . "\");' class='card-img-top h-100'></div>
                 </div>
                 <div class='col-md-8'>
                     <div class='card-body'>
+                    <form method='POST'>
                         <div class='row'>
                             <div class='col-12'>
                                 <p class='cut-text font-weight-bold'>".$product["title"]."</p>
@@ -29,18 +30,20 @@ class HorizontalSm
                             </div>
                         </div>
                         <div class='row'>
-                            <div class='col-6'>
+                            <div class='col-5'>
                                 Jouw bod:
                             </div>
-                            <div class='col-6 text-right'>
+                            <div class='col-7 text-right'>
                                 € ".number_format($product["biddedPrice"],2)."
                             </div>
                         </div>
+                        <input type='hidden' value='" . $product['productId'] . "' name='productId'/>
                         <div class='row mt-2'>
-                            <button type='submit' value='" . number_format(BiddingHelper::defineMinimalAmount($product['price']),2) . "' id=" . $product['productId'] . " href=" . $product['productId'] . " class='w-100 btn btn-primary text-white'>
+                            <button type='submit' value='" . BiddingHelper::defineMinimalAmount($product['price']) . "' name='submit' class='w-100 btn btn-primary text-white cut-text'>
                                 Verhoog bod ( + € " . number_format(BiddingHelper::defineMinimalAmount($product['price']), 2) . ")
                             </button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

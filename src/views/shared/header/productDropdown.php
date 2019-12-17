@@ -32,13 +32,13 @@ $auctions = BiddingController::getLosingFromPerson($_SESSION["authenticated"]["U
                     "winning" => ($auction["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
                 ], FileController::get($auction["ProductId"], "ProductId", 1));
             } ?>
-            <div style="margin:10px"><a href="gebruiker/biedingen-verliezen">Klik hier voor resterende biedingen (<?php echo count($auctions) - count(array_slice($auctions, 0, 3)); ?>).</a></div>
+            <div style="margin:10px"><a href="/gebruiker/biedingen/2">Klik hier voor resterende biedingen (<?php echo count($auctions) - count(array_slice($auctions, 0, 3)); ?>).</a></div>
         <?php
         } else {
             ?>
             <div style="margin:15px">
                 <p>Gemaakte biedingen waar je niet de hoogste bieder bent worden hier weergegeven.</p>
-                <a href="gebruiker/biedingen">Mijn biedingen</a>
+                <a href="/gebruiker/biedingen/0">Mijn biedingen</a>
             </div>
         <?php
         }
