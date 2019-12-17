@@ -9,11 +9,11 @@
  */
 
 function formatMoney(amount) {
-  const decimalCount = 2;
-  const decimal = ",";
-  const thousands = ".";
-  const decimalCount = Math.abs(decimalCount);
-  const decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+  let decimalCount = 2
+  const decimal = ','
+  const thousands = '.'
+  decimalCount = Math.abs(decimalCount)
+  decimalCount = isNaN(decimalCount) ? 2 : decimalCount
 
   const negativeSign = amount < 0 ? "-" : "";
 
