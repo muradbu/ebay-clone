@@ -29,7 +29,7 @@ switch ($request_uri) {
         require 'views/authentication/emailVerification.php';
         break;
     case '/gebruiker/biedingen/:id':
-        require isAuthenticated('views/account/mybids.php');
+        require isAuthenticated('views/account/biddings.php');
         break;
     case '/veiling/:id':
         require 'views/product/auctionDetails.php';

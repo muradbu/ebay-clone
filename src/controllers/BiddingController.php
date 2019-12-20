@@ -1,6 +1,7 @@
 <?php
 require_once('models/Bidding.php');
 require_once('helpers/biddingHelper.php');
+
 class BiddingController
 {
     /*
@@ -59,7 +60,7 @@ class BiddingController
      *
      * @param int $productId The productId to create a new bidding.
      * @param int $amount The amount to bid
-     * 
+     *
      * @return array Return any errors or true
      *
      */
@@ -74,7 +75,7 @@ class BiddingController
 
         $bidding = [
             "ProductId" => $product['ProductId'],
-            "BidAmount" => $product['Price'] + $amount
+            "BidAmount" => (round($product['Price'] * 2) / 2) + $amount
         ];
         $errors = BiddingController::post($bidding);
         if (is_array($errors))
@@ -88,7 +89,7 @@ class BiddingController
      * Get the products the given user has bid on
      *
      * @param string $username The username to get the biddings.
-     * 
+     *
      * @return array Return the biddings of the user
      *
      */
@@ -99,7 +100,7 @@ class BiddingController
             select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username' 
         ) as BidAmount from Product p
         where (select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username') is not null
-        order by DurationEndDate, DurationEndTime desc
+        order by DurationEndDate, DurationEndTime asc
         ");
     }
 
@@ -108,7 +109,7 @@ class BiddingController
      * Get the losing biddings from person
      *
      * @param string $username The username to get the biddings.
-     * 
+     *
      * @return array Return the biddings of the user
      *
      */
@@ -120,7 +121,7 @@ class BiddingController
         ) as BidAmount from Product p
         where (select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username') is not null
         and Buyer != '$username'
-        order by DurationEndDate, DurationEndTime desc
+        order by DurationEndDate, DurationEndTime asc
         ");
     }
 
@@ -129,7 +130,7 @@ class BiddingController
      * Get the winning biddings from person
      *
      * @param string $username The username to get the biddings.
-     * 
+     *
      * @return array Return the biddings of the user
      *
      */
@@ -139,7 +140,7 @@ class BiddingController
             select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username' 
         ) as BidAmount from Product p
         where Buyer = '$username'
-        order by DurationEndDate, DurationEndTime desc
+        order by DurationEndDate, DurationEndTime asc
         ");
     }
 

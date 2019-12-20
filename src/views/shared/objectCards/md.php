@@ -1,7 +1,5 @@
 <?php
 
-require_once('helpers/BiddingHelper.php');
-
 class Md
 {
     public static function generate($product, $file)

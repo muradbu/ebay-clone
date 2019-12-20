@@ -103,10 +103,29 @@ class UserController
         $_SESSION['emailverification']['email'] = $email;
         $_SESSION['emailverification']['secret'] = $secretId;
 
-        $message = "Uw verificatie code is: $secretId";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        $message = "
+            <h3>U heeft uw email geregistreerd!</h3>
+            <p>
+                Hierbij ontvangt u uw verficatie code die u moet invullen op de site. 
+                Om het in te vullen moet u de website nog wel open hebben staan.
+            </p>
+            <br/>
+            <p>
+                Uw verificatie code is: $secretId
+            </p><br/>
+            <p>
+                Met vriendelijke groet,<br/>
+                <br/>
+                EenmaalAndermaal
+            </p><br/>
+            <small>“Heeft u zich niet geregistreerd op onze website, dan kunt u deze mail negeren.</small>
+        ";
 
         //todo: create a nice email template.
-        mail($email, "Verificatie code", $message);
+        mail($email, "Verificatie code", $message, $headers);
 
         redirect("emailbevestigen");
     }

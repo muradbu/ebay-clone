@@ -42,11 +42,11 @@ class SliderHelper
 
       if ($key = "FileName") {
         if ($count == 0) {
-          $output .= '<div class="item active">';
+          $output .= '<div class="carousel-item active">';
         } else {
-          $output .= '<div class="item">';
+          $output .= '<div class="carousel-item">';
         }
-        $output .= '<img src="http://iproject1.icasites.nl/pics/' . $image["FileName"] . '" /></div>';
+        $output .= '<img src="http://iproject1.icasites.nl/pics/' . $image["FileName"] . '" style="height: 500px; width: 500px" /></div>';
         $count++;
       }
     }

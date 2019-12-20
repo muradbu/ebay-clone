@@ -40,7 +40,7 @@ class NewUserValidator
         if (!preg_match("/^[\w\d\s]{3,50}$/", $data['cityname'])) {
             $errors['cityname'] = "De opgegeven woonplaats is onjuist.";
         }
-        list($dd, $mm, $yyyy) =  explode('-', $data['dateofbirth']);
+        list($yyyy, $mm, $dd) =  explode('-', $data['dateofbirth']);
         if (!checkdate($mm, $dd, $yyyy)) {
             $errors['dateofbirth'] = "De opgegeven geboortedatum is onjuist.";
         }

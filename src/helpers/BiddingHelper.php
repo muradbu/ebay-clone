@@ -1,5 +1,5 @@
 <?php
-require_once('models/Product.php');
+
 class BiddingHelper
 {
   /**
@@ -9,7 +9,7 @@ class BiddingHelper
    * @param int $price The price of the product to check the minimal bid amount
    *
    * @return int Return the minimal bid amount.
-   * 
+   *
    */
   public static function defineMinimalAmount($price)
   {

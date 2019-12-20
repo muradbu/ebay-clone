@@ -1,7 +1,7 @@
 <?php
 
 require('config.php');
-require('helpers/RedirectHelper.php');
+require('helpers/GeneralHelpers.php');
 
 session_start([
     'cookie_lifetime' => 14400,

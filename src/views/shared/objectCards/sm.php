@@ -1,7 +1,5 @@
 <?php
 
-require_once('helpers/BiddingHelper.php');
-
 class Sm
 {
     public static function generate($product, $file)

@@ -18,9 +18,9 @@ $rootCategories = CategoryController::getRootCategories();
                 ";
                 }
                 ?>
-                <button type="button" class="btn btn-link list-group-item-action">
-                    <b><a href="/rubrieken">Alle rubrieken</a></b>
-                </button>
+                <a href="/rubrieken" class="btn btn-link list-group-item-action text-primary font-weight-bold <?php echo active_url('rubrieken', 'active') ?>">
+                    Alle rubrieken
+                </a>
             </div>
         </div>
         <div class="col-sm-12 col-md-8 col-lg-8">

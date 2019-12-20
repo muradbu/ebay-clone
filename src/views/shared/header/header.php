@@ -12,31 +12,31 @@
         <li class="nav-item position-static">
           <?php
           if (!isset($_SESSION["authenticated"])) {
-            echo "<li class=\"nav-item\"><a class=\"nav-link text-white\" href=\"/inloggen\">Inloggen</a></li>";
+            echo "<li class='nav-item'><a class='nav-link text-white ". active_url('inloggen', 'active') ."' href='/inloggen'>Inloggen</a></li>";
           } else if (true) {
             require_once("views/shared/header/productDropdown.php");
             ?>
 
         <li class="nav-item dropdown">
-          <a class=" active nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Mijn account
           </a>
           <div class="dropdown-menu">
             <!-- TODO - Goede linkjes invoegen -->
-            <a class="dropdown-item" href="/account">Mijn gegevens</a>
-            <a class="dropdown-item" href="/veilignen">Mijn veilingen</a>
-            <a class="dropdown-item" href="/gebruiker/biedingen/0">Mijn biedingen</a>
+            <a class="dropdown-item <?php echo active_url('account', 'active') ?>" href="/account">Mijn gegevens</a>
+            <a class="dropdown-item <?php echo active_url('veilingen', 'active') ?>" href="/veilignen">Mijn veilingen</a>
+            <a class="dropdown-item <?php echo active_url('gebruiker/biedingen/:id', 'active') ?>" href="/gebruiker/biedingen/0">Mijn biedingen</a>
             <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
           </div>
         </li>
       <?php
       }
       ?>
-      <li class="active nav-item position-static bg-primary">
+      <li class="nav-item position-static bg-primary">
         <a href="#" class="nav-link dropdown-toggle d-none d-lg-block" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Bekijk alle rubrieken
         </a>
-        <a href="/rubrieken" class="nav-link d-lg-none">
+        <a href="/rubrieken" <?php echo active_url('rubrieken', 'active') ?> class="nav-link d-lg-none">
           Bekijk alle rubrieken
         </a>
         <?php

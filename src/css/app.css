@@ -117,3 +117,11 @@ table.table.no-border th{
   overflow: hidden;
   white-space: nowrap;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+
+.card-img-top {
+  border-radius: 0 0 0 0;
+}
