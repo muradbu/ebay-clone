@@ -21,7 +21,7 @@ class Md
                         <input type='hidden' value='" . $product['productId'] . "' name='productId'/>
                         <div class='d-flex justify-content-center'>
                             <button type='submit' value='" . BiddingHelper::defineMinimalAmount($product['price']) . "' name='submit' class='btn btn-primary text-white cut-text'>
-                                Verhoog bod ( + € " . numberToEuro(BiddingHelper::defineMinimalAmount($product['price'])) . ")
+                                Verhoog bod ( + " . numberToEuro(BiddingHelper::defineMinimalAmount($product['price'])) . ")
                             </button>
                         </div>
                     </form>

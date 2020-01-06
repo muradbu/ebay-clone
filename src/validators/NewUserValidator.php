@@ -9,7 +9,7 @@ class NewUserValidator
      * @param arrat $data The data to validate.
      *
      * @return array Return the error message or true
-     * 
+     *
      */
     public static function validate($data)
     {

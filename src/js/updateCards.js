@@ -21,7 +21,7 @@ if ($(".bidding").length > 0) {
         data => {
           for (let i in data) {
             $(`.tracked[data-id=${data[i].ProductId}] .update-price`).html(
-              "€ " + formatMoney(parseInt(data[i].Price))
+              formatMoney(parseInt(data[i].Price))
             );
           }
         }

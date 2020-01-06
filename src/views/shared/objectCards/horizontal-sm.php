@@ -34,7 +34,7 @@ class HorizontalSm
                                 Jouw bod:
                             </div>
                             <div class='col-7 text-right'>
-                                € " . numberToEuro($product["biddedPrice"]) . "
+                                " . numberToEuro($product["biddedPrice"]) . "
                             </div>
                         </div>
                         <input type='hidden' value='" . $product['productId'] . "' name='productId'/>
