@@ -12,7 +12,7 @@ class Sm
                     <h5 id='product" . $product['productId'] . "' class='card-title cut-text'><a href='/veiling/" . $product['productId'] . "'>" . $product['title'] . "</a></h5>
                         <div class='row text-center'>
                             <div class='col-sm-6 col-md-6 col-lg-6'>
-                                <p class='update-price' id= " . $product['productId'] . "price" . ">€ " . $product['price'] . "</p>
+                                <p class='update-price' id= " . $product['productId'] . "price" . ">" . numberToEuro($product['price']) . "</p>
                             </div>
                             <div class='col-sm-6 col-md-6 col-lg-6 timer'>
                                 <p class=" . $product['productId'] . ">" . $product['duration'] . "</p>
@@ -21,7 +21,7 @@ class Sm
                         <div class='d-flex justify-content-center'>
                         <input type='hidden' value='" . $product['productId'] . "' name='productId'/>
                             <button type='submit' value='" . BiddingHelper::defineMinimalAmount($product['price']) . "' name='submit' class='btn btn-primary text-white cut-text'>
-                                Verhoog bod ( + € " . number_format(BiddingHelper::defineMinimalAmount($product['price']), 2) . ")
+                                Verhoog bod ( + " . numberToEuro(BiddingHelper::defineMinimalAmount($product['price'])) . ")
                             </button>
                 </div>
                 </form>

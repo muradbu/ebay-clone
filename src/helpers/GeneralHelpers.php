@@ -19,15 +19,20 @@ function redirect($url)
  */
 function active_url($url, $callback = '')
 {
-    $request_uri = $_SERVER['REQUEST_URI'];
-    if (strpos($url,':id') > 0) {
-        $request_uri = preg_replace("/[0-9]{1,}/", "*", $request_uri);
+    if (strpos($url, ':id') >= 0) {
+        $request_uri = preg_replace("/[0-9]{1,}/", "*", $_SERVER['REQUEST_URI']);
     }
-    if (strpos($url,'?') < 0) {
+    if (strpos($url, '?') < 0) {
         $request_uri = preg_replace("/\?.{0,}/", "", $request_uri);
     }
+
     if (empty($callback)) {
-        return $url === $request_uri || '/'.$url === $request_uri;
+        return $url === $request_uri || '/' . $url === $request_uri;
     }
-    return $url === $request_uri || '/'.$url === $request_uri ? $callback : '';
+    return $callback;
+}
+
+function numberToEuro($number)
+{
+    return "€ " . number_format($number, 2, ',', ' ');
 }

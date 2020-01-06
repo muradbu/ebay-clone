@@ -13,7 +13,8 @@ class BiddingController
      *
      */
     public static function get($id)
-    { }
+    {
+    }
 
     /**
      *
@@ -75,7 +76,7 @@ class BiddingController
 
         $bidding = [
             "ProductId" => $product['ProductId'],
-            "BidAmount" => (round($product['Price'] * 2) / 2) + $amount
+            "BidAmount" => $product['Price'] + $amount
         ];
         $errors = BiddingController::post($bidding);
         if (is_array($errors))
@@ -134,7 +135,8 @@ class BiddingController
      * @return array Return the biddings of the user
      *
      */
-    public function getWinningFromPerson($username){
+    public function getWinningFromPerson($username)
+    {
         return Bidding::execute("
         select *, (
             select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username' 
@@ -143,7 +145,4 @@ class BiddingController
         order by DurationEndDate, DurationEndTime asc
         ");
     }
-
-
-
 }

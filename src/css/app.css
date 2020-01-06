@@ -1,29 +1,28 @@
-
 /* Begin Detail page */
-.detail-card-text{
+.detail-card-text {
   margin-bottom: 6px;
 }
 
-.detail-card-text p{
-  margin:0px !important;
-  padding:0px !important;
+.detail-card-text p {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
-.bg-light-grey{
-  background-color:#E6E6E6 !important;
+.bg-light-grey {
+  background-color: #e6e6e6 !important;
 }
 
-.bg-grey{
-  background-color:#C4C4C4 !important;
+.bg-grey {
+  background-color: #c4c4c4 !important;
 }
 
-table.table.no-border td{
+table.table.no-border td {
   border-top: solid 0px #ffffff;
 }
 
-table.table.no-border th{
+table.table.no-border th {
   border-top: solid 0px #ffffff;
-  font-size:18px;
+  font-size: 18px;
 }
 
 /* End Detail page */
@@ -67,7 +66,7 @@ table.table.no-border th{
   .card-columns {
     column-count: 2;
   }
-  div.card>div.card-img-top {
+  div.card > div.card-img-top {
     height: 66.5%;
   }
 }
@@ -76,7 +75,7 @@ table.table.no-border th{
   .card-columns {
     column-count: 2;
   }
-  div.card>div.card-img-top {
+  div.card > div.card-img-top {
     height: 83.5%;
   }
 }
@@ -89,7 +88,7 @@ table.table.no-border th{
     width: 100% !important;
     margin-left: 0%;
   }
-  div.card>div.card-img-top {
+  div.card > div.card-img-top {
     height: 83.5%;
   }
 }
@@ -107,7 +106,7 @@ table.table.no-border th{
   .card-columns {
     column-count: 2;
   }
-  div.card>div.card-img-top {
+  div.card > div.card-img-top {
     height: 83.5%;
   }
 }
@@ -122,6 +121,9 @@ table.table.no-border th{
   color: white;
 }
 
+.active {
+  opacity: 0.6;
+}
 .card-img-top {
   border-radius: 0 0 0 0;
 }

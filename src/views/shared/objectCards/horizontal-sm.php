@@ -18,15 +18,15 @@ class HorizontalSm
                     <form method='POST'>
                         <div class='row'>
                             <div class='col-12'>
-                                <p class='cut-text font-weight-bold'>".$product["title"]."</p>
+                                <p class='cut-text font-weight-bold'>" . $product["title"] . "</p>
                             </div>
                         </div>
                         <div class='row'>
                             <div class='col-7'>
-                                <p class='update-price' id= ".$product['productId'] ."price" .">€ " . number_format($product['price'],2) . "</p>
+                                <p class='update-price' id= " . $product['productId'] . "price" . ">" . numberToEuro($product['price']) . "</p>
                             </div>
                             <div class='col-5 text-right timer'>
-                                <p id=".$product['productId']. "dur". " class=" . $product['productId'] . ">" . $product['duration'] . "</p> 
+                                <p id=" . $product['productId'] . "dur" . " class=" . $product['productId'] . ">" . $product['duration'] . "</p> 
                             </div>
                         </div>
                         <div class='row'>
@@ -34,13 +34,13 @@ class HorizontalSm
                                 Jouw bod:
                             </div>
                             <div class='col-7 text-right'>
-                                € ".number_format($product["biddedPrice"],2)."
+                                € " . numberToEuro($product["biddedPrice"]) . "
                             </div>
                         </div>
                         <input type='hidden' value='" . $product['productId'] . "' name='productId'/>
                         <div class='row mt-2'>
                             <button type='submit' value='" . BiddingHelper::defineMinimalAmount($product['price']) . "' name='submit' class='w-100 btn btn-primary text-white cut-text'>
-                                Verhoog bod ( + € " . number_format(BiddingHelper::defineMinimalAmount($product['price']), 2) . ")
+                                Verhoog bod ( + " . numberToEuro(BiddingHelper::defineMinimalAmount($product['price'])) . ")
                             </button>
                         </div>
                         </form>

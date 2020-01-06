@@ -9,10 +9,10 @@ $auctions = BiddingController::getLosingFromPerson($_SESSION["authenticated"]["U
 ?>
 
 <li class="nav-item dropdown">
-    <a class=" active nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Biedingen
+    <a class="nav-link dropdown-toggle " href="#" id="navbardrop" data-toggle="dropdown">Biedingen
         <?php
         if (count($auctions) > 0) {
-            ?>
+        ?>
             <span class="badge badge-danger"><?php echo sizeof($auctions); ?></span>
         <?php
         }
@@ -35,7 +35,7 @@ $auctions = BiddingController::getLosingFromPerson($_SESSION["authenticated"]["U
             <div style="margin:10px"><a href="/gebruiker/biedingen/2">Klik hier voor resterende biedingen (<?php echo count($auctions) - count(array_slice($auctions, 0, 3)); ?>).</a></div>
         <?php
         } else {
-            ?>
+        ?>
             <div style="margin:15px">
                 <p>Gemaakte biedingen waar je niet de hoogste bieder bent worden hier weergegeven.</p>
                 <a href="/gebruiker/biedingen/0">Mijn biedingen</a>

@@ -18,7 +18,8 @@ class UserController
      *
      */
     public static function get($id)
-    { }
+    {
+    }
 
     /**
      *
@@ -71,7 +72,8 @@ class UserController
      *
      */
     public static function put($id, $data)
-    { }
+    {
+    }
 
     /**
      *
@@ -81,7 +83,8 @@ class UserController
      *
      */
     public static function delete($id)
-    { }
+    {
+    }
 
     /**
      *
@@ -121,10 +124,9 @@ class UserController
                 <br/>
                 EenmaalAndermaal
             </p><br/>
-            <small>“Heeft u zich niet geregistreerd op onze website, dan kunt u deze mail negeren.</small>
+            <small>Heeft u zich niet geregistreerd op onze website, dan kunt u deze mail negeren.</small>
         ";
 
-        //todo: create a nice email template.
         mail($email, "Verificatie code", $message, $headers);
 
         redirect("emailbevestigen");

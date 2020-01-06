@@ -28,7 +28,7 @@ require("helpers/SliderHelper.php");
             <div class="col-md-4">
                 <div class="detail-card-text">
                     <p><strong>Verzendkosten:</strong></p>
-                    <p>€<?php echo number_format($product["ShippingCosts"], 2); ?></p>
+                    <p><?php echo numberToEuro($product["ShippingCosts"]); ?></p>
                 </div>
                 <div class="detail-card-text">
                     <p><strong>Aanbieder:</strong></p>
@@ -40,7 +40,7 @@ require("helpers/SliderHelper.php");
                 </div>
                 <div class="detail-card-text">
                     <p><strong>Startprijs:</strong></p>
-                    <p>€ <?php echo number_format($product["StartingPrice"], 2); ?></p>
+                    <p><?php echo numberToEuro($product["StartingPrice"]); ?></p>
                 </div>
                 <div class="detail-card-text">
                     <p><strong>Betaal methode:</strong></p>

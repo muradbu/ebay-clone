@@ -10,7 +10,9 @@ if ($("#current-biddings").length) {
               if (i === 0) {
                 $("#bidAmountHeader").text(formatMoney(bidding.BidAmount));
                 $("#bidDateTimeHeader").text(
-                  bidding.BidDate +
+                  bidding.BidDate.getDate() +
+                    bidding.BidDate.getMonth() +
+                    bidding.BidDate.getFullYear() +
                     " " +
                     bidding.BidTime.substring(0, bidding.BidTime.indexOf("."))
                 );

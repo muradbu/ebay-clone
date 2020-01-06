@@ -9,29 +9,16 @@
  */
 
 function formatMoney(amount) {
-  let decimalCount = 2
-  const decimal = ','
-  const thousands = '.'
-  decimalCount = Math.abs(decimalCount)
-  decimalCount = isNaN(decimalCount) ? 2 : decimalCount
+  var formattedNumber = Number(amount).toLocaleString("es-ES", {
+    minimumFractionDigits: 2
+  });
+  return "€ " + formattedNumber.replace(/[.]/gi, " ");
+}
 
-  const negativeSign = amount < 0 ? "-" : "";
-
-  let i = parseInt(
-    (amount = Math.abs(Number(amount) || 0).toFixed(decimalCount))
-  ).toString();
-  let j = i.length > 3 ? i.length % 3 : 0;
-
-  return (
-    "€ " +
-    negativeSign +
-    (j ? i.substr(0, j) + thousands : "") +
-    i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
-    (decimalCount
-      ? decimal +
-        Math.abs(amount - i)
-          .toFixed(decimalCount)
-          .slice(2)
-      : "")
-  );
+function defineMinimalAmount(amount) {
+  if (amount <= 50) return "0.50";
+  else if (amount <= 500) return "1.00";
+  else if (amount <= 1000) return "5.00";
+  else if (amount <= 5000) return "10.00";
+  else return "50.00";
 }

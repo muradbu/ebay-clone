@@ -7,7 +7,7 @@ $biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['Prod
 $minimalAmount = BiddingHelper::defineMinimalAmount($biddings[0]["BidAmount"]);
 
 if (isset($_POST['quickBid'])) {
-    BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
+  BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
 }
 if (isset($_POST['ProductId'])) {
   BiddingController::post($_POST);
@@ -18,7 +18,7 @@ if (isset($_POST['ProductId'])) {
   <div class="card-header">
     <?php
     if (!$product['AuctionClosed']) {
-      ?>
+    ?>
       <div class="timer">
         <h2 class="text-center"><?php echo ProductHelper::getDurationTimer($product); ?></h2>
       </div>
@@ -33,15 +33,15 @@ if (isset($_POST['ProductId'])) {
         echo ("<h1 style='position: relative; top: 50%; transform: translateY(-50%);'>De veiling is gesloten!</h1>
     <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefelicteerd!</h3>");
       } elseif (!$product["AuctionClosed"]) {
-        ?>
+      ?>
         <table width="100%" id="product-bid-table" class="table no-border">
           <?php foreach ($biddings as $key => $bidding) {
-              $bidDate = $bidding["BidDate"];
-              $bidTime = $bidding["BidTime"];
-              if ($key == 0) { ?>
+            $bidDate = $bidding["BidDate"];
+            $bidTime = $bidding["BidTime"];
+            if ($key == 0) { ?>
               <tr>
                 <th id="bidAmountHeader">
-                  € <?php echo number_format($bidding["BidAmount"], 2); ?>
+                  <?php echo numberToEuro($bidding["BidAmount"]); ?>
                 </th>
                 <th id="bidDateTimeHeader">
                   <?php echo date("d-m-Y H:i:s", strtotime("$bidDate $bidTime")); ?>
@@ -53,7 +53,7 @@ if (isset($_POST['ProductId'])) {
             <?php } else if ($key <= 2) { ?>
               <tr>
                 <td id="bidAmount<?php echo $key; ?>">
-                  € <?php echo number_format($bidding["BidAmount"], 2); ?>
+                  <?php echo numberToEuro($bidding["BidAmount"]); ?>
                 </td>
                 <td id="bidDateTime<?php echo $key; ?>">
                   <?php echo date("d-m-Y H:i:s", strtotime("$bidDate $bidTime")); ?>
@@ -63,39 +63,39 @@ if (isset($_POST['ProductId'])) {
                 </td>
               </tr>
             <?php }
-              }
-              if (count($biddings) - 3 >= 1) { ?>
+          }
+          if (count($biddings) - 3 >= 1) { ?>
             <tr>
               <td> Er <?php if (count($biddings) - 3 != 1) {
-                            echo "zijn (";
-                          } else {
-                            echo "is (";
-                          }
-                          echo count($biddings) - 3; ?>) meer bieding<?php if (count($biddings) - 3 != 1) echo "en"; ?> </td>
+                        echo "zijn (";
+                      } else {
+                        echo "is (";
+                      }
+                      echo count($biddings) - 3; ?>) meer bieding<?php if (count($biddings) - 3 != 1) echo "en"; ?> </td>
             </tr>
           <?php
-            }
-            ?>
+          }
+          ?>
         </table>
     </div>
     <form method="post" style="all:none;">
       <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
       <div class="row py-3">
         <div class="col-lg-8">
-          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" min="<?php echo round($product['Price'] * 2) / 2; ?>" step="0.5" value="<?php echo round($product['Price'] * 2) / 2; ?>" />
+          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" min="<?php echo $product['Price']; ?>" step="0.5" value="<?php echo $product['Price']; ?>" />
         </div>
         <div class="col-lg-4">
           <?php
-            if (isset($_SESSION['authenticated'])) {
-              ?>
+          if (isset($_SESSION['authenticated'])) {
+          ?>
             <button class='btn btn-primary text-white w-100 mt-2' type="submit">Bied</button>
           <?php
-            } else {
-              ?>
+          } else {
+          ?>
             <a class='btn btn-primary text-white w-100 mt-2' href="/inloggen">Inloggen</a>
           <?php
-            }
-            ?>
+          }
+          ?>
         </div>
       </div>
     </form>
@@ -103,27 +103,27 @@ if (isset($_POST['ProductId'])) {
     <div class="row">
       <form method="post" class="col-lg-4 mt-2">
         <button type="submit" name="quickBid" class="btn btn-primary text-white w-100" value="<?php echo $minimalAmount; ?>">
-            Verhoog bod ( + € <?php echo $minimalAmount; ?> )
+          + <?php echo numberToEuro($minimalAmount); ?>
         </button>
       </form>
       <form method="post" class="col-lg-4 mt-2">
         <button type="submit" name="quickBid" class="btn btn-primary text-white w-100" value="<?php echo $minimalAmount * 2; ?>">
-            Verhoog bod ( + € <?php echo $minimalAmount * 2; ?> )
+          + <?php echo numberToEuro($minimalAmount * 2); ?>
         </button>
       </form>
       <form method="post" class="col-lg-4 mt-2">
         <button type="submit" name="quickBid" class="btn btn-primary text-white w-100" value="<?php echo $minimalAmount * 3; ?>">
-            Verhoog bod ( + € <?php echo $minimalAmount * 3; ?> )
+          + <?php echo numberToEuro($minimalAmount * 3); ?>
         </button>
       </form>
     </div>
   <?php
-  } else {
+      } else {
   ?>
-      <div>
-          <h2>Deze veiling is gesloten.</h2>
-          <h3>Er zijn geen winnaars</h3>
-      </div>
+    <div>
+      <h2>Deze veiling is gesloten.</h2>
+      <h3>Er zijn geen winnaars</h3>
+    </div>
   <?php } ?>
   </div>
 </div>

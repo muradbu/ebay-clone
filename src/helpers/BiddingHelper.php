@@ -14,10 +14,10 @@ class BiddingHelper
   public static function defineMinimalAmount($price)
   {
     $price = floatval($price);
-    if ($price < 50) return 0.5;
-    else if ($price < 500) return 1;
-    else if ($price < 1000) return 5;
-    else if ($price < 5000) return 10;
-    else return 50;
+    if ($price < 50) return 0.50;
+    else if ($price < 500) return 1.00;
+    else if ($price < 1000) return 5.00;
+    else if ($price < 5000) return 10.00;
+    else return 50.00;
   }
 }
