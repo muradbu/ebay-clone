@@ -8,9 +8,9 @@ $data = CategoryController::getCategoryAlphabetically();
             <ul class="nav justify-content-center">
                 <?php
                 foreach ($data as $key => $categories) {
-                    ?>
+                ?>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#<?php echo $key; ?>"><?php echo $key; ?></a>
+                        <a class="nav-link" href="#<?php echo $key; ?>"><?php echo $key; ?></a>
                     </li>
                 <?php
                 }
@@ -18,7 +18,7 @@ $data = CategoryController::getCategoryAlphabetically();
             </ul>
             <?php
             foreach ($data as $key => $categories) {
-                ?>
+            ?>
                 <div class="col-md-12 text-left">
                     <h2 id="<?php echo $key; ?>" class="alphanumeric mt-4"><?php echo $key; ?></h2>
                     <?php foreach ($categories as $category) { ?>

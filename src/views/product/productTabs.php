@@ -2,7 +2,7 @@
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs" id="pills-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Beschrijving</a>
+                <a class="nav-link" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-selected="true">Beschrijving</a>
             </li>
             <?php
             if (isset($product["ShippingInstructions"]) && $product["ShippingInstructions"] != "0.0") {
@@ -24,8 +24,8 @@
     </div>
     <div class="card-body">
         <div class="tab-content" id="pills-tabContent">
-            <div class="text-left  tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-                <iframe  frameborder="0" border="0" cellspacing="0" style="height: 750px;" class="w-100 card" srcdoc="<?php echo htmlspecialchars($product['Description'], ENT_QUOTES); ?>"></iframe>
+            <div class="text-left  tab-pane fade show" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+                <iframe frameborder="0" border="0" cellspacing="0" style="height: 750px;" class="w-100 card" srcdoc="<?php echo htmlspecialchars($product['Description'], ENT_QUOTES); ?>"></iframe>
             </div>
             <div class="text-left tab-pane fade" id="pills-sendmethod" role="tabpanel" aria-labelledby="pills-sendmethod-tab">
                 <?php echo $product["ShippingInstructions"]; ?>

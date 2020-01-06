@@ -1,6 +1,6 @@
   <div aria-label="breadcrumb">
     <ol class="breadcrumb bg-light mb-0">
-      <li class="breadcrumb-item active" aria-current="page"><a href="/">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="/">Home</a></li>
       <?php
       $crumbs = explode("/", $_SERVER["REQUEST_URI"]);
 

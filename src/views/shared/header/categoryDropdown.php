@@ -18,7 +18,7 @@ $rootCategories = CategoryController::getRootCategories();
                 ";
                 }
                 ?>
-                <a href="/rubrieken" class="btn btn-link list-group-item-action text-primary font-weight-bold <?php echo active_url('rubrieken', 'active') ?>">
+                <a href="/rubrieken" class="btn btn-link list-group-item-action text-primary font-weight-bold">
                     Alle rubrieken
                 </a>
             </div>
@@ -36,8 +36,8 @@ $rootCategories = CategoryController::getRootCategories();
                                     </a>
                                 </div>
                             <?php
-                                }
-                                ?>
+                            }
+                            ?>
                         </div>
                     </div>
                 <?php

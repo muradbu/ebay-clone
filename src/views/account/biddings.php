@@ -36,9 +36,9 @@ if (isset($_POST['submit'])) {
 <div class="row" style="padding-bottom: 30px;">
     <div class="col-md-6 col-sm-12">
         <div class="btn-group" role="group">
-            <a href="/gebruiker/biedingen/0" class="btn btn-primary text-white <?php echo active_url('gebruiker/biedingen/0', 'active') ?>">Alle biedingen</a>
-            <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white <?php echo active_url('gebruiker/biedingen/1', 'active') ?>">Winnende biedingen</a>
-            <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white <?php echo active_url('gebruiker/biedingen/2', 'active') ?>">Verliezende biedingen</a>
+            <a href="/gebruiker/biedingen/0" class="btn btn-primary text-white">Alle biedingen</a>
+            <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
+            <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>
         </div>
     </div>
 </div>
