@@ -34,6 +34,9 @@ switch ($request_uri) {
     case '/veiling/:id':
         require 'views/product/auctionDetails.php';
         break;
+    case '/gebruiker/veilingen/:id':
+        require isAuthenticated('views/account/auctions.php');
+        break;
 
         //ajax calls
     case '/api/getPopular':

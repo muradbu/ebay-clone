@@ -84,6 +84,7 @@ abstract class ModelHelper
         $primaryKey = static::getPrimaryKey();
 
         $sql = "update [$table] set $values where $primaryKey = " . $this->{static::getPrimaryKey()};
+        $sql  = str_replace("''", 'null', $sql);
 
         return ConnectHelper::execute($sql);
     }

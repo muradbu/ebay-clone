@@ -26,7 +26,8 @@ class ProductController
      *
      */
     public static function post($data)
-    { }
+    {
+    }
 
     /**
      *
@@ -44,7 +45,7 @@ class ProductController
             return ['productId' => 'Product bestaat niet.'];
 
         $product = new Product();
-
+        
         foreach (array_keys($productToUpdate) as $value) {
             if (property_exists('Product', $value)) {
                 $product->$value = str_replace("'", "''", $data[$value] ?? $productToUpdate[$value]);
@@ -202,5 +203,31 @@ class ProductController
         $products = Product::execute("SELECT ProductId, Price From Product where ProductId in ($ids)");
 
         return json_encode($products);
+    }
+
+    /**
+     *
+     * Get all auctions by a seller
+     *
+     * @param string The email address of a seller
+     * @return Product Returns the product retrieved by the database
+     *
+     */
+    public static function getFromPerson($seller)
+    {
+        return Product::query(10000000, "WHERE Seller = '$seller' ORDER BY DurationEndDate, DurationEndTime");
+    }
+    /**
+     *
+     * Get auction by seller which is closed or not
+     *
+     * @param string The email address of a seller
+     * @param boolean Boolean which indicates if auction is closed
+     * @return Product Returns the product retrieved by the database
+     *
+     */
+    public static function getFromPersonByBool($seller, $closed)
+    {
+        return Product::query(10000000, "WHERE Seller = '$seller' AND AuctionClosed = '$closed' ORDER BY DurationEndDate, DurationEndTime");
     }
 }

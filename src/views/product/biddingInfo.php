@@ -4,7 +4,11 @@ require_once("helpers/ProductHelper.php");
 require_once('controllers/BiddingController.php');
 
 $biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['ProductId'] . " ORDER BY BidAmount DESC");
-$minimalAmount = BiddingHelper::defineMinimalAmount($biddings[0]["BidAmount"]);
+if(count($biddings) > 0) {
+  $minimalAmount = BiddingHelper::defineMinimalAmount($biddings[0]["BidAmount"]);
+} else {
+  $minimalAmount = BiddingHelper::defineMinimalAmount($product["StartingPrice"]);
+}
 
 if (isset($_POST['quickBid'])) {
   BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);

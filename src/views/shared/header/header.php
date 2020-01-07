@@ -23,7 +23,7 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/account">Mijn gegevens</a>
-            <a class="dropdown-item" href="/veilingen">Mijn veilingen</a>
+            <a class="dropdown-item" href="/gebruiker/veilingen/0">Mijn veilingen</a>
             <a class="dropdown-item" href="/gebruiker/biedingen/0">Mijn biedingen</a>
             <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
           </div>
