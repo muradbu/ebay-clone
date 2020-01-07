@@ -13,10 +13,9 @@
           <?php
           if (!isset($_SESSION["authenticated"])) {
             echo "<li class='nav-item'><a class='nav-link text-white' href='/inloggen'>Inloggen</a></li>";
-          } else if (true) {
+          } else {
             require_once("views/shared/header/productDropdown.php");
           ?>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Mijn account
@@ -25,6 +24,13 @@
             <a class="dropdown-item" href="/account">Mijn gegevens</a>
             <a class="dropdown-item" href="/gebruiker/veilingen/0">Mijn veilingen</a>
             <a class="dropdown-item" href="/gebruiker/biedingen/0">Mijn biedingen</a>
+            <?php
+              if (!$_SESSION["authenticated"]['Seller']) {
+            ?>
+                <a class="dropdown-item" href="/registrerenverkoper">Registreer als verkoper</a>
+            <?php
+              }
+            ?>
             <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
           </div>
         </li>

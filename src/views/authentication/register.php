@@ -31,63 +31,63 @@ if (isset($_POST['submit'])) {
                             <div class="row">
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="username">Gebruikersnaam*</label>
-                                    <input type="text" value="<?php echo $_POST['username'] ?? "" ?>" name="username" class="form-control <?php echo isset($errors['username']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['username'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['Username'] ?? "" ?>" name="Username" class="form-control <?php echo isset($errors['Username']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['Username'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="password">Wachtwoord*</label>
-                                    <input type="password" value="<?php echo $_POST['password'] ?? "" ?>" name="password" class="form-control <?php echo isset($errors['password']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['password'] ?? ''; ?></div>
+                                    <input type="password" value="<?php echo $_POST['Password'] ?? "" ?>" name="Password" class="form-control <?php echo isset($errors['Password']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['Password'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="firstname">Voornaam*</label>
-                                    <input type="text" value="<?php echo $_POST['firstname'] ?? "" ?>" name="firstname" class="form-control <?php echo isset($errors['firstname']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['firstname'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['FirstName'] ?? "" ?>" name="FirstName" class="form-control <?php echo isset($errors['FirstName']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['FirstName'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="lastname">Achternaam*</label>
-                                    <input type="text" value="<?php echo $_POST['lastname'] ?? "" ?>" name="lastname" class="form-control <?php echo isset($errors['lastname']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['lastname'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['LastName'] ?? "" ?>" name="LastName" class="form-control <?php echo isset($errors['LastName']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['LastName'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="address1">Adres*</label>
-                                    <input type="text" value="<?php echo $_POST['address1'] ?? "" ?>" name="address1" class="form-control <?php echo isset($errors['address1']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['address1'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['Address1'] ?? "" ?>" name="Address1" class="form-control <?php echo isset($errors['Address1']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['Address1'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="address2">Adres 2</label>
-                                    <input type="text" value="<?php echo $_POST['address2'] ?? "" ?>" name="address2" class="form-control <?php echo isset($errors['address2']) ? 'is-invalid' : ''; ?>">
-                                    <div class="invalid-feedback"><?php echo $errors['address2'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['Address2'] ?? "" ?>" name="Address2" class="form-control <?php echo isset($errors['Address2']) ? 'is-invalid' : ''; ?>">
+                                    <div class="invalid-feedback"><?php echo $errors['Address2'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="zipcode">Postcode*</label>
-                                    <input type="text" value="<?php echo $_POST['zipcode'] ?? "" ?>" name="zipcode" class="form-control <?php echo isset($errors['zipcode']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['zipcode'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['ZipCode'] ?? "" ?>" name="ZipCode" class="form-control <?php echo isset($errors['ZipCode']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['ZipCode'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="cityname">Woonplaats*</label>
-                                    <input type="text" value="<?php echo $_POST['cityname'] ?? "" ?>" name="cityname" class="form-control <?php echo isset($errors['cityname']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['cityname'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['CityName'] ?? "" ?>" name="CityName" class="form-control <?php echo isset($errors['CityName']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['CityName'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="dateofbirth">Geboortedatum*</label>
-                                    <input type="date" value="<?php echo $_POST['dateofbirth'] ?? "" ?>" name="dateofbirth" class="form-control <?php echo isset($errors['dateofbirth']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['dateofbirth'] ?? ''; ?></div>
+                                    <input type="date" value="<?php echo $_POST['DateOfBirth'] ?? "" ?>" name="DateOfBirth" class="form-control <?php echo isset($errors['DateOfBirth']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['DateOfBirth'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="country">Land*</label>
-                                    <input type="text" value="<?php echo $_POST['country'] ?? "" ?>" name="country" class="form-control <?php echo isset($errors['country']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['country'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['Country'] ?? "" ?>" name="Country" class="form-control <?php echo isset($errors['Country']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['Country'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="phonenumber">Telefoonnummer*</label>
-                                    <input type="number" value="<?php echo $_POST['phonenumber'] ?? "" ?>" name="phonenumber" class="form-control <?php echo isset($errors['phonenumber']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['phonenumber'] ?? ''; ?></div>
+                                    <input type="number" value="<?php echo $_POST['PhoneNumber'] ?? "" ?>" name="PhoneNumber" class="form-control <?php echo isset($errors['PhoneNumber']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['PhoneNumber'] ?? ''; ?></div>
                                     <small id="phonenumberHelp" class="form-text text-muted">Meer telefoonnummers toevoegen? Ga naar de gebruikersintellingen.</small>
                                 </div>
                                 <div class="col-sm-6 col-md-6 col-lg-6">
                                     <label for="questionid">Veiligheidsvraag*</label>
-                                    <select value="<?php echo $_POST['questionId'] ?? "" ?>" class="form-control <?php echo isset($errors['questionId']) ? 'is-invalid' : ''; ?>" id="questionId" name="questionId" required>
+                                    <select value="<?php echo $_POST['QuestionId'] ?? "" ?>" class="form-control <?php echo isset($errors['QuestionId']) ? 'is-invalid' : ''; ?>" id="questionId" name="QuestionId" required>
                                         <?php
                                         if (!empty($questions)) {
                                             foreach ($questions as $key => $value) {
@@ -100,8 +100,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <label for="safetyanswer">Antwoord*</label>
-                                    <input type="text" value="<?php echo $_POST['safetyanswer'] ?? "" ?>" name="safetyanswer" class="form-control <?php echo isset($errors['safetyanswer']) ? 'is-invalid' : ''; ?>" required>
-                                    <div class="invalid-feedback"><?php echo $errors['safetyanswer'] ?? ''; ?></div>
+                                    <input type="text" value="<?php echo $_POST['SafetyAnswer'] ?? "" ?>" name="SafetyAnswer" class="form-control <?php echo isset($errors['SafetyAnswer']) ? 'is-invalid' : ''; ?>" required>
+                                    <div class="invalid-feedback"><?php echo $errors['SafetyAnswer'] ?? ''; ?></div>
                                 </div>
                             </div>
                         </div>

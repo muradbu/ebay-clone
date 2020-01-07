@@ -1,23 +1,15 @@
 <?php
-
 require_once('helpers/ModelHelper.php');
 
-class User extends ModelHelper
+
+class Seller extends ModelHelper
 {
     public $Username;
-    public $FirstName;
-    public $LastName;
-    public $Address1;
-    public $Address2;
-    public $ZipCode;
-    public $CityName;
-    public $Country;
-    public $DateOfBirth;
-    public $Email;
-    public $Password;
-    public $QuestionId;
-    public $SafetyAnswer;
-    public $Seller;
+    public $BankName;
+    public $BankAccountNumber;
+    public $CheckOptionName;
+    public $Creditcard;
+
 
     protected static $primaryKey = 'Username';
 
@@ -28,7 +20,7 @@ class User extends ModelHelper
         }
     }
 
-     /**
+    /**
      *
      * Get the primary key of the current class
      *
@@ -37,5 +29,12 @@ class User extends ModelHelper
      */
     protected static function getPrimaryKey(){
         return static::$primaryKey;
+    }
+
+    public static function get($value, $column = "", $top = '9223372036854775807', $extend = "")
+    {
+        $array = parent::get($value, $column, $top, $extend);
+
+        return new Seller($array);
     }
 }

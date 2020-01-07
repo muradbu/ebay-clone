@@ -21,6 +21,9 @@ abstract class ModelHelper
 
         if ($column == "")
             $column = static::getPrimaryKey();
+        if (is_string($value)) {
+            $value = "'". $value ."'";
+        }
 
         $sql = "select top($top) * from [$table] where $column = $value $extend";
 
@@ -60,6 +63,7 @@ abstract class ModelHelper
         $values  = implode("','", get_object_vars($this));
 
         $sql = "insert into [$table] ($columns) values ('$values')";
+        $sql  = str_replace("''", 'null', $sql);
 
         return ConnectHelper::execute($sql);
     }
@@ -83,7 +87,7 @@ abstract class ModelHelper
         $values  = implode(",", $values);
         $primaryKey = static::getPrimaryKey();
 
-        $sql = "update [$table] set $values where $primaryKey = " . $this->{static::getPrimaryKey()};
+        $sql = "update [$table] set $values where $primaryKey = '" . $this->{static::getPrimaryKey()} ."'";
         $sql  = str_replace("''", 'null', $sql);
 
         return ConnectHelper::execute($sql);
@@ -97,12 +101,17 @@ abstract class ModelHelper
      * @return string Returns a message if the sql statement went well
      *
      */
-    public static function delete($id)
+    public function delete()
     {
         $table = get_called_class();
         $primaryKey = static::getPrimaryKey();
+        $value = $this->$primaryKey;
 
-        $sql = "delete from [$table] where $primaryKey = $id";
+        if (is_string($value)) {
+            $value = "'". $value ."'";
+        }
+
+        $sql = "delete from [$table] where $primaryKey = $value";
 
         return ConnectHelper::execute($sql);
     }

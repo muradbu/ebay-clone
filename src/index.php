@@ -61,6 +61,7 @@ if (strpos($_SERVER['REQUEST_URI'], "api")) {
     <script src="<?php echo Config::ROOT_FOLDER . "/js/keepDropdownOpen.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/updateCards.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/moneyFormatter.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/sellerRegister.js" ?>" type="text/javascript"></script>
 
     <!-- AJAX -->
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getPopularWithoutIds.js" ?>" type="text/javascript"></script>

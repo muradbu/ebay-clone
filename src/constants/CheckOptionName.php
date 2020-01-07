@@ -1,8 +1,8 @@
 <?php
 
 class CheckOptionName{
-    const CREDITCARD = 0;
-    const POST = 1;
+    const CREDITCARD = 1;
+    const POST = 0;
 }
 
 ?>

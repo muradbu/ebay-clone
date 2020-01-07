@@ -1,5 +1,6 @@
 <?php
 require_once("helpers/PageHelper.php");
+require_once("models/Seller.php");
 //URL guide: /test/:id/debug/:id
 
 $request_uri = preg_replace("/[0-9]{1,}/", ":id", $_SERVER['REQUEST_URI']);
@@ -36,6 +37,15 @@ switch ($request_uri) {
         break;
     case '/gebruiker/veilingen/:id':
         require isAuthenticated('views/account/auctions.php');
+        break;
+    case '/registrerenverkoper':
+        if (!isset($_SESSION['authenticated']['Seller']) || $_SESSION['authenticated']['Seller']) {
+            redirect('/');
+        } elseif (Seller::get($_SESSION['authenticated']['Username'])->Username) {
+            require 'views/seller/addressVerification.php';
+        } else {
+            require 'views/seller/register.php';
+        }
         break;
 
         //ajax calls

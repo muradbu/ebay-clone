@@ -1,6 +1,7 @@
 <?php
 
 require_once('models/User.php');
+require_once('models/Seller.php');
 
 require_once('validators/EmailValidator.php');
 require_once('validators/NewUserValidator.php');
@@ -47,17 +48,11 @@ class UserController
         if (is_array($isValid))
             return $isValid;
 
-        $user = new User();
-
-        foreach (array_keys($data) as $value) {
-            if (property_exists('User', $value))
-                $user->$value = $data[$value];
-        }
-
+        $user = new User($data);
         $user->post();
 
         require_once('controllers/UserPhoneController.php');
-        if (!UserPhoneController::post(["username" => $data['username'], "phonenumber" => $data['phonenumber']]))
+        if (!UserPhoneController::post(["username" => $data['Username'], "phonenumber" => $data['PhoneNumber']]))
             return ["error" => "Registratie mislukt. Probeer opnieuw."];
 
         UserController::login($user->username, $user->password);
