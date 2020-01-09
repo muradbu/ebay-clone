@@ -6,6 +6,7 @@ require_once('models/Seller.php');
 require_once('validators/EmailValidator.php');
 require_once('validators/NewUserValidator.php');
 
+
 class UserController
 {
 
@@ -20,6 +21,7 @@ class UserController
      */
     public static function get($id)
     {
+        return User::get($id);
     }
 
     /**
@@ -142,6 +144,34 @@ class UserController
         } else {
             return ["code" => "De opgegeven verificatie code is onjuist."];
         }
+    }
+
+    /**
+     *
+     * Send an email with a custom message.
+     *
+     * @param string $email The email to send the verfication mail to
+     * @param string $message The body to send within the mail
+     *
+     */
+    public static function sendContactMail($seller, $message)
+    {
+        $isValid = ContactValidator::validate($message);
+
+        if (is_array($isValid))
+            return $isValid;
+
+
+        $message = "<h3>U heeft een bericht ontvangen</h3><p>$message</p>";
+        $from = $_SESSION['authenticated']['Username'];
+
+        $user = UserController::get($seller);
+
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        mail($user['Email'], "Bericht ontvangen van $from", $message, $headers);
+        redirect("/");
     }
 
     /**

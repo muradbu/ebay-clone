@@ -50,7 +50,7 @@ class ProductController
             return ['productId' => 'Product bestaat niet.'];
 
         $product = new Product();
-
+        
         foreach (array_keys($productToUpdate) as $value) {
             if (property_exists('Product', $value)) {
                 $product->$value = str_replace("'", "''", $data[$value] ?? $productToUpdate[$value]);
@@ -220,7 +220,6 @@ class ProductController
     {
         return Product::query(10000000, "WHERE Seller = '$seller' ORDER BY DurationEndDate, DurationEndTime");
     }
-
     /**
      *
      * Get auction by seller which is closed or not

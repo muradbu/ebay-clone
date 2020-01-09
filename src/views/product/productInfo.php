@@ -53,6 +53,7 @@ require("helpers/SliderHelper.php");
                     <p><strong>Betaal methode:</strong></p>
                     <p><?php echo $product["PaymentMethod"]; ?></p>
                 </div>
+                <a href="/contact/<?php echo $product["ProductId"] ?>" class="btn btn-primary text-white">Contact</a>
             </div>
         </div>
     </div>
