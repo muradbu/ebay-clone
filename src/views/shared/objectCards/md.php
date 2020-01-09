@@ -5,7 +5,7 @@ class Md
     public static function generate($product, $file)
     {
         return "
-            <div class='card bidding " . (!$product['track'] ?: 'tracked ') . (!$product['winning'] ?: 'winning ') . "' style='height: 100%' data-id='" . $product['productId'] . "'>
+            <div class='card bidding " . (!$product['track'] ?: 'tracked ') . (!$product['winning'] ?: 'winning ') . "' data-id='" . $product['productId'] . "' style='height: 100%'>
                 <div id=" . $product['productId'] . "img" . " style='background-image: url(\"" . Config::LIVE_URL . "pics/" . $file['FileName'] . "\");' class='card-img-top'></div>
                 <div class='card-body'>
                     <form method='POST'>

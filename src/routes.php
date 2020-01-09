@@ -1,5 +1,7 @@
 <?php
 require_once("helpers/PageHelper.php");
+require_once("models/Seller.php");
+//URL guide: /test/:id/debug/:id
 
 $request_uri = preg_replace("/[0-9]{1,}/", ":id", $_SERVER['REQUEST_URI']);
 $request_uri = preg_replace("/\?.{0,}/", "", $request_uri);
@@ -37,6 +39,9 @@ switch ($request_uri) {
         require isAuthenticated('views/contact.php');
     case '/toevoegenproduct':
         require 'views/product/productForm.php';
+        break;
+    case '/rubrieken/:id':
+        require 'views/category/products.php';
         break;
     case '/gebruiker/veilingen/:id':
         require isAuthenticated('views/account/auctions.php');

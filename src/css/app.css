@@ -134,3 +134,18 @@ table.table.no-border th {
   max-height: 350px;
   overflow-x: hidden;
 }
+
+.category-nav ul {
+  list-style: none;
+  color: var(--primary);
+}
+.category-nav {
+  list-style: none;
+  color: var(--primary);
+}
+.category-nav a {
+  color: black;
+}
+.category-nav a:hover {
+  color: var(--secondary);
+}

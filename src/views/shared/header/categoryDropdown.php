@@ -31,7 +31,7 @@ $rootCategories = CategoryController::getRootCategories();
                         <div class="row">
                             <?php foreach ($rootCategory['SubCategories'] as $subCategory) { ?>
                                 <div class="col-sm-6 col-md-6 col-lg-6 btn-group-vertical">
-                                    <a href="#">
+                                    <a href="/rubrieken/<?php echo $subCategory['CategoryId'] ?>">
                                         <?php echo $subCategory['CategoryName'] ?>
                                     </a>
                                 </div>

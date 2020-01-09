@@ -31,7 +31,7 @@ $data = CategoryController::getCategoryAlphabetically();
                             <div class="col-md-4">
                             <?php } ?>
                             <div class="row">
-                                <a href="#">
+                                <a href="rubrieken/<?php echo $subCategory["CategoryId"]; ?>">
                                     <?php echo $subCategory["CategoryName"]; ?>
                                 </a>
                             </div>
