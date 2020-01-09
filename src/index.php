@@ -27,6 +27,10 @@ $products = ProductController::getFromBuyerByBool(str_replace(' ', '', $_SESSION
     <link rel="stylesheet" href="<?php echo Config::ROOT_FOLDER . "/css/bootstrap.css" ?>">
     <link rel="stylesheet" href="<?php echo Config::ROOT_FOLDER . "/css/app.css" ?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.min.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/timer.js" ?>" type="text/javascript"></script>
 </head>
 
 <body>
@@ -73,11 +77,7 @@ $products = ProductController::getFromBuyerByBool(str_replace(' ', '', $_SESSION
         <?php require('views/shared/footer.php'); ?>
     </footer>
 
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.min.js" ?>" type="text/javascript"></script>
-
     <script src="<?php echo Config::ROOT_FOLDER . "/js/store.js" ?>" type="text/javascript"></script>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/timer.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/keepDropdownOpen.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/updateCards.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/moneyFormatter.js" ?>" type="text/javascript"></script>

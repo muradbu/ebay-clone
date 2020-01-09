@@ -18,7 +18,7 @@ class HorizontalSm
                     <form method='POST'>
                         <div class='row'>
                             <div class='col-12'>
-                                <p class='cut-text font-weight-bold'>" . $product["title"] . "</p>
+                                <p class='cut-text font-weight-bold'><a href='/veiling/" . $product['productId'] . "' >" . $product["title"] . "</a></p>
                             </div>
                         </div>
                         <div class='row'>
