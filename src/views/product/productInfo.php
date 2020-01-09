@@ -15,12 +15,12 @@ require("helpers/SliderHelper.php");
                     </div>
                     <a class="left carousel-control" href="#dynamic_slide_show" data-slide="prev">
                         <span class="glyphicon glyphicon-chevron-left"></span>
-                        <span class="sr-only">Previous</span>
+                        <span class="sr-only">Vorige</span>
                     </a>
 
                     <a class="right carousel-control" href="#dynamic_slide_show" data-slide="next">
                         <span class="glyphicon glyphicon-chevron-right"></span>
-                        <span class="sr-only">Next</span>
+                        <span class="sr-only">Volgende</span>
                     </a>
                 </div>
             </div>
@@ -33,6 +33,13 @@ require("helpers/SliderHelper.php");
                 <div class="detail-card-text">
                     <p><strong>Aanbieder:</strong></p>
                     <p><?php echo $product["Seller"]; ?></p>
+                    <p>
+                        <?php for($i = 0 ; $i < 5 ; $i++ ){ if($i < $averageFeedback){?>
+                            <span class="material-icons star-filled-color">star</span>
+                        <?php }else{ ?>
+                            <span class="material-icons">star_border</span>
+                        <?php }};?>
+                    </p>
                 </div>
                 <div class="detail-card-text">
                     <p><strong>Plaats:</strong></p>

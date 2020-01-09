@@ -125,6 +125,10 @@ table.table.no-border th {
   border-radius: 0 0 0 0;
 }
 
+.star-filled-color{
+  color:#F1C40F;
+}
+
 .scrollable-menu {
   height: auto;
   max-height: 350px;

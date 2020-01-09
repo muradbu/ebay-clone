@@ -165,6 +165,19 @@ class UserController
         return ["error" => "De inlognaam en wachtwoord combinatie is onjuist."];
     }
 
+
+    /**
+     *
+     * Gets the feedback from the given user
+     *
+     * @param int $username The username of the user who wants his feedback
+     * @return array with all feedback rating and all feedback count
+     */
+    public static function getFeedbackCount($username){
+        return User::execute("SELECT SUM(feedback.feedbacktypename) AS 'allFeedbackRating',COUNT(feedback.productid) AS 'allFeedbackCount' FROM [product] LEFT JOIN [feedback]
+        ON feedback.productid = product.productid WHERE product.seller = '$username';")[0];
+    }
+
     /**
      *
      * Remove authenticated from session

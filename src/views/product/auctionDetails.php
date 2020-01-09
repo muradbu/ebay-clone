@@ -1,8 +1,15 @@
 <?php
 require_once("controllers/ProductController.php");
 require_once("controllers/FileController.php");
+require_once("controllers/UserController.php");
 
 $product = Product::get(filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT), 'ProductId', 1);
+$feedback = UserController::getFeedbackCount($product["Seller"]);
+$averageFeedback = 0;
+
+if ( $feedback["allFeedbackRating"] != null){
+    $averageFeedback = round($feedback["allFeedbackRating"] / $feedback["allFeedbackCount"],0);
+}
 
 if (!isset($product)) {
     redirect("/404");
