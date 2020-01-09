@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
                 <form method="POST">
                     <h5 class="card-title">
                         Adres verificatie
-                        <button class="btn btn-secondary float-right" type="submit" name="delete">Reset</button>
+                        <button class="btn btn-secondary float-right" type="submit" name="delete">Herstellen</button>
                     </h5>
                     <h6 class="card-subtitle mb-2 text-muted">Voer de code in die genoteerd staat in de ontvangen brief.</h6>
                 </form>

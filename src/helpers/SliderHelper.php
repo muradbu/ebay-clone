@@ -16,7 +16,7 @@ class SliderHelper
     $count = 0;
     foreach ($images as $key => $image) {
       if ($count == 0) {
-        $output .= '<li data-target="#dynamic_slide_show" data-slide-to="' . $count . '"></li>';
+        $output .= '<li data-target="#dynamic_slide_show" data-slide-to="' . $count . '"class="active"></li>';
       } else {
         $output .= '<li data-target="#dynamic_slide_show" data-slide-to="' . $count . '"></li>';
       }
@@ -42,7 +42,7 @@ class SliderHelper
 
       if ($key = "FileName") {
         if ($count == 0) {
-          $output .= '<div class="carousel-item">';
+          $output .= '<div class="carousel-item active">';
         } else {
           $output .= '<div class="carousel-item">';
         }

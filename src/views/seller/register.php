@@ -1,8 +1,8 @@
 <?php
-    require_once('controllers/SellerController.php');
-    if (isset($_POST['submit'])) {
-        SellerController::post($_POST);
-    }
+require_once('controllers/SellerController.php');
+if (isset($_POST['submit'])) {
+    SellerController::post($_POST);
+}
 ?>
 
 <form method="post">
@@ -42,7 +42,7 @@
                 <label for="bankaccount">Rekeningnummer</label>
                 <input type="text" class="form-control" id="bankaccount" name="bankaccount" placeholder="NL91INGB0417164300">
             </div>
-            <button type="submit" name="submit" class="btn btn-primary text-white">Valideer</button>
+            <button type="submit" name="submit" class="btn btn-primary text-white">Verstuur</button>
         </div>
     </div>
 </form>

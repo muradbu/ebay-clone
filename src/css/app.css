@@ -121,9 +121,12 @@ table.table.no-border th {
   color: white;
 }
 
-.active {
-  opacity: 0.6;
-}
 .card-img-top {
   border-radius: 0 0 0 0;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 350px;
+  overflow-x: hidden;
 }

@@ -1,7 +1,5 @@
 <?php
 require_once("helpers/PageHelper.php");
-require_once("models/Seller.php");
-//URL guide: /test/:id/debug/:id
 
 $request_uri = preg_replace("/[0-9]{1,}/", ":id", $_SERVER['REQUEST_URI']);
 $request_uri = preg_replace("/\?.{0,}/", "", $request_uri);
@@ -35,20 +33,26 @@ switch ($request_uri) {
     case '/veiling/:id':
         require 'views/product/auctionDetails.php';
         break;
+    case '/toevoegenproduct':
+        require 'views/product/productForm.php';
+        break;
     case '/gebruiker/veilingen/:id':
         require isAuthenticated('views/account/auctions.php');
         break;
     case '/registrerenverkoper':
-        if (!isset($_SESSION['authenticated']['Seller']) || $_SESSION['authenticated']['Seller']) {
-            redirect('/');
-        } elseif (Seller::get($_SESSION['authenticated']['Username'])->Username) {
-            require 'views/seller/addressVerification.php';
+        require_once("controllers/SellerController.php");
+        if (SellerController::get($_SESSION['authenticated']['Username'], "Username")["CheckOptionName"] == "0") {
+            require isAuthenticated('views/seller/addressVerification.php');
         } else {
-            require 'views/seller/register.php';
+            require isAuthenticated('views/seller/register.php');
         }
         break;
 
         //ajax calls
+    case '/api/getCategoriesById':
+        require_once 'controllers/CategoryController.php';
+        echo json_encode(CategoryController::getMultipleById($_GET['id'], "SubCategory"));
+        break;
     case '/api/getPopular':
         require_once 'controllers/ProductController.php';
         echo ProductController::getPopularWithoutIds(1, $_GET['ajaxId']);

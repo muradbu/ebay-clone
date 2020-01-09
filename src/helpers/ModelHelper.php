@@ -21,13 +21,12 @@ abstract class ModelHelper
 
         if ($column == "")
             $column = static::getPrimaryKey();
-        if (is_string($value)) {
-            $value = "'". $value ."'";
-        }
+        if (is_string($value))
+            $value = "'" . $value . "'";
 
         $sql = "select top($top) * from [$table] where $column = $value $extend";
 
-        return ConnectHelper::execute($sql)[0];
+        return isset(ConnectHelper::execute($sql)[0]) ? ConnectHelper::execute($sql)[0] : null;
     }
 
     /**
@@ -87,7 +86,7 @@ abstract class ModelHelper
         $values  = implode(",", $values);
         $primaryKey = static::getPrimaryKey();
 
-        $sql = "update [$table] set $values where $primaryKey = '" . $this->{static::getPrimaryKey()} ."'";
+        $sql = "update [$table] set $values where $primaryKey = '" . $this->{static::getPrimaryKey()} . "'";
         $sql  = str_replace("''", 'null', $sql);
 
         return ConnectHelper::execute($sql);
@@ -108,7 +107,7 @@ abstract class ModelHelper
         $value = $this->$primaryKey;
 
         if (is_string($value)) {
-            $value = "'". $value ."'";
+            $value = "'" . $value . "'";
         }
 
         $sql = "delete from [$table] where $primaryKey = $value";

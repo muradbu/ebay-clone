@@ -13,18 +13,22 @@ class CategoryController
      * @return Category Returns the relevant category from the database
      *
      */
-    public static function get($id)
-    { }
+    public static function get($id, $column = "CategoryId")
+    {
+        return Category::get($id, $column);
+    }
 
     /**
      *
-     * Get all categories
+     * Get all categories by id
      * 
      * @return array Returns an array with all the categories in the database
      *
      */
-    public static function query()
-    { }
+    public static function getMultipleById($id, $column = "CategoryId")
+    {
+        return Category::query(9223372036854775807, "where $column = $id");
+    }
 
     /**
      *
@@ -34,7 +38,8 @@ class CategoryController
      *
      */
     public static function post($data)
-    { }
+    {
+    }
 
     /**
      *
@@ -45,7 +50,8 @@ class CategoryController
      *
      */
     public static function put($id, $data)
-    { }
+    {
+    }
 
     /**
      *
@@ -55,7 +61,8 @@ class CategoryController
      *
      */
     public static function delete($id)
-    { }
+    {
+    }
 
     /**
      *
@@ -71,7 +78,6 @@ class CategoryController
         foreach ($rootCategories as $rootCategory) {
             $data[$rootCategory['CategoryName']]['SubCategories'] = Category::execute("SELECT TOP 10 * FROM Category WHERE Category.SubCategory =  " . $rootCategory["CategoryId"] . " ORDER BY Category.CategoryName");
         }
-
         return $data;
     }
 

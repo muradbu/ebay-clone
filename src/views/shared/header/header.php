@@ -22,15 +22,13 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="/account">Mijn gegevens</a>
-            <a class="dropdown-item" href="/gebruiker/veilingen/0">Mijn veilingen</a>
+            <?php if ($_SESSION["authenticated"]['Seller']) { ?>
+              <a class="dropdown-item" href="/veilingen">Mijn veilingen</a>
+            <?php } ?>
             <a class="dropdown-item" href="/gebruiker/biedingen/0">Mijn biedingen</a>
-            <?php
-              if (!$_SESSION["authenticated"]['Seller']) {
-            ?>
-                <a class="dropdown-item" href="/registrerenverkoper">Registreer als verkoper</a>
-            <?php
-              }
-            ?>
+            <?php if (!$_SESSION["authenticated"]['Seller']) { ?>
+              <a class="dropdown-item" href="/registrerenverkoper">Registreer als verkoper</a>
+            <?php } ?>
             <a class="dropdown-item" href="/uitloggen">Uitloggen</a>
           </div>
         </li>

@@ -27,6 +27,11 @@ class ProductController
      */
     public static function post($data)
     {
+        var_dump($data);
+        die();
+        require_once('controllers/FileController.php');
+
+        // FileController::post(1, $_FILES['photos']);
     }
 
     /**
@@ -110,7 +115,6 @@ class ProductController
      */
     public static function getPopularWithoutIds($amount, $ids)
     {
-
         return json_encode(Product::execute("
         SELECT TOP $amount *,(
             SELECT COUNT(*)
@@ -156,7 +160,6 @@ class ProductController
      */
     public static function getNewestWithoutIds($amount, $ids)
     {
-
         return json_encode(Product::execute("
         SELECT TOP $amount *,(
             SELECT COUNT(*)

@@ -3,7 +3,22 @@
 require_once('models/User.php');
 require_once('models/Seller.php');
 
-class SellerController {
+class SellerController
+{
+
+    /**
+     *
+     * Get a specific seller
+     *
+     * @param int $id Of the product
+     * 
+     * @return Seller Returns the relevant seller from the database
+     *
+     */
+    public static function get($id, $column = "", $top = '9223372036854775807')
+    {
+        return Seller::get($id, $column, $top);
+    }
 
     /**
      *
@@ -11,7 +26,8 @@ class SellerController {
      * @param array Post data
      *
      */
-    public static function post($data) {
+    public static function post($data)
+    {
         $seller = new Seller();
         $user = new User($_SESSION['authenticated']);
 
@@ -65,7 +81,8 @@ class SellerController {
      * @return array return errors or redirect
      *
      */
-    public static function checkCode($code) {
+    public static function checkCode($code)
+    {
         $seller = Seller::get($_SESSION['authenticated']['Username']);
 
         if (substr(hash('md5', $seller->BankAccountNumber), 0, 5) === $code) {
@@ -91,7 +108,9 @@ class SellerController {
      */
     public static function resetCode()
     {
-        $seller = Seller::get($_SESSION['authenticated']['Username']);
+        $seller = SellerController::get($_SESSION['authenticated']['Username'], "Username");
+
+        $seller = new Seller($seller);
 
         $seller->delete();
 

@@ -10,9 +10,7 @@ if ($("#current-biddings").length) {
               if (i === 0) {
                 $("#bidAmountHeader").text(formatMoney(bidding.BidAmount));
                 $("#bidDateTimeHeader").text(
-                  bidding.BidDate.getDate() +
-                    bidding.BidDate.getMonth() +
-                    bidding.BidDate.getFullYear() +
+                  formatDate(new Date(bidding.BidDate)) +
                     " " +
                     bidding.BidTime.substring(0, bidding.BidTime.indexOf("."))
                 );
@@ -20,7 +18,7 @@ if ($("#current-biddings").length) {
               } else if (i <= 2) {
                 $("#bidAmount" + i).text(formatMoney(bidding.BidAmount));
                 $("#bidDateTime" + i).text(
-                  bidding.BidDate +
+                  formatDate(new Date(bidding.BidDate)) +
                     " " +
                     bidding.BidTime.substring(0, bidding.BidTime.indexOf("."))
                 );
@@ -32,3 +30,13 @@ if ($("#current-biddings").length) {
     }
   }, 1000);
 }
+
+const formatDate = date => {
+  var dd = date.getDate();
+  var mm = date.getMonth() + 1;
+  if (dd < 10) dd = "0" + dd;
+
+  if (mm < 10) mm = "0" + mm;
+
+  return dd + "-" + mm + "-" + date.getFullYear();
+};

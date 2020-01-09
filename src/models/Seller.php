@@ -27,14 +27,8 @@ class Seller extends ModelHelper
      * @return string Returns the primary key of the current class
      *
      */
-    protected static function getPrimaryKey(){
-        return static::$primaryKey;
-    }
-
-    public static function get($value, $column = "", $top = '9223372036854775807', $extend = "")
+    protected static function getPrimaryKey()
     {
-        $array = parent::get($value, $column, $top, $extend);
-
-        return new Seller($array);
+        return static::$primaryKey;
     }
 }

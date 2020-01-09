@@ -34,4 +34,12 @@ class Product extends ModelHelper
     {
         return static::$primaryKey;
     }
+
+    public function __construct($data = [])
+    {
+        foreach ($data as $key => $value) {
+            if (property_exists('Product', $value))
+                $this->$key = $value;
+        }
+    }
 }
