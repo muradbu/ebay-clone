@@ -2,6 +2,7 @@
 
 require('config.php');
 require('helpers/GeneralHelpers.php');
+require_once('controllers/ProductController.php');
 
 session_start([
     'cookie_lifetime' => 14400,
@@ -12,6 +13,7 @@ if (strpos($_SERVER['REQUEST_URI'], "api")) {
     die();
 }
 
+$products = ProductController::getFromBuyerByBool(str_replace(' ', '', $_SESSION['authenticated']["Username"]), 1);
 ?>
 
 <!doctype html>
@@ -40,6 +42,24 @@ if (strpos($_SERVER['REQUEST_URI'], "api")) {
                         <?php require('views/shared/breadcrumbs.php'); ?>
                     </div>
                 </div>
+                <?php
+                if (isset($products)) {
+                    foreach ($products as $product) {
+                        if ($product["AuctionClosed"] == 1) {
+                            if (ProductController::getFeedbackProduct($product["ProductId"])[0]["returnCode"] != 2) {
+                ?>
+                                <div class='alert alert-primary' role='alert'>
+                                    Je hebt de veiling voor het product: <a href="/veiling/<?php echo $product["ProductId"]; ?>"><?php echo $product["Title"]; ?></a> gewonnnen!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                <?php
+                            }
+                        }
+                    }
+                }
+                ?>
                 <div class="row justify-content-center">
                     <div class="col-sm-10 col-lg-10 col-md-10">
                         <?php require('routes.php'); ?>

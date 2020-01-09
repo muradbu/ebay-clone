@@ -45,7 +45,7 @@ class ProductController
             return ['productId' => 'Product bestaat niet.'];
 
         $product = new Product();
-        
+
         foreach (array_keys($productToUpdate) as $value) {
             if (property_exists('Product', $value)) {
                 $product->$value = str_replace("'", "''", $data[$value] ?? $productToUpdate[$value]);
@@ -217,6 +217,7 @@ class ProductController
     {
         return Product::query(10000000, "WHERE Seller = '$seller' ORDER BY DurationEndDate, DurationEndTime");
     }
+
     /**
      *
      * Get auction by seller which is closed or not
@@ -229,5 +230,52 @@ class ProductController
     public static function getFromPersonByBool($seller, $closed)
     {
         return Product::query(10000000, "WHERE Seller = '$seller' AND AuctionClosed = '$closed' ORDER BY DurationEndDate, DurationEndTime");
+    }
+
+    /**
+     *
+     * Get total amount of active auctions
+     *
+     * @return Product Returns the products retrieved by the database
+     *
+     */
+    public static function getAmount()
+    {
+        return Product::execute("SELECT COUNT(ProductId) as amount FROM Product WHERE AuctionClosed = 0");
+    }
+
+    /**
+     *
+     * Get auction by buyer which is closed or not
+     *
+     * @param string The username of a buyer
+     * @param boolean Boolean which indicates if auction is closed
+     * @return Product Returns the product retrieved by the database
+     *
+     */
+    public static function getFromBuyerByBool($buyer, $closed)
+    {
+        return Product::query(10000000, "WHERE buyer = '$buyer' AND AuctionClosed = '$closed' ORDER BY DurationEndDate, DurationEndTime");
+    }
+
+    /**
+     *
+     * Gets int which indicates if product has received feedback.
+     * return = 0: Product has not been found nor is the feedback
+     * return = 1: Seller has not received feedback
+     * return = 2: Seller has received feedback
+     *
+     * @param integer The product to search feedback for
+     * @return Integer The index indicating if feedback is found
+     *
+     */
+    public static function getFeedbackProduct($product)
+    {
+        return Product::execute("SELECT COUNT(*) as returnCode
+        FROM (
+            SELECT ProductId FROM Product WHERE ProductId = '$product'
+            UNION ALL
+            SELECT ProductId FROM Feedback WHERE ProductId = '$product'
+        ) data");
     }
 }
