@@ -58,7 +58,7 @@ class UserController
         if (!UserPhoneController::post(["username" => $data['Username'], "phonenumber" => $data['PhoneNumber']]))
             return ["error" => "Registratie mislukt. Probeer opnieuw."];
 
-        UserController::login($user->username, $user->password);
+        UserController::login($user->Username, $user->Password);
     }
 
     /**

@@ -16,6 +16,7 @@ if (strpos($_SERVER['REQUEST_URI'], "api")) {
 if (isset($_SESSION['authenticated']["Username"])) {
     $products = ProductController::getFromBuyerByBool(str_replace(' ', '', $_SESSION['authenticated']["Username"]), 1);
 }
+
 ?>
 
 <!doctype html>
