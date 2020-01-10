@@ -7,7 +7,7 @@ require_once('helpers/ProductHelper.php');
 require_once('constants/AuctionTab.php');
 
 if (isset($_POST['productId'])) {
-  ProductController::put($_POST["productId"], ['DurationStartDate' => date('Y-m-d'), "DurationStartTime" => date("h:i:s.u"), 'AuctionClosed' => 0]);
+  ProductController::execute("UPDATE Product SET [DurationStartDate] = '". date('Y-m-d'). "', [DurationStartTime] = '" . date('h:i:s.u') . "' WHERE ProductId = " . $_POST['productId'] . "");
 }
 
 switch (basename($_SERVER['REQUEST_URI'])) {

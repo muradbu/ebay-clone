@@ -61,7 +61,7 @@ class ProductController
             return ['productId' => 'Product bestaat niet.'];
 
         $product = new Product();
-        
+
         foreach (array_keys($productToUpdate) as $value) {
             if (property_exists('Product', $value)) {
                 $product->$value = str_replace("'", "''", $data[$value] ?? $productToUpdate[$value]);
@@ -290,5 +290,18 @@ class ProductController
             UNION ALL
             SELECT ProductId FROM Feedback WHERE ProductId = '$product'
         ) data");
+    }
+
+    /**
+     *
+     * Executes sql query
+     *
+     * @param string The sql query to execute
+     * @return Product
+     *
+     */
+    public function execute($sql)
+    {
+        return Product::execute($sql);
     }
 }
