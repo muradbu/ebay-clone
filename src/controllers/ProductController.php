@@ -41,6 +41,8 @@ class ProductController
 
         $newProduct->post();
 
+        Product::execute("insert into [ProductCategory] (ProductId, CategoryId) values ($newProduct->ProductId, ". $data['CategoryId'] ."])");
+
         FileController::post($newProduct, $_FILES['photos']);
         redirect("/veiling/$newProduct->ProductId");
     }
@@ -61,7 +63,7 @@ class ProductController
             return ['productId' => 'Product bestaat niet.'];
 
         $product = new Product();
-        
+
         foreach (array_keys($productToUpdate) as $value) {
             if (property_exists('Product', $value)) {
                 $product->$value = str_replace("'", "''", $data[$value] ?? $productToUpdate[$value]);
