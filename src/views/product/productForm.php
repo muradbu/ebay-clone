@@ -74,6 +74,7 @@ if (isset($_POST['submit'])) {
                                             <div class="invalid-feedback"><?php echo $errors['Photos'] ?? ''; ?></div>
                                         </div>
                                     </div>
+                                    <div class="gallery"></div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="card text-center mt-3">
