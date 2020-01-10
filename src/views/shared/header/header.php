@@ -9,7 +9,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-      <?php if ($_SESSION["authenticated"]['Seller']) { ?>
+      <?php if (isset($_SESSION["authenticated"]) && $_SESSION["authenticated"]['Seller'] == 1) { ?>
         <li class="nav-item position-static">
         <li class='nav-item'><a class='nav-link text-white' href='/toevoegenveiling'>Veiling aanbieden</a></li>
         </li>
