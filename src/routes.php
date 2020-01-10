@@ -42,7 +42,7 @@ switch ($request_uri) {
         require isAuthenticated('views/contact.php');
         break;
     case '/toevoegenveiling':
-        require 'views/product/productForm.php';
+        require isAuthenticated('views/product/productForm.php', 1);
         break;
     case '/rubrieken/:id':
         require 'views/category/products.php';

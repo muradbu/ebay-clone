@@ -35,7 +35,7 @@ class ProductController
         $newProduct->CityName = $_SESSION['authenticated']['CityName'];
         $newProduct->Country = $_SESSION['authenticated']['Country'];
         $newProduct->Seller = $_SESSION['authenticated']['Username'];
-        $newProduct->Thumbnail = 'HELP';
+        $newProduct->Thumbnail = 'empty';
         $newProduct->ProductId = intval($product['ProductId']) + 1;
         $newProduct->Price = $data['StartingPrice'];
 
