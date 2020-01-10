@@ -4,21 +4,21 @@ require_once("helpers/ProductHelper.php");
 require_once('controllers/BiddingController.php');
 require_once("controllers/FeedbackController.php");
 
-$biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['ProductId'] . " ORDER BY BidAmount DESC");
-if(count($biddings) > 0) {
-  $minimalAmount = BiddingHelper::defineMinimalAmount($biddings[0]["BidAmount"]);
-} else {
-  $minimalAmount = BiddingHelper::defineMinimalAmount($product["StartingPrice"]);
-}
-
 if(isset($_POST['Feedback'])) {
-  redirect("/gebruiker/veilingen/".$_POST['productId']."/feedback");
+    redirect("/gebruiker/veilingen/".$_POST['productId']."/feedback");
 }
 if (isset($_POST['quickBid'])) {
-  BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
+    BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
 }
 if (isset($_POST['ProductId'])) {
-  BiddingController::post($_POST);
+    BiddingController::post($_POST);
+}
+
+$biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['ProductId'] . " ORDER BY BidAmount DESC");
+if($product["Price"] > 0) {
+  $minimalAmount = round(BiddingHelper::defineMinimalAmount($product["Price"]),2);
+} else {
+  $minimalAmount = round(BiddingHelper::defineMinimalAmount($product["StartingPrice"]),2);
 }
 
 
@@ -43,7 +43,7 @@ if (isset($_POST['ProductId'])) {
     <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefelicteerd!</h3>
     ");
     if ($_SESSION['authenticated']['Username'] == $product['Buyer'] && empty(FeedbackController::get($product["ProductId"], "ProductId")))
-    {      
+    {
       echo ("<form methode='POST' action='/gebruiker/veilingen/".$product['ProductId']."/feedback'>     
        <button type='submit' name='Feedback' class='w-100 btn btn-primary text-white cut-text'>
           Verstuur verkoper feedback 
@@ -100,7 +100,7 @@ if (isset($_POST['ProductId'])) {
       <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
       <div class="row py-3">
         <div class="col-lg-8">
-          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" min="<?php echo $product['Price']; ?>" step="0.5" value="<?php echo $product['Price']; ?>" />
+          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" min="<?php echo floatval($product['Price']) + $minimalAmount ?>" value="<?php echo round(floatval($product['Price']),2) + $minimalAmount ?>" />
         </div>
         <div class="col-lg-4">
           <?php
@@ -140,7 +140,7 @@ if (isset($_POST['ProductId'])) {
   ?>
     <div>
       <h2>Deze veiling is gesloten.</h2>
-      <h3>Er zijn geen winnaars</h3>      
+      <h3>Er zijn geen winnaars</h3>
     </div>
   <?php } ?>
   </div>
