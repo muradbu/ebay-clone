@@ -27,11 +27,22 @@ class ProductController
      */
     public static function post($data)
     {
-        var_dump($data);
-        die();
         require_once('controllers/FileController.php');
 
-        // FileController::post(1, $_FILES['photos']);
+        $product = Product::execute("SELECT TOP 1 * FROM Product ORDER BY ProductId DESC")[0];
+
+        $newProduct = new Product($data);
+        $newProduct->CityName = $_SESSION['authenticated']['CityName'];
+        $newProduct->Country = $_SESSION['authenticated']['Country'];
+        $newProduct->Seller = $_SESSION['authenticated']['Username'];
+        $newProduct->Thumbnail = 'HELP';
+        $newProduct->ProductId = intval($product['ProductId']) + 1;
+        $newProduct->Price = $data['StartingPrice'];
+
+        $newProduct->post();
+
+        FileController::post($newProduct, $_FILES['photos']);
+        redirect("/veiling/$newProduct->ProductId");
     }
 
     /**

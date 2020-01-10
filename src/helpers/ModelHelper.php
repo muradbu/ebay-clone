@@ -58,9 +58,18 @@ abstract class ModelHelper
     public function post()
     {
         $table = get_called_class();
+        $fields = array_keys(get_object_vars($this));
+        if (property_exists($table, 'fillable')) {
+            $fields = $this->fillable;
+        }
 
-        $columns = implode(',', array_keys(get_object_vars($this)));
-        $values  = implode("','", get_object_vars($this));
+        $columns = implode(',', $fields);
+        $data = get_object_vars($this);
+
+        foreach ($fields as $value) {
+            $values[] = $data[$value];
+        }
+        $values  = implode("','", $values);
 
         $sql = "insert into [$table] ($columns) values ('$values')";
         $sql  = str_replace("''", 'null', $sql);
