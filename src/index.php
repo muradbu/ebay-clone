@@ -56,7 +56,7 @@ if (isset($_SESSION['authenticated']["Username"])) {
                             if (ProductController::getFeedbackProduct($product["ProductId"])[0]["returnCode"] != 2) {
                 ?>
                                 <div class='alert alert-primary' role='alert'>
-                                    Je hebt de veiling voor het product: <a href="/veiling/<?php echo $product["ProductId"]; ?>"><?php echo $product["Title"]; ?></a> gewonnnen!
+                                    Je hebt de veiling voor het product: <a href="/veiling/<?php echo $product["ProductId"]; ?>"><?php echo $product["Title"]; ?></a> gewonnnen! Vergeet niet om de verkoper feedback te geven!
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -85,6 +85,7 @@ if (isset($_SESSION['authenticated']["Username"])) {
     <script src="<?php echo Config::ROOT_FOLDER . "/js/updateCards.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/moneyFormatter.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/sellerRegister.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/addStars.js" ?>" type="text/javascript"></script>
 
     <!-- AJAX -->
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getPopularWithoutIds.js" ?>" type="text/javascript"></script>

@@ -15,7 +15,7 @@ class ProductController
      */
     public static function get($id)
     {
-        Product::get($id);
+        return Product::get($id);
     }
 
     /**

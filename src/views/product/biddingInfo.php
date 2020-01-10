@@ -2,6 +2,7 @@
 require_once("helpers/BiddingHelper.php");
 require_once("helpers/ProductHelper.php");
 require_once('controllers/BiddingController.php');
+require_once("controllers/FeedbackController.php");
 
 $biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['ProductId'] . " ORDER BY BidAmount DESC");
 if(count($biddings) > 0) {
@@ -10,12 +11,16 @@ if(count($biddings) > 0) {
   $minimalAmount = BiddingHelper::defineMinimalAmount($product["StartingPrice"]);
 }
 
+if(isset($_POST['Feedback'])) {
+  redirect("/gebruiker/veilingen/".$_POST['productId']."/feedback");
+}
 if (isset($_POST['quickBid'])) {
   BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
 }
 if (isset($_POST['ProductId'])) {
   BiddingController::post($_POST);
 }
+
 
 ?>
 <div class="h-100 card bg-light-grey">
@@ -35,7 +40,16 @@ if (isset($_POST['ProductId'])) {
       <?php
       if ($product["AuctionClosed"] && $product['Buyer']) {
         echo ("<h1 style='position: relative; top: 50%; transform: translateY(-50%);'>De veiling is gesloten!</h1>
-    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefelicteerd!</h3>");
+    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefelicteerd!</h3>
+    ");
+    if ($_SESSION['authenticated']['Username'] == $product['Buyer'] && empty(FeedbackController::get($product["ProductId"], "ProductId")))
+    {      
+      echo ("<form methode='POST' action='/gebruiker/veilingen/".$product['ProductId']."/feedback'>     
+       <button type='submit' name='Feedback' class='w-100 btn btn-primary text-white cut-text'>
+          Verstuur verkoper feedback 
+       </button>
+     </form>");
+    }
       } elseif (!$product["AuctionClosed"]) {
       ?>
         <table width="100%" id="product-bid-table" class="table no-border">
@@ -126,7 +140,7 @@ if (isset($_POST['ProductId'])) {
   ?>
     <div>
       <h2>Deze veiling is gesloten.</h2>
-      <h3>Er zijn geen winnaars</h3>
+      <h3>Er zijn geen winnaars</h3>      
     </div>
   <?php } ?>
   </div>

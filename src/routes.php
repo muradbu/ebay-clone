@@ -47,6 +47,9 @@ switch ($request_uri) {
     case '/gebruiker/veilingen/:id':
         require isAuthenticated('views/account/auctions.php');
         break;
+    case '/gebruiker/veilingen/:id/feedback':
+        require isAuthenticated('views/seller/SellerFeedback.php');
+        break;
     case '/registrerenverkoper':
         require_once("controllers/SellerController.php");
         if (SellerController::get($_SESSION['authenticated']['Username'], "Username")["CheckOptionName"] == "0") {

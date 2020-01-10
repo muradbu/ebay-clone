@@ -17,7 +17,8 @@ abstract class ModelHelper
      */
     public static function get($value, $column = "", $top = '9223372036854775807', $extend = "")
     {
-        $table = get_called_class();
+        $table = get_called_class();        
+                
 
         if ($column == "")
             $column = static::getPrimaryKey();

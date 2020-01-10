@@ -20,6 +20,7 @@ class Product extends ModelHelper
     public $Seller;
     public $Buyer;
     public $Price;
+    public $AuctionClosed;
 
     protected static $primaryKey = 'ProductId';
 
