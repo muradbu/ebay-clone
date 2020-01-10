@@ -6,8 +6,9 @@ require_once 'controllers/ProductController.php';
 $rootCategories = CategoryController::getMultipleById(-1, "SubCategory");
 $errors = [];
 
-if (isset($_POST['submit']))
+if (isset($_POST['submit'])) {
     ProductController::post($_POST);
+}
 
 ?>
 

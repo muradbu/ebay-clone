@@ -19,6 +19,7 @@ class User extends ModelHelper
     public $SafetyAnswer;
     public $Seller;
 
+
     protected static $primaryKey = 'Username';
 
     public function __construct($data = [])

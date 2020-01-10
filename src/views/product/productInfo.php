@@ -36,9 +36,10 @@ require("helpers/SliderHelper.php");
                     <p>
                         <?php for($i = 0 ; $i < 5 ; $i++ ){ if($i < $averageFeedback){?>
                             <span class="material-icons star-filled-color">star</span>
-                        <?php }else{ ?>
-                            <span class="material-icons">star_border</span>
+                        <?php }else{ ?>                            
+                            <span class="material-icons">star_border</span>                            
                         <?php }};?>
+                         <span style="text-align: right; font-size: 25px; padding-bottom: 155px;"> (<?php echo $feedback["allFeedbackCount"]; ?>) </span>
                     </p>
                 </div>
                 <div class="detail-card-text">

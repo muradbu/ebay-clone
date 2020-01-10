@@ -29,7 +29,9 @@ $auctions = BiddingController::getLosingFromPerson($_SESSION["authenticated"]["U
                     "productId" => $auction["ProductId"],
                     "track" => ($auction["BidAmount"] !== null),
                     "biddedPrice" => $auction["BidAmount"],
-                    "winning" => ($auction["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
+                    "winning" => ($auction["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false)),
+                    "buyer" => ($auction["Buyer"]),
+                    "auctionClosed" => ($auction["AuctionClosed"])
                 ], FileController::get($auction["ProductId"], "ProductId", 1));
             } ?>
             <div style="margin:10px"><a href="/gebruiker/biedingen/2">Klik hier voor resterende biedingen (<?php echo count($auctions) - count(array_slice($auctions, 0, 3)); ?>).</a></div>

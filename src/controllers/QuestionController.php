@@ -14,7 +14,7 @@ class QuestionController {
      *
      */
     public static function get($id){
-
+        return Question::get($id);
     }
 
     /**

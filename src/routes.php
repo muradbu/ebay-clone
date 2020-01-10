@@ -17,6 +17,9 @@ switch ($request_uri) {
         require_once 'controllers/UserController.php';
         UserController::logout();
         break;
+    case '/wachtwoordherstellen':
+        require_once 'views/authentication/passwordRecovery.php';
+        break;
     case '/rubrieken':
         require 'views/category/overview.php';
         break;
@@ -46,6 +49,9 @@ switch ($request_uri) {
         break;
     case '/gebruiker/veilingen/:id':
         require isAuthenticated('views/account/auctions.php');
+        break;
+    case '/gebruiker/veilingen/:id/feedback':
+        require isAuthenticated('views/seller/SellerFeedback.php');
         break;
     case '/registrerenverkoper':
         require_once("controllers/SellerController.php");

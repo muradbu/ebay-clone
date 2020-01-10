@@ -20,8 +20,11 @@ class Product extends ModelHelper
     public $Seller;
     public $Buyer;
     public $Price;
+    public $Thumbnail;
+    public $AuctionClosed;
 
     protected static $primaryKey = 'ProductId';
+    protected $fillable = ['Price', 'ProductId', 'Title', 'Description', 'StartingPrice', 'PaymentMethod', 'PaymentInstruction', 'CityName', 'Country', 'Duration', 'ShippingCosts', 'ShippingInstructions', 'Seller', 'Thumbnail'];
 
     /**
      *
@@ -38,7 +41,7 @@ class Product extends ModelHelper
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
-            if (property_exists('Product', $value))
+            if (property_exists('Product', $key))
                 $this->$key = $value;
         }
     }

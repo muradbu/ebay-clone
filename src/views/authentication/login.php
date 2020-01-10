@@ -32,7 +32,10 @@ if (isset($_POST['submit'])) {
 
                     <button type="submit" name="submit" class="btn btn-primary text-white">Verstuur</button>
                     <div class="mt-3">
-                        <a href="emailregistreren">Nog geen account? registreer hier!</a>
+                        <a href="emailregistreren">Nog geen account? Registreer hier!</a>
+                    </div>
+                    <div class="mt-3">
+                        <a href="wachtwoordherstellen">Wachtwoord vergeten? Klik hier.</a>
                     </div>
                 </form>
             </div>

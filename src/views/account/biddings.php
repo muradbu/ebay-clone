@@ -2,6 +2,8 @@
 require_once('controllers/UserController.php');
 require_once('controllers/BiddingController.php');
 require_once('controllers/FileController.php');
+require_once('controllers/ProductController.php');
+require_once('controllers/FeedbackController.php');
 require_once("views/shared/objectCards/horizontal-sm.php");
 require_once('helpers/ProductHelper.php');
 
@@ -26,7 +28,13 @@ switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
 }
 
 if (isset($_POST['submit'])) {
-    BiddingController::quickBid($_POST['productId'], $_POST['submit']);
+    if(ProductController::get($_POST['productId'])["AuctionClosed"] == 1)
+    {
+        redirect("/gebruiker/veilingen/".$_POST['productId']."/feedback");
+    }
+    else{        
+        BiddingController::quickBid($_POST['productId'], $_POST['submit']);
+    }
 }
 
 ?>
@@ -54,7 +62,9 @@ if (isset($_POST['submit'])) {
                     "productId" => $product["ProductId"],
                     "track" => ($product["BidAmount"] !== null),
                     "biddedPrice" => $product["BidAmount"],
-                    "winning" => ($product["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false))
+                    "winning" => ($product["Buyer"] === ($_SESSION['authenticated']['Username'] ?? false)),
+                    "buyer" => ($product["Buyer"]),
+                    "auctionClosed" => ($product["AuctionClosed"])
                 ],
                 FileController::get($product["ProductId"], "ProductId", 1)
             ); ?>
