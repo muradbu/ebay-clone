@@ -41,7 +41,7 @@ switch ($request_uri) {
     case '/contact/:id':
         require isAuthenticated('views/contact.php');
         break;
-    case '/toevoegenproduct':
+    case '/toevoegenveiling':
         require 'views/product/productForm.php';
         break;
     case '/rubrieken/:id':
