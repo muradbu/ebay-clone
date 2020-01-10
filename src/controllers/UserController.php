@@ -164,14 +164,15 @@ class UserController
 
 
         $message = "<h3>U heeft een bericht ontvangen</h3><p>$message</p>";
-        $from = $_SESSION['authenticated']['Username'];
+        $fromUsername = $_SESSION['authenticated']['Username'];
+        $fromEmail = $_SESSION['authenticated']['Email'];
 
         $user = UserController::get($seller);
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        mail($user['Email'], "Bericht ontvangen van $from", $message, $headers);
+        mail($user['Email'], "Bericht ontvangen van $fromUsername", $message, $headers, "-f $fromEmail");
         redirect("/");
     }
 
