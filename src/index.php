@@ -29,6 +29,7 @@ $products = ProductController::getFromBuyerByBool(str_replace(' ', '', $_SESSION
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="<?php echo Config::ROOT_FOLDER . "/js/jquery.min.js" ?>" type="text/javascript"></script>
+    <script src="https://unpkg.com/popper.js" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/bootstrap.min.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/timer.js" ?>" type="text/javascript"></script>
 </head>
