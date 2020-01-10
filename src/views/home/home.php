@@ -45,6 +45,10 @@ if (isset($_POST['submit']))
 
     <div class="row mt-5">
         <div class="col-12">
-            <?php require_once("views/home/register.php") ?>
+            <?php
+                if (!isset($_SESSION['authenticated']["Username"])) {
+                    require_once("views/home/register.php");
+                }
+            ?>
         </div>
     </div>

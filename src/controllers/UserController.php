@@ -51,6 +51,7 @@ class UserController
             return $isValid;
 
         $user = new User($data);
+        $user->Password = md5($user->Password);
         $user->post();
 
         require_once('controllers/UserPhoneController.php');
@@ -184,7 +185,7 @@ class UserController
      */
     public static function login($username, $password)
     {
-        // $password = encypt($password);
+        $password = md5($password);
         $user = User::execute("SELECT * FROM [User] WHERE Username = '$username' AND Password = '$password'");
 
         if (!empty($user)) {

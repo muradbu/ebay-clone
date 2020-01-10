@@ -40,7 +40,7 @@ class BiddingController
         $bidding = new Bidding();
 
         $bidding->ProductId = $data['ProductId'];
-        $bidding->BidAmount = $data['BidAmount'];
+        $bidding->BidAmount = round($data['BidAmount'], 2);
         $bidding->Username = $_SESSION['authenticated']['Username'];
         $bidding->BidDate = date("m-d-Y");
         $bidding->BidTime = date("h:i:sa");
