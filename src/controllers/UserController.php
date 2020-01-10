@@ -12,16 +12,31 @@ class UserController
 
     /**
      *
-     * Get a specific user by id
+     * Get a specific user by username
      *
-     * @param int $id The id for the user to be retrieved
+     * @param string $username The username for the user to be retrieved
      *
      * @return User Returns the relevant user from the database
      *
      */
-    public static function get($id)
+    public static function get($username)
     {
-        return User::get($id);
+        return User::get($username);
+    }
+
+
+    /**
+     *
+     * Get a specific user by email
+     *
+     * @param string $email The email for the user to be retrieved
+     *
+     * @return User Returns the relevant user from the database
+     *
+     */
+    public static function getByEmail($id)
+    {
+        return User::get($id,"email");
     }
 
     /**
@@ -71,6 +86,17 @@ class UserController
      */
     public static function put($id, $data)
     {
+        $user = new User(UserController::get($id));
+        $user->FirstName = $data["FirstName"] ?? $user->FirstName;
+        $user->LastName = $data["LastName"] ?? $user->LastName;
+        $user->Address1 = $data["Address1"] ?? $user->Address1;
+        $user->Address2 = $data["Address2"] ?? $user->Address2;
+        $user->ZipCode = $data["ZipCode"] ?? $user->ZipCode;
+        $user->CityName = $data["CityName"] ?? $user->CityName;
+        $user->Country = $data["Country"] ?? $user->Country;
+        $user->DateOfBirth = $data["DateOfBirth"] ?? $user->DateOfBirth;
+        $user->Password = md5($data["Password"]) ?? $user->Password;
+        $user->put();
     }
 
     /**

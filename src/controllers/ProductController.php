@@ -30,7 +30,7 @@ class ProductController
         require_once('controllers/FileController.php');
 
         $product = Product::execute("SELECT TOP 1 * FROM Product ORDER BY ProductId DESC")[0];
-
+        
         $newProduct = new Product($data);
         $newProduct->CityName = $_SESSION['authenticated']['CityName'];
         $newProduct->Country = $_SESSION['authenticated']['Country'];
@@ -42,6 +42,7 @@ class ProductController
         $newProduct->post();
 
         FileController::post($newProduct, $_FILES['photos']);
+        sleep(2);
         redirect("/veiling/$newProduct->ProductId");
     }
 
