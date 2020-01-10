@@ -12,7 +12,7 @@ if (isset($_POST['productId'])) {
 
 switch (basename($_SERVER['REQUEST_URI'])) {
   case AuctionTab::ALLE:
-    $title = 'Alle veilingen'; 
+    $title = 'Alle veilingen';
     $products = ProductController::getFromPerson($_SESSION['authenticated']['Username']);
     break;
   case AuctionTab::ACTIEVE:
