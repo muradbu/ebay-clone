@@ -40,7 +40,7 @@ if (isset($_POST['ProductId'])) {
       <?php
       if ($product["AuctionClosed"] && $product['Buyer']) {
         echo ("<h1 style='position: relative; top: 50%; transform: translateY(-50%);'>De veiling is gesloten!</h1>
-    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefelicteerd!</h3>
+    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefeliciteerd!</h3>
     ");
     if ($_SESSION['authenticated']['Username'] == $product['Buyer'] && empty(FeedbackController::get($product["ProductId"], "ProductId")))
     {      
