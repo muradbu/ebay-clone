@@ -122,6 +122,7 @@ class BiddingController
         ) as BidAmount from Product p
         where (select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username') is not null
         and Buyer != '$username'
+        AND AuctionClosed = 0
         order by DurationEndDate, DurationEndTime asc
         ");
     }
