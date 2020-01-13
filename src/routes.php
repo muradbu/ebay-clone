@@ -93,8 +93,9 @@ switch ($request_uri) {
     case '/api/getCurrentBiddings/:id':
         require_once 'controllers/BiddingController.php';
         echo json_encode(Bidding::query("3", "WHERE ProductId = " . filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT) . " ORDER BY BidAmount DESC"));
+        break;
     case '/pics/dt_:id_:id.png':
-        $name = substr(str_replace('pics','images',$_SERVER['REQUEST_URI']),1);
+        $name = substr(str_replace('pics', 'images', $_SERVER['REQUEST_URI']), 1);
         $fp = fopen($name, 'rb');
         // send the right headers
         header("Content-Type: image/png");

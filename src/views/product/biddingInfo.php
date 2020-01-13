@@ -103,7 +103,7 @@ if ($product["Price"] > 0) {
       <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
       <div class="row py-3">
         <div class="col-lg-8">
-          <input class="form-control mt-2" step="0.01" name="BidAmount" id="BidAmount" type="number" value="<?php $total = $product['Price'] + $minimalAmount; echo number_format((float)$total, 2, '.', ''); ?>" />
+          <input class="form-control mt-2" step="0.01" name="BidAmount" id="BidAmount" type="number" />
           <div class="invalid-feedback"><?php echo $errors['error'] ?? ''; ?></div>
         </div>
         <div class="col-lg-4">
