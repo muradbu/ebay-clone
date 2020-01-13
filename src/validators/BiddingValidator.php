@@ -14,13 +14,11 @@ class BiddingValidator
    */
   public static function validate($amount, $maxBidAmount)
   {
-    // $expl_amount = explode('.', $amount);
-    // if (!isset($expl_amount[1]) || strlen($expl_amount[1]) > 2 && strlen($expl_amount[0]) > 6) {
-    //     return ["amount" => "De opgegeven waarde is niet correct."];
-    // }
+    if (!$amount <= 1000000)
+      return ["error" => "Bedrag kan niet hoger zijn dan 1.000.000"];
 
     if ($amount <= $maxBidAmount)
-      return ["amount" => "De opgegeven waarde moet hoger zijn dan de hoogste bieding."];
+      return ["error" => "De opgegeven waarde moet hoger zijn dan de hoogste bieding."];
 
     return true;
   }
