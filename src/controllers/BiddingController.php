@@ -32,7 +32,7 @@ class BiddingController
 
         require_once("validators/BiddingValidator.php");
 
-        $isValid = BiddingValidator::validate($data['BidAmount'], ProductController::get($data['Prod12uctId'])['Price']);
+        $isValid = BiddingValidator::validate($data['BidAmount'], ProductController::get($data['ProductId'])['Price']);
 
         if (is_array($isValid))
             return $isValid;
