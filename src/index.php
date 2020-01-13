@@ -8,7 +8,7 @@ session_start([
     'cookie_lifetime' => 14400,
 ]);
 
-if (strpos($_SERVER['REQUEST_URI'], "api")) {
+if (strpos($_SERVER['REQUEST_URI'], "api") || strpos($_SERVER['REQUEST_URI'], "pics")) {
     require('routes.php');
     die();
 }
