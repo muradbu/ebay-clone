@@ -28,7 +28,6 @@ class ProductController
     public static function post($data)
     {
         require_once('controllers/FileController.php');
-
         $product = Product::execute("SELECT TOP 1 * FROM Product ORDER BY ProductId DESC")[0];
 
         $newProduct = new Product($data);
@@ -41,24 +40,7 @@ class ProductController
         $newProduct->Price = $data['StartingPrice'];
         $newProduct->post();
 
-        // Product::execute("insert into [Product] (ProductId,Title,Description,StartingPrice,PaymentMethod,PaymentInstruction,CityName,Country,Duration,ShippingCosts,ShippingInstructions,Seller,Thumbnail,Price)
-        // values (
-        // '" . intval($product['ProductId']) + 1 . "',
-        // '" . $data['Title'] . "',
-        // '" . $data['Description'] . "',
-        // '" . $data['StartingPrice'] . "',
-        // '" . $data['PaymentMethod'] . "',
-        // '" . $data['PaymentInstruction'] . "',
-        // '" . $_SESSION['authenticated']['CityName'] . "',
-        // '" . $_SESSION['authenticated']['Country'] . "',
-        // '" . $data['Duration'] . "',
-        // '" . $data['ShippingCosts'] . "',
-        // '" . $data['ShippingInstructions'] . "',
-        // '" . $_SESSION['authenticated']['Username'] . "',
-        // 'empty',
-        // '')");
-
-        Product::execute("INSERT INTO [ProductCategory] (ProductId, CategoryId) VALUES ($newProduct->ProductId, " . $data['CategoryId'] . "])");
+        Product::execute("INSERT INTO [ProductCategory] (ProductId, CategoryId) VALUES ($newProduct->ProductId, " . $data['CategoryId'] . ")");
 
         FileController::post($newProduct, $_FILES['photos']);
         sleep(2);
