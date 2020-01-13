@@ -20,6 +20,6 @@ class BiddingValidator
     if ($amount <= $maxBidAmount)
       return ["error" => "De opgegeven waarde moet hoger zijn dan de hoogste bieding."];
 
-    return true;
+    return [];
   }
 }
