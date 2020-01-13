@@ -14,14 +14,23 @@ switch (basename($_SERVER['REQUEST_URI'])) {
   case AuctionTab::ALLE:
     $title = 'Alle veilingen';
     $products = ProductController::getFromPerson($_SESSION['authenticated']['Username']);
+    $buttons = '<a href="/gebruiker/veilingen/0" class="btn btn-primary text-white active">Alle veilingen</a>
+    <a href="/gebruiker/veilingen/1" class="btn btn-primary text-white">Actieve veilingen</a>
+    <a href="/gebruiker/veilingen/2" class="btn btn-primary text-white">Verlopen veilingen</a>';
     break;
   case AuctionTab::ACTIEVE:
     $title = 'Actieve veilingen';
     $products = ProductController::getFromPersonByBool($_SESSION['authenticated']['Username'], 0);
+    $buttons = '<a href="/gebruiker/veilingen/0" class="btn btn-primary text-white">Alle veilingen</a>
+    <a href="/gebruiker/veilingen/1" class="btn btn-primary text-white active">Actieve veilingen</a>
+    <a href="/gebruiker/veilingen/2" class="btn btn-primary text-white">Verlopen veilingen</a>';
     break;
   case AuctionTab::VERLOPEN:
     $title = 'Verlopen veilingen';
     $products = ProductController::getFromPersonByBool($_SESSION['authenticated']['Username'], 1);
+    $buttons = '<a href="/gebruiker/veilingen/0" class="btn btn-primary text-white">Alle veilingen</a>
+    <a href="/gebruiker/veilingen/1" class="btn btn-primary text-white">Actieve veilingen</a>
+    <a href="/gebruiker/veilingen/2" class="btn btn-primary text-white active">Verlopen veilingen</a>';
     break;
 }
 
@@ -32,9 +41,7 @@ switch (basename($_SERVER['REQUEST_URI'])) {
 <div class="row" style="padding-bottom: 30px;">
   <div class="col-md-6 col-sm-12">
     <div class="btn-group" role="group">
-      <a href="/gebruiker/veilingen/0" class="btn btn-primary text-white">Alle veilingen</a>
-      <a href="/gebruiker/veilingen/1" class="btn btn-primary text-white">Actieve veilingen</a>
-      <a href="/gebruiker/veilingen/2" class="btn btn-primary text-white">Verlopen veilingen</a>
+      <?php echo $buttons; ?>
     </div>
   </div>
 </div>

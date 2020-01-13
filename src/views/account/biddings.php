@@ -12,18 +12,30 @@ switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
     case 0:
         $title = 'Alle biedingen';
         $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
+        $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Actieve biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verlopen biedingen</a>';
         break;
     case 1:
         $title = 'Winnende biedingen';
         $products = BiddingController::getWinningFromPerson($_SESSION['authenticated']['Username']);
+        $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white">Alle biedingen</a>
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white active">Actieve biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verlopen biedingen</a>';
         break;
     case 2:
         $title = 'Verliezende biedingen';
         $products = BiddingController::getLosingFromPerson($_SESSION['authenticated']['Username']);
+        $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white">Alle biedingen</a>
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Actieve biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white active">Verlopen biedingen</a>';
         break;
     default:
         $title = 'Mijn biedingen';
         $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
+        $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Actieve biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verlopen biedingen</a>';
         break;
 }
 
@@ -44,9 +56,7 @@ if (isset($_POST['submit'])) {
 <div class="row" style="padding-bottom: 30px;">
     <div class="col-md-6 col-sm-12">
         <div class="btn-group" role="group">
-            <a href="/gebruiker/biedingen/0" class="btn btn-primary text-white">Alle biedingen</a>
-            <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
-            <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>
+            <?php echo $buttons; ?>
         </div>
     </div>
 </div>
