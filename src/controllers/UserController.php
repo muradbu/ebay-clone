@@ -83,6 +83,8 @@ class UserController
                 $user->$key = $value ?? $user->$key;
 
         $user->put();
+
+        $_SESSION['authenticated'] = $user;
     }
 
     /**

@@ -32,10 +32,11 @@ class BiddingController
 
         require_once("validators/BiddingValidator.php");
 
-        $isValid = BiddingValidator::validate($data['BidAmount'], ProductController::get($data['Prod12uctId'])['Price']);
+        $isValid = BiddingValidator::validate($data['BidAmount'], ProductController::get($data['ProductId'])['Price']);
 
         if (is_array($isValid))
             return $isValid;
+
 
         $bidding = new Bidding();
 
@@ -45,8 +46,8 @@ class BiddingController
         $bidding->BidDate = date("m-d-Y");
         $bidding->BidTime = date("h:i:sa");
 
-        require_once('models/Product.php');
-        Product::execute("update [Product] set Price = $bidding->BidAmount, Buyer = '$bidding->Username' where ProductId = $bidding->ProductId");
+        require_once('controllers/ProductController.php');
+        ProductController::put($bidding->ProductId, ["Price" => $bidding->BidAmount, "Buyer" => $bidding->Username]);
 
         $bidding->post();
     }

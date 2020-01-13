@@ -14,7 +14,7 @@ class BiddingValidator
    */
   public static function validate($amount, $maxBidAmount)
   {
-    if (!$amount <= 1000000)
+    if ($amount > 1000000)
       return ["error" => "Bedrag kan niet hoger zijn dan 1.000.000"];
 
     if ($amount <= $maxBidAmount)
