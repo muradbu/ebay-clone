@@ -7,7 +7,7 @@ class FileController
      * Get a specific files by from product
      *
      * @param int $id Of the product
-     * 
+     *
      * @return File Returns the relevant category from the database
      *
      */
@@ -41,7 +41,7 @@ class FileController
         foreach ($files['tmp_name'] as $key => $tmp_name) {
             $target_file = 'dt_' . ($key + 1) . '_' . $product->ProductId . '.png';
 
-            move_uploaded_file($tmp_name, 'pics/' . $target_file);
+            move_uploaded_file($tmp_name, 'images/' . $target_file);
 
             $file = new File();
             $file->FileName = $target_file;

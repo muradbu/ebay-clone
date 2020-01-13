@@ -79,7 +79,7 @@ class UserController
 
         $user->put();
 
-        $_SESSION['authenticated'] = $user;
+        $_SESSION['authenticated'] = UserController::get($user->Username)[0];
     }
 
     /**
