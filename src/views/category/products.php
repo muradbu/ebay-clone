@@ -2,6 +2,7 @@
     require_once('models/Category.php');
     require_once('controllers/CategoryController.php');
     require_once('controllers/FileController.php');
+    require_once('controllers/BiddingController.php');
     require_once('helpers/ProductHelper.php');
     require_once('helpers/BiddingHelper.php');
     require_once('views/shared/objectCards/sm.php');
