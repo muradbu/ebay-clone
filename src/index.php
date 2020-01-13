@@ -1,12 +1,12 @@
 <?php
 
-require('config.php');
-require('helpers/GeneralHelpers.php');
-require_once('controllers/ProductController.php');
-
 session_start([
     'cookie_lifetime' => 14400,
 ]);
+
+require('config.php');
+require('helpers/GeneralHelpers.php');
+require_once('controllers/ProductController.php');
 
 if (strpos($_SERVER['REQUEST_URI'], "api")) {
     require('routes.php');

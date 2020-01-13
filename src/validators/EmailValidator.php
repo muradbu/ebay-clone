@@ -21,7 +21,7 @@ class EmailValidator
             $errors["email"] = "Het opgegeven email is incorrect.";
         }
 
-        if (count(User::execute("SELECT * FROM [User] where Email = '$email'")) > 0) {
+        if (count(UserController::get($email, "email")) > 0) {
             $errors["email"] = "Het opgegeven email bestaat al.";
         }
 
