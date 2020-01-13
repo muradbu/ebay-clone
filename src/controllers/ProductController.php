@@ -30,18 +30,18 @@ class ProductController
         require_once('controllers/FileController.php');
 
         $product = Product::execute("SELECT TOP 1 * FROM Product ORDER BY ProductId DESC")[0];
-        
+
         $newProduct = new Product($data);
+
         $newProduct->CityName = $_SESSION['authenticated']['CityName'];
         $newProduct->Country = $_SESSION['authenticated']['Country'];
         $newProduct->Seller = $_SESSION['authenticated']['Username'];
         $newProduct->Thumbnail = 'empty';
         $newProduct->ProductId = intval($product['ProductId']) + 1;
-        $newProduct->Price = $data['StartingPrice'];
 
         $newProduct->post();
 
-        Product::execute("insert into [ProductCategory] (ProductId, CategoryId) values ($newProduct->ProductId, ". $data['CategoryId'] ."])");
+        Product::execute("INSERT INTO [ProductCategory] (ProductId, CategoryId) VALUES ($newProduct->ProductId, " . $data['CategoryId'] . "])");
 
         FileController::post($newProduct, $_FILES['photos']);
         sleep(2);
