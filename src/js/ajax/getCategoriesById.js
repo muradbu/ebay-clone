@@ -13,6 +13,7 @@ function getCategoryById(dom) {
             this.remove();
           }
         });
+
         $("#CategoryId").val(dom.id);
         var element = document.getElementById("dropdownparent");
         element.innerHTML += `
