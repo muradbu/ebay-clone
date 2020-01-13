@@ -39,8 +39,3 @@ $(function () {
         imagesPreview(this, 'div.gallery');
     });
 });
-
-function photoPop(index) {
-    console.log(index);
-    $('#'+index).remove();
-}
