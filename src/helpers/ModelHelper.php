@@ -66,6 +66,7 @@ abstract class ModelHelper
         foreach ($fields as $value) {
             $values[] = $data[$value];
         }
+        
         $values  = implode("','", $values);
 
         $sql = "insert into [$table] ($columns) values ('$values')";
