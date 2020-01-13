@@ -11,6 +11,8 @@ $(function () {
 
         if (input.files) {
             var filesAmount = input.files.length;
+            $(".gallery").children().remove();
+
 
             for (i = 0; i < filesAmount; i++) {
                 var reader = new FileReader();

@@ -62,11 +62,12 @@ if (isset($_POST['submit'])) {
 </div>
 
 <div class="row">
-    <?php foreach ($products as $key => $product) { ?>
-        <div class="col-lg-4 mt-2">
+    <?php foreach ($products as $key => $product) { ?>        
             <?php if ($product["Buyer"] != $_SESSION["authenticated"]["Username"] && $product["AuctionClosed"] == 1) {}
             else if ($product["Buyer"] == $_SESSION["authenticated"]["Username"] && $product["AuctionClosed"] == 1 && !empty(FeedbackController::get($product['ProductId'], "ProductId")["ProductId"])) {}
-             else{ echo HorizontalSm::generate(
+             else{
+                 echo '<div class="col-lg-4 mt-2">';
+                echo HorizontalSm::generate(
                 [
                     "title" => $product["Title"],
                     "price" => $product['Price'],
@@ -79,8 +80,8 @@ if (isset($_POST['submit'])) {
                     "auctionClosed" => ($product["AuctionClosed"])
                 ],
                 FileController::get($product["ProductId"], "ProductId", 1)
-            ); } ?>
-        </div>
+            ); echo "</div>"; } ?>
+        
     <?php } ?>
 </div>
 
