@@ -13,29 +13,29 @@ switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
         $title = 'Alle biedingen';
         $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
-        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Actieve biedingen</a>
-        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verlopen biedingen</a>';
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';
         break;
     case 1:
         $title = 'Winnende biedingen';
         $products = BiddingController::getWinningFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white">Alle biedingen</a>
-        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white active">Actieve biedingen</a>
-        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verlopen biedingen</a>';
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white active">Winnende biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';
         break;
     case 2:
         $title = 'Verliezende biedingen';
         $products = BiddingController::getLosingFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white">Alle biedingen</a>
-        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Actieve biedingen</a>
-        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white active">Verlopen biedingen</a>';
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white active">Verliezende biedingen</a>';
         break;
     default:
         $title = 'Mijn biedingen';
         $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
-        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Actieve biedingen</a>
-        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verlopen biedingen</a>';
+        <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
+        <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';
         break;
 }
 
