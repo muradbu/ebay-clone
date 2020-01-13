@@ -5,7 +5,7 @@
         </div>
         <div class="card-block px-2 py-3">
             <h4 class="card-title">Verhuizen?</h4>
-            <a href="" class="card-text text-white">Bekijk onze meubilair rubriek!</a>
+            <a href="/rubrieken/3192" class="card-text text-white">Bekijk onze meubilair rubriek!</a>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="card-block px-2 py-3">
             <h4 class="card-title">Op vakantie?</h4>
-            <a href="" class="card-text text-white">Bekijk onze vakantie veilingen!</a>
+            <a href="/rubrieken/160939" class="card-text text-white">Bekijk onze vakantie veilingen!</a>
         </div>
     </div>
 </div>
@@ -27,7 +27,7 @@
         </div>
         <div class="card-block px-2 py-3">
             <h4 class="card-title">Nieuwe kleding?</h4>
-            <a href="" class="card-text text-white">Bekijk onze kleding rubriek!</a>
+            <a href="/rubrieken/11450" class="card-text text-white">Bekijk onze kleding rubriek!</a>
         </div>
     </div>
 </div>
