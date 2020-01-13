@@ -5,7 +5,6 @@ if ($("#current-biddings").length) {
       $.ajax({
         url: "/api/getCurrentBiddings/" + id,
         success: response => {
-          console.log("response ", response);
           response &&
             JSON.parse(response).forEach((bidding, i) => {
               if (i === 0) {
