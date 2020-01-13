@@ -4,21 +4,25 @@ require_once("helpers/ProductHelper.php");
 require_once('controllers/BiddingController.php');
 require_once("controllers/FeedbackController.php");
 
-if(isset($_POST['Feedback'])) {
-    redirect("/gebruiker/veilingen/".$_POST['productId']."/feedback");
+$errors = [];
+
+if (isset($_POST['Feedback'])) {
+  redirect("/gebruiker/veilingen/" . $_POST['productId'] . "/feedback");
 }
+
 if (isset($_POST['quickBid'])) {
-    BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
+  $errors = BiddingController::quickBid($product['ProductId'], $_POST['quickBid']);
 }
 if (isset($_POST['ProductId'])) {
-    BiddingController::post($_POST);
+  $errors = BiddingController::post($_POST);
 }
 
 $biddings = Bidding::query("519519591519", "WHERE ProductId = " . $product['ProductId'] . " ORDER BY BidAmount DESC");
-if($product["Price"] > 0) {
-  $minimalAmount = round(BiddingHelper::defineMinimalAmount($product["Price"]),2);
+
+if ($product["Price"] > 0) {
+  $minimalAmount = round(BiddingHelper::defineMinimalAmount($product["Price"]), 2);
 } else {
-  $minimalAmount = round(BiddingHelper::defineMinimalAmount($product["StartingPrice"]),2);
+  $minimalAmount = round(BiddingHelper::defineMinimalAmount($product["StartingPrice"]), 2);
 }
 
 
@@ -40,16 +44,15 @@ if($product["Price"] > 0) {
       <?php
       if ($product["AuctionClosed"] && $product['Buyer']) {
         echo ("<h1 style='position: relative; top: 50%; transform: translateY(-50%);'>De veiling is gesloten!</h1>
-    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefelicteerd!</h3>
+    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefeliciteerd!</h3>
     ");
-    if ($_SESSION['authenticated']['Username'] == $product['Buyer'] && empty(FeedbackController::get($product["ProductId"], "ProductId")))
-    {
-      echo ("<form methode='POST' action='/gebruiker/veilingen/".$product['ProductId']."/feedback'>     
+        if ($_SESSION['authenticated']['Username'] == $product['Buyer'] && empty(FeedbackController::get($product["ProductId"], "ProductId"))) {
+          echo ("<form methode='POST' action='/gebruiker/veilingen/" . $product['ProductId'] . "/feedback'>     
        <button type='submit' name='Feedback' class='w-100 btn btn-primary text-white cut-text'>
           Verstuur verkoper feedback 
        </button>
      </form>");
-    }
+        }
       } elseif (!$product["AuctionClosed"]) {
       ?>
         <table width="100%" id="product-bid-table" class="table no-border">
@@ -100,7 +103,8 @@ if($product["Price"] > 0) {
       <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
       <div class="row py-3">
         <div class="col-lg-8">
-          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" min="<?php echo floatval($product['Price']) + $minimalAmount ?>" value="<?php echo round(floatval($product['Price']),2) + $minimalAmount ?>" />
+          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" value="<?php $total = $product['Price'] + $minimalAmount; echo number_format((float)$total, 2, '.', ''); ?>" />
+          <div class="invalid-feedback"><?php echo $errors['error'] ?? ''; ?></div>
         </div>
         <div class="col-lg-4">
           <?php

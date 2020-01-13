@@ -38,11 +38,14 @@ switch ($request_uri) {
     case '/veiling/:id':
         require 'views/product/auctionDetails.php';
         break;
+    case '/veilingen':
+        require isAuthenticated('views/account/auctions.php', 1);
+        break;
     case '/contact/:id':
         require isAuthenticated('views/contact.php');
         break;
-    case '/toevoegenproduct':
-        require 'views/product/productForm.php';
+    case '/toevoegenveiling':
+        require isAuthenticated('views/product/productForm.php', 1);
         break;
     case '/rubrieken/:id':
         require 'views/category/products.php';

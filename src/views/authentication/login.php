@@ -34,8 +34,8 @@ if (isset($_POST['submit'])) {
                     <div class="mt-3">
                         <a href="emailregistreren">Nog geen account? Registreer hier!</a>
                     </div>
-                    <div class="mt-3">
-                        <a href="wachtwoordherstellen">Wachtwoord vergeten? Klik hier.</a>
+                    <div>
+                        <a href="wachtwoordherstellen">Wachtwoord vergeten?</a>
                     </div>
                 </form>
             </div>

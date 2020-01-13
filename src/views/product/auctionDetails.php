@@ -28,8 +28,8 @@ $images = FileController::query("519519591519", "WHERE ProductId = " . $product[
     </div>
 </div>
 
-<div class="row w-100">
-    <div class="col-md-12 mt-2">
+<div class="row justify-content-center py-2">
+    <div class="col-md-12 mt-2 w-100">
         <?php require_once("productTabs.php"); ?>
     </div>
 </div>

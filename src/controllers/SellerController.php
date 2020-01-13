@@ -1,7 +1,9 @@
 <?php
 
-require_once('models/User.php');
 require_once('models/Seller.php');
+require_once('controllers/UserController.php');
+require_once('validators/SellerCreditcardValidator.php');
+require_once('validators/SellerBankValidator.php');
 
 class SellerController
 {
@@ -29,22 +31,31 @@ class SellerController
     public static function post($data)
     {
         $seller = new Seller();
-        $user = new User($_SESSION['authenticated']);
 
         $seller->Username = $_SESSION['authenticated']['Username'];
 
         if ($data['verification'] === 'creditcard') {
-            $seller->Creditcard = $data['creditcardnumber'];
-            // do creditcard check
+
+            $errors = SellerCreditcardValidator::validate($data['CreditcardNumber']);
+
+            if (count($errors) > 0)
+                return $errors;
+
+            $seller->Creditcard = $data['CreditcardNumber'];
             $seller->CheckOptionName = 1;
-            $user->Seller = true;
-            $_SESSION['authenticated']['Seller'] = true;
+            UserController::put($_SESSION['authenticated']['Username'], ['Seller' => true]);
         } else {
-            $seller->BankName = $data['bank'];
-            $seller->BankAccountNumber = $data['bankaccount'];
+
+            $errors = SellerBankValidator::validate($data);
+
+            if (count($errors) > 0)
+                return $errors;
+
+            $seller->BankName = $data['Bank'];
+            $seller->BankAccountNumber = $data['BankAccount'];
             $seller->CheckOptionName = 0;
-            $secretId = substr(hash('md5', $data['bankaccount']), 0, 5);
-            // TODO Maak er een post ding van
+            $secretId = substr(hash('md5', $data['BankAccount']), 0, 5);
+
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
@@ -68,8 +79,8 @@ class SellerController
 
             mail($_SESSION['authenticated']['Email'], "Verkoper code", $message, $headers);
         }
+
         $seller->post();
-        $user->put();
 
         redirect('/');
     }
@@ -89,11 +100,7 @@ class SellerController
             $seller->CheckOptionName = 1;
             $seller->put();
 
-            $user = new User($_SESSION['authenticated']);
-            $user->Seller = true;
-            $user->put();
-
-            $_SESSION['authenticated']['Seller'] = true;
+            UserController::put($_SESSION['authenticated']['Username'], ['Seller' => true]);
 
             redirect('/');
         }

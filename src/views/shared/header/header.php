@@ -9,6 +9,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
+      <?php if (isset($_SESSION["authenticated"]) && $_SESSION["authenticated"]['Seller'] == 1) { ?>
+        <li class="nav-item position-static">
+        <li class='nav-item'><a class='nav-link text-white' href='/toevoegenveiling'>Veiling aanbieden</a></li>
+        </li>
+      <?php } ?>
         <li class="nav-item position-static">
           <?php
           if (!isset($_SESSION["authenticated"])) {
@@ -21,7 +26,6 @@
             Mijn account
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/account">Mijn gegevens</a>
             <?php if ($_SESSION["authenticated"]['Seller']) { ?>
               <a class="dropdown-item" href="/veilingen">Mijn veilingen</a>
             <?php } ?>

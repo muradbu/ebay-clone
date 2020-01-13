@@ -19,24 +19,9 @@ class UserController
      * @return User Returns the relevant user from the database
      *
      */
-    public static function get($username)
+    public static function get($username, $column = "")
     {
-        return User::get($username);
-    }
-
-
-    /**
-     *
-     * Get a specific user by email
-     *
-     * @param string $email The email for the user to be retrieved
-     *
-     * @return User Returns the relevant user from the database
-     *
-     */
-    public static function getByEmail($id)
-    {
-        return User::get($id,"email");
+        return User::get($username, $column);
     }
 
     /**
@@ -62,7 +47,7 @@ class UserController
     {
         $isValid = NewUserValidator::validate($data);
 
-        if (is_array($isValid))
+        if (count($isValid) > 0)
             return $isValid;
 
         $user = new User($data);
@@ -87,16 +72,14 @@ class UserController
     public static function put($id, $data)
     {
         $user = new User(UserController::get($id));
-        $user->FirstName = $data["FirstName"] ?? $user->FirstName;
-        $user->LastName = $data["LastName"] ?? $user->LastName;
-        $user->Address1 = $data["Address1"] ?? $user->Address1;
-        $user->Address2 = $data["Address2"] ?? $user->Address2;
-        $user->ZipCode = $data["ZipCode"] ?? $user->ZipCode;
-        $user->CityName = $data["CityName"] ?? $user->CityName;
-        $user->Country = $data["Country"] ?? $user->Country;
-        $user->DateOfBirth = $data["DateOfBirth"] ?? $user->DateOfBirth;
-        $user->Password = md5($data["Password"]) ?? $user->Password;
+
+        foreach ($data as $key => $value)
+            if (property_exists('User', $key))
+                $user->$key = $value ?? $user->$key;
+
         $user->put();
+
+        $_SESSION['authenticated'] = UserController::get($user->Username)[0];
     }
 
     /**
@@ -108,6 +91,27 @@ class UserController
      */
     public static function delete($id)
     {
+    }
+
+    /**
+     *
+     * Reset a user password
+     *
+     * @param int $id Id of the user to delete
+     *
+     */
+    public static function resetPassword($username, $data)
+    {
+        require_once('validators/ResetUserPasswordValidator.php');
+
+        $errors = ResetUserPasswordValidator::validate($data);
+
+        if (count($errors) > 0)
+            return $errors;
+
+        UserController::put($username, ["Password" => md5($data['newpassword'])]);
+
+        redirect("/inloggen");
     }
 
     /**
@@ -185,19 +189,20 @@ class UserController
     {
         $isValid = ContactValidator::validate($message);
 
-        if (is_array($isValid))
+        if (count($isValid) > 0)
             return $isValid;
 
 
         $message = "<h3>U heeft een bericht ontvangen</h3><p>$message</p>";
-        $from = $_SESSION['authenticated']['Username'];
+        $fromUsername = $_SESSION['authenticated']['Username'];
+        $fromEmail = $_SESSION['authenticated']['Email'];
 
         $user = UserController::get($seller);
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        mail($user['Email'], "Bericht ontvangen van $from", $message, $headers);
+        mail($user['Email'], "Bericht ontvangen van $fromUsername", $message, $headers, "-f $fromEmail");
         redirect("/");
     }
 
@@ -230,7 +235,8 @@ class UserController
      * @param int $username The username of the user who wants his feedback
      * @return array with all feedback rating and all feedback count
      */
-    public static function getFeedbackCount($username){
+    public static function getFeedbackCount($username)
+    {
         return User::execute("SELECT SUM(feedback.feedbacktypename) AS 'allFeedbackRating',COUNT(feedback.productid) AS 'allFeedbackCount' FROM [product] LEFT JOIN [feedback]
         ON feedback.productid = product.productid WHERE product.seller = '$username';")[0];
     }
