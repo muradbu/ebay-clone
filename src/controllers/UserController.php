@@ -72,14 +72,13 @@ class UserController
     public static function put($id, $data)
     {
         $user = new User(UserController::get($id));
-
         foreach ($data as $key => $value)
             if (property_exists('User', $key))
                 $user->$key = $value ?? $user->$key;
 
         $user->put();
 
-        $_SESSION['authenticated'] = UserController::get($user->Username)[0];
+        $_SESSION['authenticated'] = UserController::get($user->Username);
     }
 
     /**
