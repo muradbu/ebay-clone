@@ -13,6 +13,7 @@ class ContactValidator
      */
     public static function validate($message)
     {
+        $errors = [];
         if (empty($message)) {
             $errors['message'] = "Formulier mag niet leeg zijn.";
         } else if (strlen($message) > 250) {

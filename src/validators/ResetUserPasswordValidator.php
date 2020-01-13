@@ -13,7 +13,8 @@ class ResetUserpasswordValidator
      */
     public static function validate($data)
     {
-        if (!preg_match("/^(?=.*\d).{7,150}$/", $data['newpassword'])) {
+        $errors = [];
+        if (!preg_match("/^.{7,150}$/", $data['newpassword'])) {
             $errors['newpassword'] = "Het opgegeven wachtwoord moet minimaal 7 characters bevatten.";
         }
 
