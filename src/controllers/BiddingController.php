@@ -45,12 +45,8 @@ class BiddingController
         $bidding->BidDate = date("m-d-Y");
         $bidding->BidTime = date("h:i:sa");
 
-        require_once('controllers/ProductController.php');
-
-        ProductController::put($data['ProductId'], [
-            "Price" => $data['BidAmount'],
-            "Buyer" => $_SESSION['authenticated']['Username']
-        ]);
+        require_once('models/Product.php');
+        Product::execute("update [Product] set Price = $bidding->BidAmount, Buyer = '$bidding->Username' where ProductId = $bidding->ProductId");
 
         $bidding->post();
     }

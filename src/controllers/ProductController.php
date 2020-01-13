@@ -41,6 +41,8 @@ class ProductController
 
         $newProduct->post();
 
+        Product::execute("insert into [ProductCategory] (ProductId, CategoryId) values ($newProduct->ProductId, ". $data['CategoryId'] ."])");
+
         FileController::post($newProduct, $_FILES['photos']);
         sleep(2);
         redirect("/veiling/$newProduct->ProductId");
