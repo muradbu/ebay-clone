@@ -115,7 +115,7 @@ if (isset($_POST['submit'])) {
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="ShippingCosts">Verzendkosten*</label>
-                                                            <input type="number" value="<?php echo $_POST['ShippingCosts'] ?? "" ?>" name="ShippingCosts" class="form-control <?php echo isset($errors['ShippingCosts']) ? 'is-invalid' : ''; ?>" required>
+                                                            <input type="number" value="<?php echo $_POST['ShippingCosts'] ?? "0" ?>" name="ShippingCosts" class="form-control <?php echo isset($errors['ShippingCosts']) ? 'is-invalid' : ''; ?>" required>
                                                             <div class="invalid-feedback"><?php echo $errors['ShippingCosts'] ?? ''; ?></div>
                                                         </div>
                                                         <div class="col-md-12" style="margin-top: 10px">

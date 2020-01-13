@@ -13,6 +13,7 @@ class SellerCreditcardValidator
      */
     public static function validate($creditcardNumber)
     {
+        $errors = [];
         if (!preg_match("/^\d{7,150}$/", $creditcardNumber))
             $errors['CreditcardNumber'] = "Het opgegeven nummer is onjuist.";
 

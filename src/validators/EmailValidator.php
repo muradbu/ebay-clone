@@ -1,5 +1,7 @@
 <?php
 
+require_once('controllers/UserController.php');
+
 class EmailValidator
 {
 
@@ -14,10 +16,12 @@ class EmailValidator
      */
     public static function validate($email)
     {
+        $errors = [];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors["email"] = "Het opgegeven email is incorrect.";
         }
-        if (count(User::execute("SELECT * FROM [User] where Email = '$email'")) > 0) {
+
+        if (count(UserController::get($email, "email")) > 0) {
             $errors["email"] = "Het opgegeven email bestaat al.";
         }
 
