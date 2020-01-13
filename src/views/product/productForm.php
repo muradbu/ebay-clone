@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-md-4">
                                     <label for="StartingPrice">Startprijs</label>
-                                    <input type="number" value="<?php echo $_POST['StartingPrice'] ?? "" ?>" name="StartingPrice" class="form-control <?php echo isset($errors['StartingPrice']) ? 'is-invalid' : ''; ?>">
+                                    <input type="number" step="0.01" value="<?php echo $_POST['StartingPrice'] ?? "" ?>" name="StartingPrice" class="form-control <?php echo isset($errors['StartingPrice']) ? 'is-invalid' : ''; ?>">
                                     <div class="invalid-feedback"><?php echo $errors['StartingPrice'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-md-4">
@@ -115,7 +115,7 @@ if (isset($_POST['submit'])) {
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <label for="ShippingCosts">Verzendkosten*</label>
-                                                            <input type="number" value="<?php echo $_POST['ShippingCosts'] ?? "0" ?>" name="ShippingCosts" class="form-control <?php echo isset($errors['ShippingCosts']) ? 'is-invalid' : ''; ?>" required>
+                                                            <input type="number" step="0.1" value="<?php echo $_POST['ShippingCosts'] ?? "0" ?>" name="ShippingCosts" class="form-control <?php echo isset($errors['ShippingCosts']) ? 'is-invalid' : ''; ?>" required>
                                                             <div class="invalid-feedback"><?php echo $errors['ShippingCosts'] ?? ''; ?></div>
                                                         </div>
                                                         <div class="col-md-12" style="margin-top: 10px">

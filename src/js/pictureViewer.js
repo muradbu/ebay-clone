@@ -11,7 +11,7 @@ $(function () {
             $(".gallery").children().remove();
             photosVal = [];
             count = 0;
-
+            
             for (i = 0; i < filesAmount; i++) {
                 var reader = new FileReader();
 
@@ -32,4 +32,8 @@ $(function () {
         }
 
     };
+
+    $('#photo').on('change', function () {
+        imagesPreview(this, 'div.gallery');
+    });
 });
