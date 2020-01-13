@@ -131,7 +131,7 @@ class UserController
     {
         $isValid = EmailValidator::validate($email);
 
-        if (count($isValid) > 0) {
+        if (is_array($isValid)) {
             return $isValid;
         }
 

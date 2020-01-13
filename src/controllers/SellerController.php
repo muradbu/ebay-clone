@@ -2,6 +2,8 @@
 
 require_once('models/Seller.php');
 require_once('controllers/UserController.php');
+require_once('validators/SellerCreditcardValidator.php');
+require_once('validators/SellerBankValidator.php');
 
 class SellerController
 {
@@ -33,14 +35,26 @@ class SellerController
         $seller->Username = $_SESSION['authenticated']['Username'];
 
         if ($data['verification'] === 'creditcard') {
-            $seller->Creditcard = $data['creditcardnumber'];
+
+            $errors = SellerCreditcardValidator::validate($data['CreditcardNumber']);
+
+            if (is_array($errors))
+                return $errors;
+
+            $seller->Creditcard = $data['CreditcardNumber'];
             $seller->CheckOptionName = 1;
             UserController::put($_SESSION['authenticated']['Username'], ['Seller' => true]);
         } else {
-            $seller->BankName = $data['bank'];
-            $seller->BankAccountNumber = $data['bankaccount'];
+
+            $errors = SellerBankValidator::validate($data);
+
+            if (is_array($errors))
+                return $errors;
+
+            $seller->BankName = $data['Bank'];
+            $seller->BankAccountNumber = $data['BankAccount'];
             $seller->CheckOptionName = 0;
-            $secretId = substr(hash('md5', $data['bankaccount']), 0, 5);
+            $secretId = substr(hash('md5', $data['BankAccount']), 0, 5);
 
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

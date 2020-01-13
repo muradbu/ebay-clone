@@ -13,17 +13,12 @@ class ContactValidator
      */
     public static function validate($message)
     {
-        $errors = [];
-
         if (empty($message)) {
             $errors['message'] = "Formulier mag niet leeg zijn.";
         } else if (strlen($message) > 250) {
             $errors['message'] = "Je bericht bevat meer dan 250 tekens.";
         }
 
-        if (count($errors) > 0)
-            return $errors;
-
-        return true;
+        return $errors;
     }
 }

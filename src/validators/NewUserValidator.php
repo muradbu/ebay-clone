@@ -13,9 +13,6 @@ class NewUserValidator
      */
     public static function validate($data)
     {
-
-        $errors = [];
-
         if (!preg_match("/^[\w\d]{5,25}$/", $data['Username'])) {
             $errors['Username'] = "De opgegeven gebruiksersnaam is onjuist.";
         }
@@ -57,9 +54,6 @@ class NewUserValidator
             $errors['SafetyAnswer'] = "Het opgegeven antwoord is onjuist.";
         }
 
-        if (count($errors) > 0)
-            return $errors;
-
-        return true;
+        return $errors;
     }
 }

@@ -14,7 +14,6 @@ class EmailValidator
      */
     public static function validate($email)
     {
-        $errors = [];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors["email"] = "Het opgegeven email is incorrect.";
         }
