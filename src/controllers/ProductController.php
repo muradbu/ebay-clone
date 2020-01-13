@@ -28,7 +28,6 @@ class ProductController
     public static function post($data)
     {
         require_once('controllers/FileController.php');
-
         $product = Product::execute("SELECT TOP 1 * FROM Product ORDER BY ProductId DESC")[0];
 
         $newProduct = new Product($data);
@@ -38,13 +37,14 @@ class ProductController
         $newProduct->Seller = $_SESSION['authenticated']['Username'];
         $newProduct->Thumbnail = 'empty';
         $newProduct->ProductId = intval($product['ProductId']) + 1;
-
+        $newProduct->Price = $data['StartingPrice'];
         $newProduct->post();
 
-        Product::execute("INSERT INTO [ProductCategory] (ProductId, CategoryId) VALUES ($newProduct->ProductId, " . $data['CategoryId'] . "])");
+        Product::execute("INSERT INTO [ProductCategory] (ProductId, CategoryId) VALUES ($newProduct->ProductId, " . $data['CategoryId'] . ")");
 
         FileController::post($newProduct, $_FILES['photos']);
         sleep(2);
+  
         redirect("/veiling/$newProduct->ProductId");
     }
 

@@ -38,8 +38,6 @@
 </div>
 <script>
     function resizeIframe(iframe) {
-        iframe.height = iframe.contentWindow.document.body.scrollHeight + 'px'
-        // iframe..contentWindow.location.reload(true)
-        console.log('iframe.height', iframe.height)
+        iframe.height = iframe.contentWindow.document.body.scrollHeight + 50 + 'px'
     }
 </script>
