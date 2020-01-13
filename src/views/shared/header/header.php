@@ -26,6 +26,7 @@
             Mijn account
           </a>
           <div class="dropdown-menu">
+            <p class="dropdown-item">Welkom <?php echo $_SESSION["authenticated"]["FirstName"]; ?></p>
             <?php if ($_SESSION["authenticated"]['Seller']) { ?>
               <a class="dropdown-item" href="/veilingen">Mijn veilingen</a>
             <?php } ?>
