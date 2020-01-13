@@ -13,18 +13,14 @@ class Product extends ModelHelper
     public $CityName;
     public $Country;
     public $Duration;
-    public $DurationStartDate;
-    public $DurationStartTime;
     public $ShippingCosts;
     public $ShippingInstructions;
     public $Seller;
     public $Buyer;
     public $Price;
     public $Thumbnail;
-    public $AuctionClosed;
 
     protected static $primaryKey = 'ProductId';
-    protected $fillable = ['Price', 'ProductId', 'Title', 'Description', 'StartingPrice', 'PaymentMethod', 'PaymentInstruction', 'CityName', 'Country', 'Duration', 'ShippingCosts', 'ShippingInstructions', 'Seller', 'Thumbnail'];
 
     /**
      *

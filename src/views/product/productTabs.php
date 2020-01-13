@@ -25,7 +25,7 @@
     <div class="card-body">
         <div class="tab-content" id="pills-tabContent">
             <div class="text-left tab-pane active fade show" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-                <iframe frameborder="0" border="0" cellspacing="0" style="height: 750px;" class="w-100 card" srcdoc="<?php echo htmlspecialchars($product['Description'], ENT_QUOTES); ?>"></iframe>
+                <iframe id="descriptionIframe" onload="resizeIframe(this)" frameborder="0" border="0" cellspacing="0" height="500px" class="w-100 card" srcdoc="<?php echo htmlspecialchars($product['Description'], ENT_QUOTES); ?>"></iframe>
             </div>
             <div class="text-left tab-pane fade" id="pills-sendmethod" role="tabpanel" aria-labelledby="pills-sendmethod-tab">
                 <?php echo $product["ShippingInstructions"]; ?>
@@ -36,3 +36,8 @@
         </div>
     </div>
 </div>
+<script>
+    function resizeIframe(iframe) {
+        iframe.height = iframe.contentWindow.document.body.scrollHeight + 50 + 'px'
+    }
+</script>

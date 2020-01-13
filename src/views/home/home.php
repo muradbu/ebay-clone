@@ -5,8 +5,8 @@ require_once('controllers/BiddingController.php');
 
 if (isset($_POST['submit']))
     BiddingController::quickBid($_POST['productId'], $_POST['submit']);
-
 ?>
+
 <div class="row text-center">
     <?php require_once("views/home/uniqueSellingPoints.php") ?>
 </div>
@@ -46,9 +46,9 @@ if (isset($_POST['submit']))
     <div class="row mt-5">
         <div class="col-12">
             <?php
-                if (!isset($_SESSION['authenticated']["Username"])) {
-                    require_once("views/home/register.php");
-                }
+            if (!isset($_SESSION['authenticated']["Username"])) {
+                require_once("views/home/register.php");
+            }
             ?>
         </div>
     </div>

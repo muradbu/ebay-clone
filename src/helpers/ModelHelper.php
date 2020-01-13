@@ -17,8 +17,8 @@ abstract class ModelHelper
      */
     public static function get($value, $column = "", $top = '9223372036854775807', $extend = "")
     {
-        $table = get_called_class();        
-                
+        $table = get_called_class();
+
 
         if ($column == "")
             $column = static::getPrimaryKey();
@@ -59,9 +59,6 @@ abstract class ModelHelper
     {
         $table = get_called_class();
         $fields = array_keys(get_object_vars($this));
-        if (property_exists($table, 'fillable')) {
-            $fields = $this->fillable;
-        }
 
         $columns = implode(',', $fields);
         $data = get_object_vars($this);
@@ -69,6 +66,7 @@ abstract class ModelHelper
         foreach ($fields as $value) {
             $values[] = $data[$value];
         }
+        
         $values  = implode("','", $values);
 
         $sql = "insert into [$table] ($columns) values ('$values')";

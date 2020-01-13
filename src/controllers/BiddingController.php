@@ -34,8 +34,9 @@ class BiddingController
 
         $isValid = BiddingValidator::validate($data['BidAmount'], ProductController::get($data['ProductId'])['Price']);
 
-        if (is_array($isValid))
+        if (count($isValid) > 0)
             return $isValid;
+
 
         $bidding = new Bidding();
 
@@ -45,8 +46,8 @@ class BiddingController
         $bidding->BidDate = date("m-d-Y");
         $bidding->BidTime = date("h:i:sa");
 
-        require_once('models/Product.php');
-        Product::execute("update [Product] set Price = $bidding->BidAmount, Buyer = '$bidding->Username' where ProductId = $bidding->ProductId");
+        require_once('controllers/ProductController.php');
+        ProductController::put($bidding->ProductId, ["Price" => $bidding->BidAmount, "Buyer" => $bidding->Username]);
 
         $bidding->post();
     }
@@ -74,7 +75,9 @@ class BiddingController
             "ProductId" => $product['ProductId'],
             "BidAmount" => $product['Price'] + $amount
         ];
+
         $errors = BiddingController::post($bidding);
+
         if (is_array($errors))
             return $errors;
 
@@ -118,6 +121,7 @@ class BiddingController
         ) as BidAmount from Product p
         where (select max(BidAmount) from Bidding where ProductId = p.ProductId and Username = '$username') is not null
         and Buyer != '$username'
+        AND AuctionClosed = 0
         order by DurationEndDate, DurationEndTime asc
         ");
     }

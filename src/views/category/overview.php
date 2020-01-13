@@ -22,7 +22,7 @@ $data = CategoryController::getCategoryAlphabetically();
                 <div class="col-md-12 text-left">
                     <h2 id="<?php echo $key; ?>" class="alphanumeric mt-4"><?php echo $key; ?></h2>
                     <?php foreach ($categories as $category) { ?>
-                        <h4 class="mt-4"><?php echo $category["CategoryName"]; ?></h4>
+                        <a href="rubrieken/<?php echo $category["CategoryId"] ?>" class="text-dark"><h4 class="mt-4"><?php echo $category["CategoryName"]; ?></h4></a>
                         <div class="row text-left col-md-12 col-md-12">
                             <div class="col-md-4">
                                 <?php foreach ($category["SubCategories"] as $key => $subCategory) { ?>

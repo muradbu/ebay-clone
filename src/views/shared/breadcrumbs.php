@@ -6,7 +6,13 @@
 
       foreach ($crumbs as $crumb) {
         if ($crumb != "") {
-          echo "<li class='breadcrumb-item'><a href='#'>" . ucfirst(str_replace(array(".php", "_"), array("", " "), $crumb) . ' ') . "</a></li>";
+          if ($crumb == end($crumbs))
+          {
+            echo "<li class='breadcrumb-item'><a href='#'>" . ucfirst(str_replace(array(".php", "_"), array("", " "), $crumb) . ' ') . "</a></li>";
+          }
+          else{
+              echo "<li class='breadcrumb-item'><a href='../".strtolower($crumb)."'>" . ucfirst(str_replace(array(".php", "_"), array("", " "), $crumb) . ' ') . "</a></li>";
+          }          
         }
       }
       ?>
