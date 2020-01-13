@@ -47,7 +47,7 @@ class UserController
     {
         $isValid = NewUserValidator::validate($data);
 
-        if (is_array($isValid))
+        if (count($isValid) > 0)
             return $isValid;
 
         $user = new User($data);
@@ -73,18 +73,13 @@ class UserController
     {
         $user = new User(UserController::get($id));
 
-        $isValid = NewUserValidator::validate($user);
-
-        if (is_array($isValid))
-            return $isValid;
-
         foreach ($data as $key => $value)
             if (property_exists('User', $key))
                 $user->$key = $value ?? $user->$key;
 
         $user->put();
 
-        $_SESSION['authenticated'] = $user;
+        $_SESSION['authenticated'] = UserController::get($user->Username)[0];
     }
 
     /**
@@ -105,19 +100,18 @@ class UserController
      * @param int $id Id of the user to delete
      *
      */
-    public static function resetPassword($username, $password)
+    public static function resetPassword($username, $data)
     {
         require_once('validators/ResetUserPasswordValidator.php');
 
-        $errors = ResetUserPasswordValidator::validate($password);
+        $errors = ResetUserPasswordValidator::validate($data);
 
-        if (is_array($errors))
+        if (count($errors) > 0)
             return $errors;
 
-        UserController::put($username, ["Password" => md5($password)]);
+        UserController::put($username, ["Password" => md5($data['newpassword'])]);
 
-        echo "<div class='alert alert-success' role='alert'>Wachtwoord aangepast</div>";
-        echo "<meta http-equiv='refresh' content='5; url=/inloggen'>";
+        redirect("/inloggen");
     }
 
     /**
@@ -195,7 +189,7 @@ class UserController
     {
         $isValid = ContactValidator::validate($message);
 
-        if (is_array($isValid))
+        if (count($isValid) > 0)
             return $isValid;
 
 

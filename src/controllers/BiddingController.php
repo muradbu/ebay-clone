@@ -34,7 +34,7 @@ class BiddingController
 
         $isValid = BiddingValidator::validate($data['BidAmount'], ProductController::get($data['ProductId'])['Price']);
 
-        if (is_array($isValid))
+        if (count($isValid) > 0)
             return $isValid;
 
 

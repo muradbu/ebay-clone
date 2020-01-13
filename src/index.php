@@ -1,19 +1,19 @@
 <?php
 
-require('config.php');
-require('helpers/GeneralHelpers.php');
-require_once('controllers/ProductController.php');
-
 session_start([
     'cookie_lifetime' => 14400,
 ]);
+
+require('config.php');
+require('helpers/GeneralHelpers.php');
+require_once('controllers/ProductController.php');
 
 if (strpos($_SERVER['REQUEST_URI'], "api")) {
     require('routes.php');
     die();
 }
 
-if (isset($_SESSION['authenticated']["Username"])) {
+if (isset($_SESSION['authenticated'])) {
     $products = ProductController::getFromBuyerByBool(str_replace(' ', '', $_SESSION['authenticated']["Username"]), 1);
 }
 

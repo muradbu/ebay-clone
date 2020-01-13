@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
 
     if ($step == 2)
         if (isset($_POST["newpassword"]) && isset($_POST["repeatnewpassword"]) && isset($_POST["answer"]))
-            $errors = UserController::resetPassword($user["Username"], ["Password" => $_POST["newpassword"]]);
+            $errors = UserController::resetPassword($user["Username"], $_POST);
 }
 ?>
 <div class="row justify-content-center">

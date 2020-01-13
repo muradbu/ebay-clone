@@ -6,12 +6,14 @@ $(function () {
 
     var imagesPreview = function (input, placeToInsertImagePreview) {
 
-
-        console.log(photosVal);
-
         if (input.files) {
             var filesAmount = input.files.length;
-
+            $(".gallery").children().remove();
+            console.log(photosVal);
+            photosVal = [];
+            count = 0;
+            console.log(photosVal);
+            
             for (i = 0; i < filesAmount; i++) {
                 var reader = new FileReader();
 
@@ -23,7 +25,7 @@ $(function () {
                 let random = Math.floor(Math.random() * 10000);
 
                 reader.onload = function (event) {
-                    $($.parseHTML('<img class="py-2 px-2" width="300px" height="auto" onclick="photoPop(' + random + ');" id="' + random + '" />')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    $($.parseHTML('<img class="py-2 px-2" width="300px" height="auto" onclick="" id="' + random + '" />')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
                 }
 
                 reader.readAsDataURL(input.files[i]);
