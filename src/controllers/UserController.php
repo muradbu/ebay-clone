@@ -192,9 +192,9 @@ class UserController
             return $isValid;
 
 
-        $message = "<h3>U heeft een bericht ontvangen</h3><p>$message</p>";
         $fromUsername = $_SESSION['authenticated']['Username'];
         $fromEmail = $_SESSION['authenticated']['Email'];
+        $message = "<h3>U heeft een bericht ontvangen van $fromEmail</h3><p>$message</p>";
 
         $user = UserController::get($seller);
 
