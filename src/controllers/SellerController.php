@@ -38,7 +38,7 @@ class SellerController
 
             $errors = SellerCreditcardValidator::validate($data['CreditcardNumber']);
 
-            if (is_array($errors))
+            if (count($errors) > 0)
                 return $errors;
 
             $seller->Creditcard = $data['CreditcardNumber'];
@@ -48,7 +48,7 @@ class SellerController
 
             $errors = SellerBankValidator::validate($data);
 
-            if (is_array($errors))
+            if (count($errors) > 0)
                 return $errors;
 
             $seller->BankName = $data['Bank'];
