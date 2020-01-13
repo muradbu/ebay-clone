@@ -37,6 +37,7 @@ class BiddingController
         if (is_array($isValid))
             return $isValid;
 
+
         $bidding = new Bidding();
 
         $bidding->ProductId = $data['ProductId'];
@@ -45,8 +46,8 @@ class BiddingController
         $bidding->BidDate = date("m-d-Y");
         $bidding->BidTime = date("h:i:sa");
 
-        require_once('models/Product.php');
-        Product::execute("update [Product] set Price = $bidding->BidAmount, Buyer = '$bidding->Username' where ProductId = $bidding->ProductId");
+        require_once('controllers/ProductController.php');
+        ProductController::put($bidding->ProductId, ["Price" => $bidding->BidAmount, "Buyer" => $bidding->Username]);
 
         $bidding->post();
     }
