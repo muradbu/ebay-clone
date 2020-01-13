@@ -47,7 +47,7 @@ switch (basename($_SERVER['REQUEST_URI'])) {
 </div>
 
 <?php if ($products == null) { ?>
-  <div class="alert alert-primary" role="alert">Er is hier niets te vinden!</div>
+  <div class="alert alert-primary" role="alert">Je hebt nog geen veilingen gemaakt!</div>
 <?php } else { ?>
   <div class="row">
     <?php

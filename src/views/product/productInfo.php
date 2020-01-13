@@ -33,7 +33,7 @@ require("helpers/SliderHelper.php");
                 <div class="detail-card-text">
                     <p><strong>Aanbieder:</strong></p>
                     <p><?php echo $product["Seller"]; ?></p>
-                    <p data-toggle="tooltip" title="<?php echo $feedback["allFeedbackCount"]; ?> reviewers">
+                    <p data-toggle="tooltip" style="cursor: pointer;" title="<?php echo $feedback["allFeedbackCount"]; ?> reviewers">
                         <?php for ($i = 0; $i < 5; $i++) {
                             if ($i < $averageFeedback) { ?>
                                 <span class="material-icons star-filled-color">star</span>
