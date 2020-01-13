@@ -57,7 +57,7 @@ if (isset($_SESSION['authenticated']["Username"])) {
                             if (ProductController::getFeedbackProduct($product["ProductId"])[0]["returnCode"] != 2) {
                 ?>
                                 <div class='alert alert-primary' role='alert'>
-                                    Je hebt de veiling voor het product: <a href="/veiling/<?php echo $product["ProductId"]; ?>"><?php echo $product["Title"]; ?></a> gewonnnen! Vergeet niet om de verkoper feedback te geven!
+                                    Je hebt de veiling voor het product: <a href="/veiling/<?php echo $product["ProductId"]; ?>"><?php echo $product["Title"]; ?></a> gewonnen! Vergeet niet om de verkoper feedback te geven!
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
