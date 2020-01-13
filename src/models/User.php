@@ -25,9 +25,10 @@ class User extends ModelHelper
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
-            if (property_exists('User', $value))
+            if (property_exists('User', $key))
                 $this->$key = $value;
         }
+
     }
 
      /**
