@@ -19,6 +19,6 @@ const addBidding = () => {
 
 const setBiddingAmount = biddingButton => {
   $('#BidAmount').val(
-    parseInt($('#BidAmount').val()) + parseInt(biddingButton.val())
+    parseFloat($('#BidAmount').val()) + parseFloat(biddingButton.val())
   )
 }

@@ -8,7 +8,7 @@ require('config.php');
 require('helpers/GeneralHelpers.php');
 require_once('controllers/ProductController.php');
 
-if (strpos($_SERVER['REQUEST_URI'], "api")) {
+if (strpos($_SERVER['REQUEST_URI'], "api") || strpos($_SERVER['REQUEST_URI'], "pics")) {
     require('routes.php');
     die();
 }
@@ -89,6 +89,7 @@ if (isset($_SESSION['authenticated'])) {
     <script src="<?php echo Config::ROOT_FOLDER . "/js/addStars.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/pictureViewer.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/tooltip.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/filterPage.js" ?>" type="text/javascript"></script>
 
     <!-- AJAX -->
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getPopularWithoutIds.js" ?>" type="text/javascript"></script>
