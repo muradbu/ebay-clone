@@ -87,6 +87,7 @@ if (isset($_SESSION['authenticated']["Username"])) {
     <script src="<?php echo Config::ROOT_FOLDER . "/js/moneyFormatter.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/sellerRegister.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/addStars.js" ?>" type="text/javascript"></script>
+    <script src="<?php echo Config::ROOT_FOLDER . "/js/filterPage.js" ?>" type="text/javascript"></script>
 
     <!-- AJAX -->
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getPopularWithoutIds.js" ?>" type="text/javascript"></script>

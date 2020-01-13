@@ -55,15 +55,16 @@
             Prijs
             <div class="form-row">
                 <div class="form-group col-5">
-                    <input onchange="this.form.submit()" type="number" min="1" class="form-control" name="start" id="start" value="<?php echo !isset($_SESSION['start']) ?: $_SESSION['start'] ?>">
+                    <input type="number" min="0" class="form-control" name="start" id="start" value="<?php echo !isset($_SESSION['start']) ?: $_SESSION['start'] ?>">
                 </div>
                 <div class="col-2 text-center">
                     tot
                 </div>
                 <div class="form-group col-5">
-                    <input onchange="this.form.submit()" type="number" min="1" class="form-control" id="end" name="end" value="<?php echo !isset($_SESSION['end']) ?: $_SESSION['end'] ?>">
+                    <input type="number" min="0" class="form-control" id="end" name="end" value="<?php echo !isset($_SESSION['end']) ?: $_SESSION['end'] ?>">
                 </div>
             </div>
+            <button onclick="filterFormValidate(event)" class="btn btn-outline-primary" name="filter" type="submit">Filter</button>
         </form>
     </div>
     <div class="col-9 card">

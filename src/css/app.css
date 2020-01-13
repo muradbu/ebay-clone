@@ -139,6 +139,11 @@ table.table.no-border th {
   list-style: none;
   color: var(--primary);
 }
+.category-nav li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .category-nav {
   list-style: none;
   color: var(--primary);
