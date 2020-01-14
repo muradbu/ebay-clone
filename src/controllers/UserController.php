@@ -196,8 +196,12 @@ class UserController
         $fromUsername = $_SESSION['authenticated']['Username'];
         $fromEmail = $_SESSION['authenticated']['Email'];
         $message = "
-        <h3>U heeft een bericht ontvangen van $fromEmail</h3>
-        <small>Betreft product $product</small>
+        <h3>U heeft een bericht ontvangen</h3>
+        <address>
+        Gebruikersnaam: $fromUsername<br/>
+        Email: $fromEmail<br />
+        Betreft product: <a href='http://iproject1.icasites.nl/veiling/$product[1]'>$product[0]</a>
+        </address><br />
         <p>$message</p>
         ";
 
@@ -206,7 +210,7 @@ class UserController
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        mail($user['Email'], "Bericht ontvangen van $fromUsername", $message, $headers, "-f $fromEmail");
+        mail($user['Email'], "EenmaalAndermaal - Bericht ontvangen van $fromUsername", $message, $headers, "-f $fromEmail");
         redirect("/");
     }
 

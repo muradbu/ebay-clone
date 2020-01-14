@@ -8,7 +8,7 @@ $errors = [];
 
 if (isset($_POST['submit'])) {
     $product = Product::get(filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT), 'ProductId', 1);
-    $errors = UserController::sendContactMail($product['Seller'], $_POST['message'], $product['Title']);
+    $errors = UserController::sendContactMail($product['Seller'], $_POST['message'], array($product['Title'], $product['ProductId']));
 }
 
 ?>
