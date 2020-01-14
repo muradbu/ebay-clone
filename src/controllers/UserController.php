@@ -182,9 +182,10 @@ class UserController
      *
      * @param string $email The email to send the verfication mail to
      * @param string $message The body to send within the mail
+     * @param string $product The corresponding product 
      *
      */
-    public static function sendContactMail($seller, $message)
+    public static function sendContactMail($seller, $message, $product)
     {
         $isValid = ContactValidator::validate($message);
 
@@ -194,16 +195,25 @@ class UserController
 
         $fromUsername = $_SESSION['authenticated']['Username'];
         $fromEmail = $_SESSION['authenticated']['Email'];
-        $message = "<h3>U heeft een bericht ontvangen van $fromEmail</h3><p>$message</p>";
+        $message = "
+        <h3>U heeft een bericht ontvangen</h3>
+        <address>
+        Naam: $fromUsername<br/>
+        Email: $fromEmail<br />
+        Betreft product: <a href='http://iproject1.icasites.nl/veiling/$product[1]'>$product[0]</a>
+        </address><br />
+        <p>$message</p>
+        ";
 
         $user = UserController::get($seller);
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-        mail($user['Email'], "Bericht ontvangen van $fromUsername", $message, $headers, "-f $fromEmail");
+        mail($user['Email'], "EenmaalAndermaal - Bericht ontvangen van $fromUsername", $message, $headers, "-f $fromEmail");
         redirect("/");
     }
+
 
     /**
      *
