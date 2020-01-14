@@ -15,7 +15,7 @@ class ResetUserpasswordValidator
     {
         $errors = [];
         if (!preg_match("/^.{7,150}$/", $data['newpassword'])) {
-            $errors['newpassword'] = "Het opgegeven wachtwoord moet minimaal 7 characters bevatten.";
+            $errors['newpassword'] = "Het opgegeven wachtwoord moet minimaal 7 karakters bevatten.";
         }
 
         if ($data["newpassword"] != $data["repeatnewpassword"]) {
