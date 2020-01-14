@@ -192,7 +192,6 @@ class UserController
         if (count($isValid) > 0)
             return $isValid;
 
-
         $fromUsername = $_SESSION['authenticated']['Username'];
         $fromEmail = $_SESSION['authenticated']['Email'];
         $message = "
