@@ -48,12 +48,6 @@ if (isset($_POST['submit']))
     <input placeholder="NL91INGB0417164300" class="form-control <?php echo isset($errors['BankAccount']) ? 'is-invalid' : ''; ?>" type="text" name="BankAccount" value="<?php echo $_POST['BankAccount'] ?? "" ?>" checked>
     </div>
   </div>
-            
-            <div class="form-group">
-                <label for="BankAccount">Rekeningnummer</label>
-                <input placeholder="NL91INGB0417164300" class="form-check-input <?php echo isset($errors['BankAccount']) ? 'is-invalid' : ''; ?>" type="text" name="BankAccount" value="<?php echo $_POST['BankAccount'] ?? "" ?>" checked>
-                <div class="invalid-feedback"><?php echo $errors['BankAccount'] ?? ''; ?></div>
-            </div>
             <button type="submit" name="submit" class="btn btn-primary text-white">Verstuur</button>
         </div>
     </div>

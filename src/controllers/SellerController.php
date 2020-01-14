@@ -94,7 +94,7 @@ class SellerController
      */
     public static function checkCode($code)
     {
-        $seller = Seller::get($_SESSION['authenticated']['Username']);
+        $seller = new Seller (Seller::get($_SESSION['authenticated']['Username']));
 
         if (substr(hash('md5', $seller->BankAccountNumber), 0, 5) === $code) {
             $seller->CheckOptionName = 1;
