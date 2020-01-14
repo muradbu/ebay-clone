@@ -92,7 +92,8 @@ if ($product["Price"] > 0) {
                       } else {
                         echo "is (";
                       }
-                      echo count($biddings) - 3; ?>) meer bieding<?php if (count($biddings) - 3 != 1) echo "en"; ?> </td>
+                      echo count($biddings) - 3; ?>) meer bieding<?php if (count($biddings) - 3 != 1) echo "en"; ?> 
+              </td>
             </tr>
           <?php
           }
