@@ -62,9 +62,8 @@ if (isset($_POST['submit'])) {
 </div>
 
 <div class="row">
-    <?php foreach ($products as $key => $product) { ?>        
-            <?php if ($product["Buyer"] != $_SESSION["authenticated"]["Username"] && $product["AuctionClosed"] == 1) {}
-            else if ($product["Buyer"] == $_SESSION["authenticated"]["Username"] && $product["AuctionClosed"] == 1 && !empty(FeedbackController::get($product['ProductId'], "ProductId")["ProductId"])) {}
+    <?php foreach ($products as $key => $product) {
+            if ($product["Buyer"] == $_SESSION["authenticated"]["Username"] && !empty(FeedbackController::get($product['ProductId'], "ProductId")["ProductId"])) {}
              else{
                  echo '<div class="col-lg-4 mt-2">';
                 echo HorizontalSm::generate(
@@ -86,5 +85,5 @@ if (isset($_POST['submit'])) {
 </div>
 
 <?php if ($products == null) { ?>
-    <div class="alert alert-primary" role="alert">Je hebt nog geen biedingen gedaan!</div>
+    <div class="alert alert-primary" role="alert">Er is hier niks te vinden!</div>
 <?php } ?>

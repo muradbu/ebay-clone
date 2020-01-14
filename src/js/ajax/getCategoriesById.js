@@ -6,15 +6,14 @@ function getCategoryById(dom) {
     },
 
     success: response => {
+      $("#CategoryId").val(dom.id);
       $("#dropdowntext" + dom.name).text(dom.text);
+      $("[name=categorydropdown]").each(function() {
+        if (this.id.match(/\d/g).join("") > dom.name) {
+          this.remove();
+        }
+      });
       if (JSON.parse(response).length > 0) {
-        $("[name=categorydropdown]").each(function() {
-          if (this.id.match(/\d/g).join("") > dom.name) {
-            this.remove();
-          }
-        });
-
-        $("#CategoryId").val(dom.id);
         var element = document.getElementById("dropdownparent");
         element.innerHTML += `
             <div name="categorydropdown" style="margin: 5px 10px 10px 15px" id="categorydropdown${parseInt(
