@@ -182,9 +182,10 @@ class UserController
      *
      * @param string $email The email to send the verfication mail to
      * @param string $message The body to send within the mail
+     * @param string $product The corresponding product 
      *
      */
-    public static function sendContactMail($seller, $message)
+    public static function sendContactMail($seller, $message, $product)
     {
         $isValid = ContactValidator::validate($message);
 
@@ -192,9 +193,13 @@ class UserController
             return $isValid;
 
 
-        $message = "<h3>U heeft een bericht ontvangen</h3><p>$message</p>";
         $fromUsername = $_SESSION['authenticated']['Username'];
         $fromEmail = $_SESSION['authenticated']['Email'];
+        $message = "
+        <h3>U heeft een bericht ontvangen van $fromEmail</h3>
+        <small>Betreft product $product</small>
+        <p>$message</p>
+        ";
 
         $user = UserController::get($seller);
 
