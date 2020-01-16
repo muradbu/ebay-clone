@@ -49,16 +49,17 @@ class UserController
 
         if (count($isValid) > 0)
             return $isValid;
-
+            
         $user = new User($data);
         $user->Password = md5($user->Password);
+        $user->Seller = 0;
         $user->post();
 
         require_once('controllers/UserPhoneController.php');
         if (!UserPhoneController::post(["username" => $data['Username'], "phonenumber" => $data['PhoneNumber']]))
             return ["error" => "Registratie mislukt. Probeer opnieuw."];
 
-        UserController::login($user->Username, $user->Password);
+        UserController::login($user->Username,  $data["Password"]);
     }
 
     /**
