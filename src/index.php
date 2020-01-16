@@ -94,7 +94,6 @@ if (isset($_SESSION['authenticated'])) {
     <!-- AJAX -->
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getPopularWithoutIds.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getCurrentBiddings.js" ?>" type="text/javascript"></script>
-    <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/postBidding.js" ?>" type="text/javascript"></script>
     <script src="<?php echo Config::ROOT_FOLDER . "/js/ajax/getCategoriesById.js" ?>" type="text/javascript"></script>
 
 </body>

@@ -11,7 +11,8 @@ require_once('helpers/ProductHelper.php');
 switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
     case 0:
         $title = 'Alle biedingen';
-        $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
+        $products = BiddingController::getWinningFromPerson($_SESSION['authenticated']['Username']);
+        $products += BiddingController::getLosingFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
         <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
         <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';
@@ -32,7 +33,8 @@ switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
         break;
     default:
         $title = 'Mijn biedingen';
-        $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
+        $products = BiddingController::getWinningFromPerson($_SESSION['authenticated']['Username']);
+        $products += BiddingController::getLosingFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
         <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
         <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';

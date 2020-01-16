@@ -11,7 +11,7 @@ $errors = [];
 $questions = QuestionController::query();
 
 if (isset($_POST['submit'])) {
-    $_POST['email'] = $_SESSION['emailverification']['email'];
+    $_POST['Email'] = $_SESSION['emailverification']['email'];
     $errors = UserController::post($_POST);
 }
 
