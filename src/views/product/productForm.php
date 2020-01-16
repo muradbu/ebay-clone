@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-md-4">
                                     <label for="StartingPrice">Startprijs</label>
-                                    <input type="number" step="0.01" value="<?php echo $_POST['StartingPrice'] ?? "" ?>" name="StartingPrice" class="form-control <?php echo isset($errors['StartingPrice']) ? 'is-invalid' : ''; ?>">
+                                    <input type="number" step="0.01" value="<?php echo $_POST['StartingPrice'] ?? "0" ?>" name="StartingPrice" class="form-control <?php echo isset($errors['StartingPrice']) ? 'is-invalid' : ''; ?>">
                                     <div class="invalid-feedback"><?php echo $errors['StartingPrice'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-md-4">
