@@ -74,7 +74,7 @@ if (isset($_POST['submit'])) {
                                     <label for="Files">Foto's</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" multiple class="custom-file-input" id="photo" name="photos[]">
+                                            <input type="file" multiple class="custom-file-input" id="photo" name="photos[]" required>
                                             <label class="custom-file-label" for="photo">Klik hier om foto's te uploaden</label>
                                         </div>
                                     </div>
