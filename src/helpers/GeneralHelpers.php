@@ -34,5 +34,6 @@ function active_url($url, $callback = '')
 
 function numberToEuro($number)
 {
+    $number = str_replace(",","",$number);
     return "€ " . number_format(floatval($number), 2, ',', ' ');
 }
