@@ -20,7 +20,7 @@ if ($(".bidding").length > 0) {
         '/api/product?attribute="Price"&ids=' + price_ids.join(","),
         data => {
           for (let i in data) {
-            $(`.tracked[data-id=${data[i].ProductId}] .update-price`).html(
+            $(`.bidding[data-id=${data[i].ProductId}] .update-price`).html(
               formatMoney(parseFloat(data[i].Price))
             );
           }
