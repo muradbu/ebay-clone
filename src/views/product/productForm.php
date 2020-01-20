@@ -7,9 +7,14 @@ $rootCategories = CategoryController::getMultipleById(-1, "SubCategory");
 $errors = [];
 
 if (isset($_POST['submit'])) {
-    ProductController::post($_POST);
+    if (count($_FILES['photos']['name']) == 0) {
+        $errors['Photos'] = "Geen foto's gekozen";
+    } else if (count($_FILES['photos']['name']) > 5) {
+        $errors['Photos'] = "Meer dan 5 foto's gekozen";
+    } else {
+        ProductController::post($_POST);
+    }
 }
-
 ?>
 
 <div class="row justify-content-center">
@@ -51,7 +56,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="col-md-4">
                                     <label for="StartingPrice">Startprijs</label>
-                                    <input type="number" step="0.01" value="<?php echo $_POST['StartingPrice'] ?? "" ?>" name="StartingPrice" class="form-control <?php echo isset($errors['StartingPrice']) ? 'is-invalid' : ''; ?>">
+                                    <input type="number" step="0.01" value="<?php echo $_POST['StartingPrice'] ?? "0" ?>" name="StartingPrice" class="form-control <?php echo isset($errors['StartingPrice']) ? 'is-invalid' : ''; ?>">
                                     <div class="invalid-feedback"><?php echo $errors['StartingPrice'] ?? ''; ?></div>
                                 </div>
                                 <div class="col-md-4">
@@ -69,11 +74,11 @@ if (isset($_POST['submit'])) {
                                     <label for="Files">Foto's</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" multiple class="custom-file-input" id="photo" name="photos[]">
+                                            <input type="file" multiple class="custom-file-input" id="photo" name="photos[]" required>
                                             <label class="custom-file-label" for="photo">Klik hier om foto's te uploaden</label>
-                                            <div class="invalid-feedback"><?php echo $errors['Photos'] ?? ''; ?></div>
                                         </div>
                                     </div>
+                                    <small style="color: red;"><?php echo $errors['Photos'] ?? ''; ?></small>
                                     <div class="gallery"></div>
                                 </div>
                                 <div class="col-md-12">

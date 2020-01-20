@@ -36,14 +36,14 @@ class SellerController
 
         if ($data['verification'] === 'creditcard') {
 
-            $errors = SellerCreditcardValidator::validate($data['CreditcardNumber']);
-
+            $errors = SellerCreditcardValidator::validate($data['CreditCardNumber']);
+            
             if (count($errors) > 0)
                 return $errors;
-
-            $seller->Creditcard = $data['CreditcardNumber'];
+            
+            $seller->Creditcard = $data['CreditCardNumber'];
             $seller->CheckOptionName = 1;
-            UserController::put($_SESSION['authenticated']['Username'], ['Seller' => true]);
+            UserController::put($_SESSION['authenticated']['Username'], ['Seller' => 1]);
         } else {
 
             $errors = SellerBankValidator::validate($data);
@@ -94,7 +94,7 @@ class SellerController
      */
     public static function checkCode($code)
     {
-        $seller = Seller::get($_SESSION['authenticated']['Username']);
+        $seller = new Seller (Seller::get($_SESSION['authenticated']['Username']));
 
         if (substr(hash('md5', $seller->BankAccountNumber), 0, 5) === $code) {
             $seller->CheckOptionName = 1;

@@ -11,7 +11,8 @@ require_once('helpers/ProductHelper.php');
 switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
     case 0:
         $title = 'Alle biedingen';
-        $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
+        $products = BiddingController::getWinningFromPerson($_SESSION['authenticated']['Username']);
+        $products += BiddingController::getLosingFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
         <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
         <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';
@@ -32,7 +33,8 @@ switch (filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_NUMBER_INT)) {
         break;
     default:
         $title = 'Mijn biedingen';
-        $products = BiddingController::getFromPerson($_SESSION['authenticated']['Username']);
+        $products = BiddingController::getWinningFromPerson($_SESSION['authenticated']['Username']);
+        $products += BiddingController::getLosingFromPerson($_SESSION['authenticated']['Username']);
         $buttons = '<a href="/gebruiker/biedingen/0" class="btn btn-primary text-white active">Alle biedingen</a>
         <a href="/gebruiker/biedingen/1" class="btn btn-primary text-white">Winnende biedingen</a>
         <a href="/gebruiker/biedingen/2" class="btn btn-primary text-white">Verliezende biedingen</a>';
@@ -62,9 +64,8 @@ if (isset($_POST['submit'])) {
 </div>
 
 <div class="row">
-    <?php foreach ($products as $key => $product) { ?>        
-            <?php if ($product["Buyer"] != $_SESSION["authenticated"]["Username"] && $product["AuctionClosed"] == 1) {}
-            else if ($product["Buyer"] == $_SESSION["authenticated"]["Username"] && $product["AuctionClosed"] == 1 && !empty(FeedbackController::get($product['ProductId'], "ProductId")["ProductId"])) {}
+    <?php foreach ($products as $key => $product) {
+            if ($product["Buyer"] == $_SESSION["authenticated"]["Username"] && !empty(FeedbackController::get($product['ProductId'], "ProductId")["ProductId"])) {}
              else{
                  echo '<div class="col-lg-4 mt-2">';
                 echo HorizontalSm::generate(
@@ -86,5 +87,5 @@ if (isset($_POST['submit'])) {
 </div>
 
 <?php if ($products == null) { ?>
-    <div class="alert alert-primary" role="alert">Je hebt nog geen biedingen gedaan!</div>
+    <div class="alert alert-primary" role="alert">Er is hier niks te vinden!</div>
 <?php } ?>

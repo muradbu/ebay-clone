@@ -44,7 +44,7 @@ if ($product["Price"] > 0) {
       <?php
       if ($product["AuctionClosed"] && $product['Buyer']) {
         echo ("<h1 style='position: relative; top: 50%; transform: translateY(-50%);'>De veiling is gesloten!</h1>
-    <h3>" . $biddings[0]["Username"] . " is de winnaar. Gefeliciteerd!</h3>
+    <h3>" . $product['Buyer'] . " is de winnaar. Gefeliciteerd!</h3>
     ");
         if ($_SESSION['authenticated']['Username'] == $product['Buyer'] && empty(FeedbackController::get($product["ProductId"], "ProductId"))) {
           echo ("<form methode='POST' action='/gebruiker/veilingen/" . $product['ProductId'] . "/feedback'>     
@@ -92,7 +92,8 @@ if ($product["Price"] > 0) {
                       } else {
                         echo "is (";
                       }
-                      echo count($biddings) - 3; ?>) meer bieding<?php if (count($biddings) - 3 != 1) echo "en"; ?> </td>
+                      echo count($biddings) - 3; ?>) meer bieding<?php if (count($biddings) - 3 != 1) echo "en"; ?> 
+              </td>
             </tr>
           <?php
           }
@@ -103,7 +104,7 @@ if ($product["Price"] > 0) {
       <input type="hidden" name="ProductId" value="<?php echo $product['ProductId']; ?>">
       <div class="row py-3">
         <div class="col-lg-8">
-          <input class="form-control mt-2" name="BidAmount" id="BidAmount" type="number" value="<?php $total = $product['Price'] + $minimalAmount; echo number_format((float)$total, 2, '.', ''); ?>" />
+          <input class="form-control mt-2" step="0.01" name="BidAmount" id="BidAmount" type="number" />
           <div class="invalid-feedback"><?php echo $errors['error'] ?? ''; ?></div>
         </div>
         <div class="col-lg-4">
